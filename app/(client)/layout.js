@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-6xl mx-auto border-3 border-blue-400`}
       >
-        <header className="flex gap-2 w-[95%] mx-auto py-3 border-b-2 border-blue-600">
+        <header className="flex gap-2 max-w-5xl mx-auto py-3 border-b-2 border-blue-600">
           <nav className="bg-amber-600 w-[20%]">Logo</nav>
           <div className="flex justify-between bg-amber-300 w-[60%]">
             <a href="/about">About</a>
