@@ -8,8 +8,8 @@ export default function Home() {
         Every Day Tech News for Users
       </h2>
       <h4 className=" text-4xl">24/7 hOURS</h4>
-      <p className=" text-red-600 text-5xl">Log Out</p>
-      <h2 className=" text-blue-800 text-7xl">WELCOME</h2>
+      <p className=" text-green-600 text-5xl">Log Out</p>
+      <h2 className=" text-yellow-800 text-7xl">WELCOME</h2>
       <h2 className=" text-blue-800 text-2xl">Another WELCOME Text</h2>
     </div>
   );
