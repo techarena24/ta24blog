@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
-import ThemeProvider from "../components/theme-provider";
+import { ThemeProvider } from "../components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +17,7 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "900"],
   variable: "--font-poppins",
-})
+});
 
 export const metadata = {
   title: "Tech Arena24",
@@ -27,7 +27,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.className}>
-      <body className={` antialiased `}>
+      <body className={` antialiased`}>
         <ThemeProvider>
           <Navbar />
           {children}
