@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <header className=' mb-8'>
-        <div className=' max-w-6xl mx-auto flex justify-between items-center h-18 border-b border-b-primary'>
+        <div className='flex justify-between items-center h-18 border-b border-b-primary'>
             <Link href={"/"}>
                 <Image 
                     src={logo}

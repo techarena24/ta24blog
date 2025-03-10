@@ -53,7 +53,7 @@ function LatestDevices() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto my-10 bg-purple-700">
+    <div className="my-10 bg-purple-700">
       <div className="flex gap-2 bg-amber-200 w-[100%]">
         <div className="w-[60%]">
           <table className="bg-green-300 w-full">

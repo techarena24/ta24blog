@@ -27,7 +27,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-        <body className={` ${poppins.className} antialiased`}>
+        <body className={` ${poppins.className} antialiased max-w-6xl mx-auto`}>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem={true}>
             <Navbar />
             {children}
