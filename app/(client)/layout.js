@@ -27,12 +27,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-        <body className={` ${poppins.className} antialiased`}>
-          <ThemeProvider attribute='class' defaultTheme='system' enableSystem={true}>
-            <Navbar />
+      <body className={` ${poppins.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem={true}
+        >
+          <Navbar />
+          <main className="max-w-6xl mx-auto">
             {children}
-          </ThemeProvider>
-       </body>
+          </main>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
