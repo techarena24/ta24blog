@@ -11,7 +11,7 @@ const links = [
     { id: 1, name: "News", href: "/news" },
     { id: 2, name: "Reviews", href: "/reviews" },
     { id: 3, name: "Deals", href: "/deals" },
-    { id: 4, name: "Latest Devices", href: "/latest" },
+    { id: 4, name: "Latest Devices", href: "/latestdevices" },
     { id: 5, name: "Contact", href: "/contact" },
     { id: 6, name: "About Us", href: "/about" },
 ]
