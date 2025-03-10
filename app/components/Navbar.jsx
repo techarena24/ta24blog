@@ -5,6 +5,7 @@ import React from 'react'
 import logo from "../../public/images/logoTa24.jpeg"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { ModeToggle } from './ModeToggle';
 
 const links = [
     { id: 1, name: "News", href: "/news" },
@@ -46,6 +47,8 @@ const Navbar = () => {
                     </div>
                 ))}
             </nav>
+
+            <ModeToggle />
         </div>
     </header>
   )
