@@ -6,6 +6,8 @@ import logo from "../../public/images/logoTa24.jpeg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "./ModeToggle";
+import { Button } from "@/components/ui/button";
+import { Search, SearchIcon } from "lucide-react";
 
 const links = [
   { id: 1, name: "News", href: "/news" },
@@ -52,6 +54,20 @@ const Navbar = () => {
         </nav>
 
         <ModeToggle />
+      </div>
+
+      <div className=" bg-primary">
+        <div className=" max-w-[50%] mx-auto h-12 flex items-center">
+          <div className=" flex w-full rounded-tr-sm rounded-br-sm border dark:border-secondary ">
+            <input 
+              type="text" 
+              className=" bg-secondary flex-1 text-sm px-4 py-1 focus:outline-2 focus:ring-2 focus:ring-blue-800"
+            />
+            <button className=" px-4 py-1">
+              <SearchIcon className=" text-white dark:text-secondary" />
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );
