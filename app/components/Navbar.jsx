@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "./ModeToggle";
 import { Button } from "@/components/ui/button";
-import { Search, SearchIcon } from "lucide-react";
+import { MenuIcon, SearchIcon } from "lucide-react";
 
 const links = [
   { id: 1, name: "News", href: "/news" },
@@ -34,7 +34,7 @@ const Navbar = () => {
           />
         </Link>
 
-        <nav className=" flex gap-10">
+        <nav className=" hidden lg:flex gap-10">
           {links.map((link, id) => (
             <div key={id}>
               {pathName === link.href ? (
@@ -52,8 +52,13 @@ const Navbar = () => {
             </div>
           ))}
         </nav>
-
-        <ModeToggle />
+        
+        <div className=" flex flex-row gap-5 ">
+          <ModeToggle />
+          <Button className=" lg:hidden">
+             <MenuIcon />
+          </Button>
+        </div> 
       </div>
 
       <div className=" bg-primary">
@@ -61,7 +66,7 @@ const Navbar = () => {
           <div className=" flex w-full rounded-tr-sm rounded-br-sm border dark:border-secondary ">
             <input 
               type="text" 
-              className=" bg-secondary flex-1 text-sm px-4 py-1 focus:outline-2 focus:ring-2 focus:ring-blue-800"
+              className=" bg-secondary w-[90%] text-sm px-4 py-1 focus:outline-2 focus:ring-2 focus:ring-blue-800"
             />
             <button className=" px-4 py-1">
               <SearchIcon className=" text-white dark:text-secondary" />
