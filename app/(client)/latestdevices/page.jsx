@@ -10,9 +10,11 @@ import React, { useState } from "react";
 function LatestDevices() {
   return (
     <div className=" my-10 bg-purple-700">
-        <LatestDevicesSidebar specifications={phoneSpecs.phones} width="100%" grid="grid-cols-4" />
-        
-
+      <LatestDevicesSidebar
+        specifications={phoneSpecs.phones}
+        width="100%"
+        grid="grid-cols-2 md:grid-cols-4"
+      />
     </div>
   );
 }
