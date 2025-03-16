@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <header className="max-w-6xl mx-auto mb-8">
-      <div className="flex justify-between items-center h-18 border-b border-b-primary px-6 sm:px-4 lg:px-0">
+      <div className="flex justify-between items-center h-18 border-b border-b-primary px-6 sm:px-4 xl:px-0">
         <Link href={"/"}>
           <Image
             src={logo}
@@ -68,7 +68,7 @@ const Navbar = () => {
       <div className={`bg-blue-950 fixed top-0 left-0 h-screen w-full z-50 transform ${menuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"} 
       transition-transform duration-300 ease-in-out lg:hidden`}>
           <div className=" flex justify-between items-center p-5">
-            <h2 className=" text-xl font-semibold">
+            <h2 className=" text-xl font-semibold text-white">
               Menu
             </h2>
             <Button onClick={() => setMenuOpen(false)}>
