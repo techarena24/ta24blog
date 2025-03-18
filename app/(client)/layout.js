@@ -34,7 +34,9 @@ export default function RootLayout({ children }) {
           enableSystem={true}
         >
           <Navbar />
-          <main className="max-w-6xl mx-auto">{children}</main>
+          <main className="max-w-6xl mx-auto px-6 sm:px-4 xl:px-0 overflow-x-hidden">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
