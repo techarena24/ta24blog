@@ -1,4 +1,5 @@
 import AdBanner from "../components/AdBanner";
+import BigAdBanner from "../components/BigAdBanner";
 import Deals from "../components/Deals";
 import LatestPosts from "../components/LatestPosts";
 import News from "../components/News";
@@ -15,9 +16,10 @@ export default function Home() {
         <Reviews />
       </div>
       <News />
+      <BigAdBanner />
       <PhoneComparisons />
       <Deals />
-      <AdBanner />
+      <BigAdBanner />
     </div>
   );
 }

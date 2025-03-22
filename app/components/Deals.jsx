@@ -5,7 +5,7 @@ import Image from 'next/image'
 const Deals = () => {
   return (
     <div className=' flex flex-col space-y-6'>
-        <h1 className=' text-xl font-bold'>Deals</h1>
+        <h1 className=' text-2xl lg:text-3xl font-semibold'>Deals</h1>
         <div className=' flex flex-col gap-6 sm:flex-row sm:overflow-x-auto whitespace-nowrap snap-x snap-mandatory '>
             {posts.slice(0, 6).map((post) => (
               <div key={post.id} className=' flex flex-row w-full gap-4 sm:min-w-[350px] sm:flex-col shadow-sm rounded-sm overflow-hidden'>

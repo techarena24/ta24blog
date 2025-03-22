@@ -100,7 +100,7 @@ const LatestPosts = () => {
 
   return (
     <div className=' flex flex-col flex-[2] space-y-6'>
-        <h1 className=' text-xl font-bold'>Latest Posts</h1>
+        <h1 className=' text-2xl lg:text-3xl font-semibold'>Latest Posts</h1>
         <div>
             <div className=' grid sm:grid-cols-2 gap-6'>
                 {posts.map((post) => (
