@@ -107,7 +107,7 @@ const LatestPosts = () => {
                   <div key={post.id} className=' flex flex-row p-4 gap-4 sm:flex-col border border-gray-300 shadow-sm rounded-sm overflow-hidden'>
                     <Image 
                       src={post.img} 
-                      alt={post.title} 
+                      alt={post.title}
                       width={100} 
                       height={80} 
                       priority
