@@ -6,9 +6,9 @@ import React from 'react'
 const Footer = () => {
 
   return (
-    <footer className=' max-w-6xl mx-auto bg-primary py-16 px-20 mt-18'>
-       <div className=' flex flex-row justify-between'>
-            <div>
+    <footer className=' max-w-6xl mx-auto bg-primary mt-18'>
+       <div className=' flex flex-col gap-10 sm:flex-row py-8 md:py-16 mx-6 lg:mx-20 justify-between sm:gap-0'>
+            <div className=' flex flex-col items-center sm:block sm:items-start'>
                <Image 
                     src={"/images/logoTA24.jpeg"}
                     alt={"Logo"}
@@ -41,6 +41,11 @@ const Footer = () => {
                 <Link className=' font-medium text-sm' href={""}>Phone Specifications</Link>
                 <Link className=' font-medium text-sm' href={""}>Promotions</Link>
             </div>
+       </div>
+       <div className=' flex justify-center bg-black py-2'>
+            <p className=' text-white text-xs'>
+                &copy; 2024 TechArena24. All rights reserved.
+            </p>
        </div>
     </footer>
   )
