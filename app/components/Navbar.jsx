@@ -23,7 +23,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="max-w-6xl mx-auto mb-8">
+    <header className=" max-w-6xl w-full mx-auto mb-8">
       <div className="flex justify-between items-center h-18 border-b border-b-primary px-6 sm:px-4 xl:px-0">
         <Link href={"/"}>
           <Image

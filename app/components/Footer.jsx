@@ -6,7 +6,7 @@ import React from 'react'
 const Footer = () => {
 
   return (
-    <footer className=' max-w-6xl mx-auto bg-primary mt-18'>
+    <footer className=' w-full max-w-6xl mx-auto bg-primary mt-18'>
        <div className=' flex flex-col gap-10 sm:flex-row py-8 md:py-16 mx-6 lg:mx-20 justify-between sm:gap-0'>
             <div className=' flex flex-col items-center sm:block sm:items-start'>
                <Image 

@@ -28,17 +28,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={` ${poppins.className} antialiased`}>
+      <body className={` ${poppins.className} antialiased flex flex-col min-h-screen`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem={true}
         >
           <Navbar />
-          <main className="max-w-6xl mx-auto px-6 sm:px-4 xl:px-0 overflow-x-hidden">
+          <main className=" w-full max-w-6xl mx-auto px-6 sm:px-4 xl:px-0 overflow-x-hidden flex-1">
             {children}
           </main>
-          <Footer />
+          <Footer  />
         </ThemeProvider>
       </body>
     </html>
