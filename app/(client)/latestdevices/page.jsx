@@ -1,20 +1,22 @@
 "use client";
 
-import LatestDevicesSidebar from "@/app/components/LatestDevicesSidebar";
+import LatestDevicesPosts from "@/app/components/LatestDevicesPosts";
 // import LatestDeviceTable from "@/app/components/LatestDeviceTable";
 import phoneSpecs from "../../phones.json";
 // import images from "../../../public/images/Galaxy_S24.avif"
 // import Image from "next/image";
 import React, { useState } from "react";
+// import LatestDeviceTable from "@/app/components/LatestDeviceTable";
 
 function LatestDevices() {
   return (
-    <div className=" my-10 bg-purple-700">
-      <LatestDevicesSidebar
+    <div className="my-10">
+      <LatestDevicesPosts
         phone={phoneSpecs.phones}
         width="100%"
         grid="grid-cols-2 md:grid-cols-4"
       />
+      {/* <LatestDeviceTable /> */}
     </div>
   );
 }

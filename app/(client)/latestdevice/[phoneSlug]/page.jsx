@@ -1,10 +1,15 @@
 // app/latestdevice/[phoneName]/page.jsx
 "use client";
 
-import LatestDeviceTable from "@/app/components/LatestDeviceTable";
+// import LatestDeviceTable from "@/app/components/LatestDeviceTable";
 import phoneSpecs from "../../../phones.json";
 import React from "react";
-import LatestDevicesSidebar from "@/app/components/LatestDevicesSidebar";
+import TableHead from "@/app/components/TableHead";
+import TableBody from "@/app/components/TableBody";
+import Reviews from "@/app/components/Reviews";
+import LatestDevicesPosts from "@/app/components/LatestDevicesPosts";
+// import LatestDevicesSidebar from "@/app/components/LatestDevicesSidebar";
+// import Reviews from "@/app/components/Reviews";
 
 function LatestDevice({ params }) {
   const { phoneSlug } = params;
@@ -21,11 +26,52 @@ function LatestDevice({ params }) {
     return <div>This Device is not found.</div>;
   }
 
+  const numberOfPhones = phoneSpecs.phones.slice(0, 4);
+
   return (
-    <div className="my-10 bg-purple-700 flex">
-      <LatestDeviceTable phone={phone} />
-      <LatestDevicesSidebar phone={phoneSpecs.phones}/>
-    </div>
+    <>
+      <section>
+        <div className="flex gap-5 flex-col md:flex-row">
+          <div className="flex flex-col md:w-[65%] gap-2 ">
+            <TableHead />
+            <TableBody />
+            <section className="">
+              <article className="">
+                <h2 className="py-2 px-2 bg-gray-100">Phone Specifications</h2>
+                <p className="px-2">
+                  Below are the specifications of the latest phones
+                </p>
+                <p className="py-3 px-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+                  aut repellendus quasi expedita, nulla deleniti enim dolore at
+                  distinctio quos, pariatur neque eum sapiente minima dolores
+                  obcaecati nemo aliquam porro!
+                </p>
+                <p className="py-3 px-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+                  aut repellendus quasi expedita, nulla deleniti enim dolore at
+                  distinctio quos, pariatur neque eum sapiente minima dolores
+                  obcaecati nemo aliquam porro!
+                </p>
+                <p className="py-3 px-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+                  aut repellendus quasi expedita, nulla deleniti enim dolore at
+                  distinctio quos, pariatur neque eum sapiente minima dolores
+                  obcaecati nemo aliquam porro!
+                </p>
+              </article>
+            </section>
+          </div>
+          <div className=" md:w-[35%]">
+            <LatestDevicesPosts
+              phone={numberOfPhones}
+              width="100%"
+              grid="grid-cols-2"
+            />
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
