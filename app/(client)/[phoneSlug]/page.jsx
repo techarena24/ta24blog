@@ -1,15 +1,12 @@
 // app/latestdevice/[phoneName]/page.jsx
 "use client";
 
-// import LatestDeviceTable from "@/app/components/LatestDeviceTable";
-import phoneSpecs from "../../../phones.json";
+import phoneSpecs from "../../phones.json";
 import React from "react";
-import TableHead from "@/app/components/TableHead";
-import TableBody from "@/app/components/TableBody";
 import Reviews from "@/app/components/Reviews";
-import LatestDevicesPosts from "@/app/components/LatestDevicesPosts";
-// import LatestDevicesSidebar from "@/app/components/LatestDevicesSidebar";
-// import Reviews from "@/app/components/Reviews";
+import TableHead from "../../components/TableHead";
+import TableBody from "../../components/TableBody";
+import LatestDevicesPosts from "../../components/LatestDevicesPosts";
 
 function LatestDevice({ params }) {
   const { phoneSlug } = params;

@@ -1,5 +1,4 @@
 import React from "react";
-// import deviceImg from "../../public/images/Galaxy_S24.avif";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,10 +21,7 @@ function LatestDevices(props) {
           className={` grid justify-center gap-1 my-2 ${grid || "grid-cols-3"}`}
         >
           {phone.map((spec, index) => (
-            <Link
-              key={index}
-              href={`/latestdevice/${encodeURIComponent(spec.slug)}`}
-            >
+            <Link key={index} href={`/${encodeURIComponent(spec.slug)}`}>
               <div
                 key={index}
                 className="bg-gray-100 flex flex-col items-center"
