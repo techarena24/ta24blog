@@ -13,7 +13,7 @@ const PhoneComparisons = () => {
                   src={post.img} 
                   alt={post.title} 
                   width={100} 
-                  height={80} 
+                  height={80}
                   priority
                   className=' w-15 h-15 rounded-sm sm:rounded-sm bg-white object-contain sm:mt-0 sm:ml-0 sm:w-full sm:h-[200px] sm:rounded-t-sm '
                 />
