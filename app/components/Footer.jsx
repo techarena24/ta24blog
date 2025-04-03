@@ -9,14 +9,16 @@ const Footer = () => {
     <footer className=' w-full max-w-6xl mx-auto bg-primary mt-18'>
        <div className=' flex flex-col gap-10 sm:flex-row py-8 md:py-16 mx-6 lg:mx-20 justify-between sm:gap-0'>
             <div className=' flex flex-col items-center sm:block sm:items-start'>
-               <Image 
-                    src={"/images/logoTA24.jpeg"}
-                    alt={"Logo"}
-                    width={150}
-                    height={100}
-                    priority
-                    className=' mb-5'
-               />
+               <Link href={"/"}>
+                    <Image 
+                         src={"/images/logoTA24.jpeg"}
+                         alt={"Logo"}
+                         width={150}
+                         height={100}
+                         priority
+                         className=' mb-5'
+                    />
+               </Link>
                <p className=' text-xs font-medium mb-1'>
                     Your Everyday Technology News
                </p>
