@@ -30,7 +30,7 @@ const Navbar = () => {
             src={logo}
             alt="Tech Arena24 logo"
             width={180}
-            height={100}
+            height={75}
             priority
           />
         </Link>
@@ -65,8 +65,9 @@ const Navbar = () => {
       </div>
       
       {/* Mobile Navigation */}
-      <div className={`bg-blue-950 fixed top-0 left-0 h-screen w-full z-50 transform ${menuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"} 
-      transition-transform duration-300 ease-in-out lg:hidden`}>
+      <div className={`bg-blue-950 fixed top-0 left-0 h-screen w-full z-50 transform 
+      ${menuOpen ? "translate-y-0 opacity-100 pointer-events-auto visible" : 
+      "-translate-y-full opacity-0 pointer-events-none invisible"} transition-transform duration-300 ease-in-out lg:hidden`}>
           <div className=" flex justify-between items-center p-5">
             <h2 className=" text-xl font-semibold text-white">
               Menu
@@ -79,7 +80,7 @@ const Navbar = () => {
           <nav className=" flex flex-col items-center space-y-6 mt-10">
             {links.map((link, id) => (
               <Link key={id} href={link.href} className=" text-white text-lg font-semibold hover:text-primary" 
-              onClick={() => setTimeout(() => setMenuOpen(false), 100)}>
+              onClick={() => setMenuOpen(false)}>
                 {link.name}
               </Link>
             ))}

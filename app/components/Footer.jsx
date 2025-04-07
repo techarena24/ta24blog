@@ -14,7 +14,7 @@ const Footer = () => {
                          src={"/images/logoTA24.jpeg"}
                          alt={"Logo"}
                          width={150}
-                         height={100}
+                         height={75}
                          priority
                          className=' mb-5'
                     />
