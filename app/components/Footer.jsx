@@ -30,15 +30,15 @@ const Footer = () => {
                </div>
             </div>
             <div className=' flex flex-col space-y-6'>
-                <Link className=' font-medium text-sm' href={""}>About</Link>
-                <Link className=' font-medium text-sm' href={""}>News</Link>
-                <Link className=' font-medium text-sm' href={""}>Contact Us</Link>
+                <Link className=' font-medium text-sm' href={"/about"}>About</Link>
+                <Link className=' font-medium text-sm' href={"/news"}>News</Link>
+                <Link className=' font-medium text-sm' href={"/contact"}>Contact Us</Link>
                 <Link className=' font-medium text-sm' href={""}>Advertise</Link>
                 <Link className=' font-medium text-sm' href={""}>Privacy Policy</Link>
             </div>
             <div className=' flex flex-col space-y-6'>
-                <Link className=' font-medium text-sm' href={""}>Deals</Link>
-                <Link className=' font-medium text-sm' href={""}>Reviews</Link>
+                <Link className=' font-medium text-sm' href={"/deals"}>Deals</Link>
+                <Link className=' font-medium text-sm' href={"/reviews"}>Reviews</Link>
                 <Link className=' font-medium text-sm' href={""}>Phone Comparison</Link>
                 <Link className=' font-medium text-sm' href={""}>Phone Specifications</Link>
                 <Link className=' font-medium text-sm' href={""}>Promotions</Link>
