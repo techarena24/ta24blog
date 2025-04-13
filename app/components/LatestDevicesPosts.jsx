@@ -1,34 +1,30 @@
 import React from "react";
-// import deviceImg from "../../public/images/Galaxy_S24.avif";
 import Image from "next/image";
 import Link from "next/link";
 
-function LatestDevicesSidebar(props) {
+function LatestDevices(props) {
   const { phone, width, grid } = props;
 
   const propStyleForCards = {
-    width: width || "40%",
+    width: width || "100%",
   };
   return (
     <>
-      <div className="" style={propStyleForCards}>
-        <h2 className="col-span-3 bg-red-400 self-baseline px-2 py-2">
+      <div className="w-full" style={propStyleForCards}>
+        <h2 className="col-span-3 bg-gray-100 self-baseline px-2 py-2">
           Latest Phones
         </h2>
 
         {/* personal note "i removed the h-[2rem] from the class below. I used this to size the three card layout of the sidebar component. I might need to add css as props for the sidebar later" */}
 
         <div
-          className={`bg-green-400 grid justify-center gap-1 ${grid || "grid-cols-3"}`}
+          className={` grid justify-center gap-1 my-2 ${grid || "grid-cols-3"}`}
         >
           {phone.map((spec, index) => (
-            <Link
-              key={index}
-              href={`/latestdevice/${encodeURIComponent(spec.slug)}`}
-            >
+            <Link key={index} href={`/${encodeURIComponent(spec.slug)}`}>
               <div
                 key={index}
-                className="bg-yellow-500 flex flex-col items-center"
+                className="bg-gray-100 flex flex-col items-center"
               >
                 <Image
                   src={spec.image}
@@ -47,4 +43,4 @@ function LatestDevicesSidebar(props) {
   );
 }
 
-export default LatestDevicesSidebar;
+export default LatestDevices;
