@@ -1,15 +1,16 @@
 // app/latestdevice/[phoneName]/page.jsx
 "use client";
 
-import phoneSpecs from "../../phones.json";
-import React from "react";
+import phoneSpecs from "../../../phones.json";
+import React, { use } from "react";
 import Reviews from "@/app/components/Reviews";
-import TableHead from "../../components/TableHead";
-import TableBody from "../../components/TableBody";
-import LatestDevicesPosts from "../../components/LatestDevicesPosts";
+import TableHead from "@/app/components/TableHead";
+import TableBody from "@/app/components/TableBody";
+import LatestDevicesPosts from "@/app/components/LatestDevicesPosts";
 
 function LatestDevice({ params }) {
-  const { phoneSlug } = params;
+  const resolvedParams = use(params);
+  const { phoneSlug } = resolvedParams;
   const decodedPhoneSlug = decodeURIComponent(phoneSlug);
 
   // console.log("params.phoneSlug:", phoneSlug);

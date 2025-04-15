@@ -21,7 +21,7 @@ function LatestDevices(props) {
           className={` grid justify-center gap-1 my-2 ${grid || "grid-cols-3"}`}
         >
           {phone.map((spec, index) => (
-            <Link key={index} href={`/${encodeURIComponent(spec.slug)}`}>
+            <Link key={index} href={`/blog/${encodeURIComponent(spec.slug)}`}>
               <div
                 key={index}
                 className="bg-gray-100 flex flex-col items-center"
