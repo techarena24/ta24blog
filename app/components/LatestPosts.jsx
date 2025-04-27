@@ -134,6 +134,7 @@ const getAllPosts = async () => {
 const LatestPosts = async () => {
   const data = await getAllPosts()
 
+  // Truncated text function to line-clamp the post paragraphs in the homepage
   const truncatedText = (text, length) => {
     return text.length > length ? text.slice(0, length) + '...' : text;
   };
