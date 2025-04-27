@@ -11,7 +11,7 @@ function LatestDevices(props) {
   return (
     <>
       <div className="w-full" style={propStyleForCards}>
-        <h2 className="col-span-3 bg-gray-100 self-baseline px-2 py-2">
+        <h2 className="col-span-3 bg-gray-100 self-baseline px-2 py-2 dark:text-gray-800">
           Latest Phones
         </h2>
 
