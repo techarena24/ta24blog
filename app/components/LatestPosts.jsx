@@ -150,8 +150,8 @@ const LatestPosts = async () => {
                       <Image 
                         src={post.postImage} 
                         alt={`Image for the post titled ${post.title}`}
-                        width={100} 
-                        height={80} 
+                        width={1000} 
+                        height={800} 
                         priority
                         className=' w-32 h-28 bg-white object-fill sm:mt-0 sm:ml-0 sm:w-full sm:h-[200px]'
                       />
