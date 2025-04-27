@@ -24,14 +24,14 @@ function LatestDevices(props) {
             <Link key={index} href={`/blog/${encodeURIComponent(spec.slug)}`}>
               <div
                 key={index}
-                className="bg-gray-100 flex flex-col items-center"
+                className="bg-gray-100 flex flex-col items-center py-3"
               >
                 <Image
                   src={spec.image}
-                  height={150}
-                  width={150}
+                  height={1000}
+                  width={800}
                   alt="phone"
-                  className="w-32"
+                  className="w-32 h-28"
                 />
                 <h3 className="text-center">{spec.phone_name}</h3>
               </div>

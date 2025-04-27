@@ -23,10 +23,10 @@ function TableHead() {
           <div className="flex items-center justify-center lg:w-[30%]">
             <Image
               src={images}
-              width={900}
-              height={900}
+              width={1000}
+              height={800}
               alt="phone"
-              className="w-48 lg:w-49"
+              className="w-48 lg:w-49 py-2"
             />
           </div>
           <div className=" lg:w-[70%]">
