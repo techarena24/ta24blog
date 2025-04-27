@@ -3,13 +3,13 @@ import React from "react";
 function TableBody() {
   return (
     <>
-      <h2 className="text-center py-2 border bg-gray-100">
+      <h2 className="text-center py-2 border bg-gray-100 dark:text-gray-800">
         Smartphone Full Specifications
       </h2>
 
       <table className="w-full border-collapse border border-gray-300 sm:table">
         <thead>
-          <tr className="bg-gray-100">
+          <tr className="bg-gray-100 dark:text-gray-800">
             <th className="border border-gray-300 p-2">Specification</th>
             <th className="border border-gray-300 p-2">Value</th>
           </tr>

@@ -7,6 +7,8 @@ import Reviews from "@/app/components/Reviews";
 import TableHead from "@/app/components/TableHead";
 import TableBody from "@/app/components/TableBody";
 import LatestDevicesPosts from "@/app/components/LatestDevicesPosts";
+import AdBanner from "@/app/components/AdBanner";
+import BigAdBanner from "@/app/components/BigAdBanner";
 
 function LatestDevice({ params }) {
   const resolvedParams = use(params);
@@ -29,13 +31,19 @@ function LatestDevice({ params }) {
   return (
     <>
       <section>
+        <div className="mb-5">
+          <AdBanner />
+        </div>
         <div className="flex gap-5 flex-col md:flex-row">
           <div className="flex flex-col md:w-[65%] gap-2 ">
             <TableHead />
+            <AdBanner />
             <TableBody />
             <section className="">
-              <article className="">
-                <h2 className="py-2 px-2 bg-gray-100">Phone Specifications</h2>
+              <h2 className="py-2 px-2 bg-gray-100 dark:text-gray-800">
+                Phone Specifications
+              </h2>
+              <article className="my-5">
                 <p className="px-2">
                   Below are the specifications of the latest phones
                 </p>
@@ -58,6 +66,7 @@ function LatestDevice({ params }) {
                   obcaecati nemo aliquam porro!
                 </p>
               </article>
+              <AdBanner />
             </section>
           </div>
           <div className=" md:w-[35%]">
@@ -66,6 +75,7 @@ function LatestDevice({ params }) {
               width="100%"
               grid="grid-cols-2"
             />
+            <BigAdBanner />
           </div>
         </div>
       </section>
