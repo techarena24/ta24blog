@@ -18,6 +18,14 @@ export default {
             }
         },
         {
+            name: 'deviceImage',
+            type: 'image',
+            title: 'Device Image',
+            options: {
+                hotspot: true,
+            }
+        },
+        {
             name: 'author',
             type: 'reference',
             title: 'Author',
@@ -26,11 +34,6 @@ export default {
                     type: 'author'
                 }
             ]
-        },
-        {
-            name: 'releaseDate',
-            type: 'date',
-            title: 'Release Date'
         },
         {
             name: 'categories',
@@ -49,14 +52,24 @@ export default {
             title: 'Device Specs',
             fields: [
                 {
-                    name: 'ram',
+                    name: 'display',
                     type: 'string',
-                    title: 'RAM'
+                    title: 'Display'
                 },
                 {
-                    name: 'storage',
+                    name: 'camera',
                     type: 'string',
-                    title: 'Storage'
+                    title: 'Camera'
+                },
+                {
+                    name: 'chipset',
+                    type: 'string',
+                    title: 'Chipset'
+                },
+                {
+                    name: 'network',
+                    type: 'string',
+                    title: 'Network'
                 },
                 {
                     name: 'battery',
@@ -64,15 +77,30 @@ export default {
                     title: 'Battery'
                 },
                 {
-                    name: 'brand',
-                    type: 'string',
-                    title: 'Brand'
+                    name: 'ram',
+                    type: 'number',
+                    title: 'Ram'
+                },
+                {
+                    name: 'storage',
+                    type: 'number',
+                    title: 'Storage'
                 },
                 {
                     name: 'software',
                     type: 'string',
                     title: 'Software'
-                }
+                },
+                {
+                    name: 'launchDate',
+                    type: 'date',
+                    title: 'Launch Date'
+                },
+                {
+                    name: 'availableDate',
+                    type: 'date',
+                    title: 'Available Date'
+                },
             ]
         },
         {
