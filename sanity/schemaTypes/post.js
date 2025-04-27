@@ -7,6 +7,7 @@ export default {
             name: 'title',
             type: 'string',
             title: 'Post Title',
+            validation: Rule => Rule.required().error('Post title is required'),
         },
         {
             name: 'slug',
@@ -23,7 +24,8 @@ export default {
             title: 'Post Image',
             options: {
                 hotspot: true,
-            }
+            },
+            validation: Rule => Rule.required().error('Post image is required'),
         },
         {
             name: 'author',
@@ -66,7 +68,8 @@ export default {
                     to: [{type: 'post'}]
                 },
 
-            ]
+            ],
+            validation: Rule => Rule.required().min(1).error('Post body is required'),
         },
     ],
 };
