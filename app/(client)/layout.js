@@ -21,14 +21,21 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Tech Arena24",
-  description: "Your Everyday Technology News",
+  title: {
+    default: "Tech Arena24: Expert Tech News, Reviews, Comparisons & Top Deals",
+    template:
+      "%s | Tech Arena24: Expert Tech News, Reviews, Comparisons & Top Deals",
+  },
+  description:
+    "Discover the latest smartphones, laptops, and gadgets with expert reviews, side-by-side comparisons, and exclusive tech deals — all at Tech Arena24.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={` ${poppins.className} antialiased flex flex-col min-h-screen`}>
+      <body
+        className={` ${poppins.className} antialiased flex flex-col min-h-screen`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -38,7 +45,7 @@ export default function RootLayout({ children }) {
           <main className=" w-full max-w-6xl mx-auto px-6 sm:px-4 xl:px-0 overflow-x-hidden flex-1">
             {children}
           </main>
-          <Footer  />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
