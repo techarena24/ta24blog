@@ -5,6 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+export const metadata = {
+  title: "Tech News",
+  description: "Get the latest tech news and breaking stories at Tech Arena24. Our expert team delivers timely and insightful coverage on the newest trends, announcements, and developments in the world of technology."
+}
+
 const page = () => {
   return (
     <div className=' flex flex-col space-y-10'>
@@ -21,8 +26,8 @@ const page = () => {
                   <Image 
                     src={posts[0].img}
                     alt={posts[0].title}
-                    width={500}
-                    height={300}
+                    width={1000}
+                    height={900}
                     priority
                     className=' h-28 w-full md:h-80 object-contain bg-white rounded-sm'
                   />
@@ -47,8 +52,8 @@ const page = () => {
                   <Image 
                     src={post.img}
                     alt={post.title}
-                    width={200}
-                    height={150}
+                    width={1000}
+                    height={900}
                     priority
                     className=' w-full h-28 md:h-40 object-contain bg-white rounded-sm'
                   />

@@ -1,13 +1,16 @@
-"use client";
+// "use client";
 
 import LatestDevicesPosts from "@/app/components/LatestDevicesPosts";
-// import LatestDeviceTable from "@/app/components/LatestDeviceTable";
 import phoneSpecs from "../../phones.json";
-// import images from "../../../public/images/Galaxy_S24.avif"
-// import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import AdBanner from "@/app/components/AdBanner";
 import BigAdBanner from "@/app/components/BigAdBanner";
+
+export const metadata = {
+  title: "Latest Devices",
+  description:
+    "Discover the latest tech devices at Tech Arena24! Get expert news, first looks, and potential future reviews on the newest smartphones, wearables, gadgets, and more hitting the market.",
+};
 
 function LatestDevices() {
   return (
