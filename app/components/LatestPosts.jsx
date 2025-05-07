@@ -112,7 +112,8 @@ export const posts = [
   },
 ]
 
-
+// Revalidate every 5 mins
+export const revalidate = 300;
 
 /*{ fetching all posts from sanity backend }*/
 const getAllPosts = async () => {
@@ -153,7 +154,7 @@ const LatestPosts = async () => {
                         width={1000} 
                         height={800} 
                         priority
-                        className=' w-32 h-28 bg-white object-fill sm:mt-0 sm:ml-0 sm:w-full sm:h-[200px]'
+                        className=' w-32 h-28 bg-white object-cover sm:mt-0 sm:ml-0 sm:w-full sm:h-[200px]'
                       />
                       <div className=' space-y-2'>
                         <div className=' hidden sm:flex text-xs text-gray-600 justify-between'>
