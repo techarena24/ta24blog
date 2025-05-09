@@ -19,7 +19,7 @@ export const myPortableTextComponents = {
         )}
       </figure>
     ),
-
+    
     marks: {
       link: ({ value, children }) => {
         if (!value?.href) return <span>{children}</span>;
@@ -35,7 +35,7 @@ export const myPortableTextComponents = {
             </Link>
           );
         }
-    
+  
         return (
           <a
             href={value.href}
@@ -47,9 +47,20 @@ export const myPortableTextComponents = {
             {value.openInNewTab && <span aria-hidden="true"> ↗</span>}
           </a>
         );
-      }
+      },
+
+      blocklink: ({ value, children }) => (
+        <a
+          href={value?.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-blue-600 hover:underline my-4"
+        >
+          {children || 'Click here'}
+        </a>
+      ),
     },
-    
+
     postReference: ({ value }) => {
       if (!value?.slug || !value?.title) return null;
 
@@ -91,7 +102,7 @@ export const myPortableTextComponents = {
       <blockquote className="border-l-4 border-gray-300 pl-4 italic my-6 text-gray-600">
         {children}
       </blockquote>
-    ),
+    ), 
   },
 
   list: {

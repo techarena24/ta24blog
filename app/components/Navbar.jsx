@@ -59,7 +59,7 @@ const Navbar = () => {
         <div className=" flex flex-row gap-5 ">
           <ModeToggle />
           <Button className=" lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X /> : <MenuIcon />}
+            {menuOpen ? <X /> : <MenuIcon />}
           </Button>
         </div> 
       </div>

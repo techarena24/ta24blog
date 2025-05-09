@@ -3,7 +3,7 @@ import BigAdBanner from "@/app/components/BigAdBanner";
 import { myPortableTextComponents } from "@/app/components/portableTextComponents";
 import { client } from "@/sanity/lib/client";
 import { formatDistanceToNow } from "date-fns";
-import { PortableText } from "next-sanity";
+import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -109,7 +109,7 @@ const singlePostPage = async ({ params }) => {
                             </div>
                             <div>
                                 {post.categories?.map((cat) => (
-                                    <span key={cat.slug} className="text-sm font-medium">
+                                    <span key={cat.slug} className="text-xs rounded-xs font-medium bg-primary px-1 py-0.5 text-gray-200">
                                         {cat.title}
                                     </span>
                                 ))}
