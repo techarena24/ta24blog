@@ -90,7 +90,7 @@ export const myPortableTextComponents = {
       return (
         <a
           href={value.href}
-          target={value.openInNewTab ? '_blank' : '_self'} className='text-blue-600'
+          target={value.openInNewTab ? '_blank' : '_self'} className='text-blue-600 underline'
         >
           {children}
         </a>
