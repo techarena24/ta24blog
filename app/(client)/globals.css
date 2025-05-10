@@ -134,4 +134,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .prose a { /* If using @tailwindcss/typography */
+    @apply text-blue-600 underline hover:text-blue-800;
+  }
 }

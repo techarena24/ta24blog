@@ -1,11 +1,12 @@
 import { Button } from '@/components/ui/button'
 import { slugify } from '@/lib/slugify'
 import { client } from '@/sanity/lib/client'
+import { toPlainText } from '@portabletext/react'
 import { formatDistanceToNow } from 'date-fns'
-import { toPlainText } from 'next-sanity'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+
 
 
 
@@ -128,7 +129,8 @@ const getAllPosts = async () => {
     body,
   }`
 
-  const posts = await client.fetch(query);
+  //const posts = await client.fetch(query);
+  const posts = await client.fetch(query, {}, { cache: 'no-store' });
   return posts;
 }
 
@@ -172,7 +174,7 @@ const LatestPosts = async () => {
                         </h2>
                         <div className=''>
                           <p className=' hidden sm:block text-sm text-gray-500 line-clamp-3'>
-                            {truncatedText(toPlainText(post.body), 150)} 
+                            {truncatedText(toPlainText(post.body || []), 150)} 
                             <span className=' font-normal text-black/90 dark:text-white/80'>Read more</span>
                           </p>
                         </div>
@@ -186,7 +188,7 @@ const LatestPosts = async () => {
             </div>
         </div>
 
-        <Button className={" py-5 rounded-sm"}>
+        <Button className={" py-2 rounded-sm text-white bg-primary"}>
           Load More
         </Button>
     </div>
@@ -194,6 +196,3 @@ const LatestPosts = async () => {
 }
 
 export default LatestPosts
-
-
-//border border-gray-300 shadow-sm rounded-sm
