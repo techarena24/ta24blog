@@ -1,11 +1,12 @@
 import { Button } from '@/components/ui/button'
 import { slugify } from '@/lib/slugify'
 import { client } from '@/sanity/lib/client'
-import { formatDistanceToNow } from 'date-fns'
 import { toPlainText } from '@portabletext/react'
+import { formatDistanceToNow } from 'date-fns'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+
 
 
 
@@ -128,7 +129,8 @@ const getAllPosts = async () => {
     body,
   }`
 
-  const posts = await client.fetch(query);
+  //const posts = await client.fetch(query);
+  const posts = await client.fetch(query, {}, { cache: 'no-store' });
   return posts;
 }
 

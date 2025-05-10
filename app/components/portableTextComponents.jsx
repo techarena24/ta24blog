@@ -20,47 +20,6 @@ export const myPortableTextComponents = {
       </figure>
     ),
     
-    marks: {
-      link: ({ value, children }) => {
-        if (!value?.href) return <span>{children}</span>;
-        
-        const isInternal = value.href.startsWith('/') || value.href.startsWith('#');
-        
-        if (isInternal) {
-          return (
-            <Link href={value.href} passHref legacyBehavior>
-              <a className="text-blue-600 hover:underline">
-                {children}
-              </a>
-            </Link>
-          );
-        }
-  
-        return (
-          <a
-            href={value.href}
-            target={value.openInNewTab ? '_blank' : '_self'}
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
-          >
-            {children}
-            {value.openInNewTab && <span aria-hidden="true"> ↗</span>}
-          </a>
-        );
-      },
-
-      blocklink: ({ value, children }) => (
-        <a
-          href={value?.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block text-blue-600 hover:underline my-4"
-        >
-          {children || 'Click here'}
-        </a>
-      ),
-    },
-
     postReference: ({ value }) => {
       if (!value?.slug || !value?.title) return null;
 
@@ -88,6 +47,61 @@ export const myPortableTextComponents = {
         </div>
       );
     },
+  },
+
+  marks: {
+    // ✅ 1. Handle link marks explicitly
+    link: ({ value, children }) => {
+      // Debug: Log the link value to verify structure
+      console.log('Link value:', value);
+
+      if (!value?.href) {
+        console.warn('Link missing href:', value);
+        return <span>{children}</span>;
+      }
+
+      const isInternal = value.href.startsWith('/') || value.href.startsWith('#');
+      const isExternal = !isInternal;
+      const shouldOpenInNewTab = value?.openInNewTab ?? isExternal;
+
+      // ✅ 2. Force styles with inline CSS as a fallback
+      const linkStyle = {
+        color: '#2563eb', // blue-600
+        textDecoration: 'underline',
+      };
+
+      const linkProps = {
+        style: linkStyle, // Inline CSS (works even if Tailwind fails)
+        className: 'hover:text-blue-800 dark:text-blue-400', // Optional Tailwind
+        target: shouldOpenInNewTab ? '_blank' : '_self',
+        rel: shouldOpenInNewTab ? 'noopener noreferrer' : undefined,
+        'aria-label': isExternal ? 'Opens in new tab' : undefined,
+      };
+
+      // ✅ 3. Render internal/external links
+      if (isInternal) {
+        return (
+          <Link href={value.href} passHref legacyBehavior>
+            <a {...linkProps}>{children}</a>
+          </Link>
+        );
+      }
+
+      return (
+        <a
+          href={value.href}
+          target={value.openInNewTab ? '_blank' : '_self'} className='text-blue-600'
+        >
+          {children}
+        </a>
+      );
+  
+    },
+
+    // ✅ 4. Keep other decorators (strong, em, code)
+    strong: ({ children }) => <strong>{children}</strong>,
+    em: ({ children }) => <em>{children}</em>,
+    code: ({ children }) => <code>{children}</code>,
   },
 
   block: {

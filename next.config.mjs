@@ -25,9 +25,12 @@ const nextConfig = {
       },
     ],
   },
-  // Remove this line, as Server Actions are enabled by default
+  experimental: {
+    esmExternals: 'loose', // 👈 Add this to handle ESM packages like date-fns
+  },
 };
 
 export default nextConfig;
+
 
 

@@ -1,24 +1,23 @@
-import { Poppins } from "next/font/google";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
-
-
+// app/(admin)/studio/layout.jsx
 export const metadata = {
-  title: "Tech Arena24",
-  description: "Your Everyday Technology News",
+  title: 'Content Studio | Tech Arena24',
+  description: 'Manage your tech content and publications',
 };
 
-export default function RootLayout({ children }) {
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
+export default function StudioLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.className} antialiased`}
-      >
-        {children}
+      <body className="font-sans bg-background text-foreground">
+        <div className="fixed inset-0">
+          {children}
+        </div>
       </body>
     </html>
   );
 }
+

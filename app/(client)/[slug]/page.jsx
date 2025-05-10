@@ -2,8 +2,8 @@ import AdBanner from "@/app/components/AdBanner";
 import BigAdBanner from "@/app/components/BigAdBanner";
 import { myPortableTextComponents } from "@/app/components/portableTextComponents";
 import { client } from "@/sanity/lib/client";
-import { formatDistanceToNow } from "date-fns";
 import { PortableText } from "@portabletext/react";
+import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -60,7 +60,8 @@ const getPostBySlug = async (slug) => {
 }`
 
     const params = { slug };
-    return await client.fetch(query, params);
+    return await client.fetch(query, params, { cache: 'no-store' });
+    //return await client.fetch(query, params);
 }
 
 
@@ -69,11 +70,12 @@ const singlePostPage = async ({ params }) => {
 
     try{
         const post = await getPostBySlug(slug);
-        console.log(post.body);
 
         if(!post) {
             notFound()
         }
+
+        console.log(post.body);
     
 
         return (
