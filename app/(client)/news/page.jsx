@@ -6,7 +6,7 @@ import Link from 'next/link'
 import React from 'react'
 
 export const metadata = {
-  title: "Tech News",
+  title: "Tech News and Stories",
   description: "Get the latest tech news and breaking stories at Tech Arena24. Our expert team delivers timely and insightful coverage on the newest trends, announcements, and developments in the world of technology."
 }
 
