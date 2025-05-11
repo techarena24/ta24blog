@@ -15,7 +15,7 @@ export const metadata = {
   title: {
     default: "Tech Arena24: Expert Tech News, Reviews, Comparisons & Top Deals",
     template:
-      "%s | Tech Arena24: Expert Tech News, Reviews, Comparisons & Top Deals",
+      "%s | Tech Arena24",
   },
   description:
     "Discover the latest smartphones, laptops, and gadgets with expert reviews, side-by-side comparisons, and exclusive tech deals — all at Tech Arena24.",

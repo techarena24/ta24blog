@@ -1,5 +1,5 @@
 // app/latestdevice/[phoneName]/page.jsx
-"use client";
+// "use client";
 
 import phoneSpecs from "../../../phones.json";
 import React, { use } from "react";
@@ -9,6 +9,12 @@ import TableBody from "@/app/components/TableBody";
 import LatestDevicesPosts from "@/app/components/LatestDevicesPosts";
 import AdBanner from "@/app/components/AdBanner";
 import BigAdBanner from "@/app/components/BigAdBanner";
+
+export const metadata = {
+  title: "Blog Posts",
+  description:
+    "About Tech Arena24: Your trusted source for expert tech news, reviews, comparisons, and top deals. Get to know our team and our commitment to quality tech information.",
+};
 
 function LatestDevice({ params }) {
   const resolvedParams = use(params);
