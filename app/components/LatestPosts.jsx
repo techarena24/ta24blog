@@ -118,7 +118,7 @@ export const revalidate = 300;
 
 /*{ fetching all posts from sanity backend }*/
 const getAllPosts = async () => {
-  const query = `*[_type == 'post'] {
+  const query = `*[_type == 'post'] | order(publishedAt desc) [0...10] {
     _id,
     title,
     slug,
