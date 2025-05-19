@@ -1,13 +1,6 @@
-import { Button } from '@/components/ui/button'
 import { slugify } from '@/lib/slugify'
 import { client } from '@/sanity/lib/client'
-import { toPlainText } from '@portabletext/react'
-import { formatDistanceToNow } from 'date-fns'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-
-
+import { LatestPostsClient } from './LatestPostsClient';
 
 
 export const posts = [
@@ -129,69 +122,21 @@ const getAllPosts = async () => {
     body,
   }`
 
+  const totalCountQuery = `count(*[_type == "post"])`;
+
   //const posts = await client.fetch(query);
-  const posts = await client.fetch(query, {}, { cache: 'no-store' });
-  return posts;
+  const [initialPosts, totalPostCount] = await Promise.all([
+    client.fetch(query, {}, { cache: 'no-store' }),
+    client.fetch(totalCountQuery, {}, { cache: 'no-store' })
+  ]);
+  return { initialPosts, totalPostCount };
 }
 
 const LatestPosts = async () => {
-  const data = await getAllPosts()
-
-  // Truncated text function to line-clamp the post paragraphs in the homepage
-  const truncatedText = (text, length) => {
-    return text.length > length ? text.slice(0, length) + '...' : text;
-  };
+  const { initialPosts, totalPostCount } = await getAllPosts();
 
   return (
-    <div className=' flex flex-col flex-[2] space-y-6'>
-        <h1 className=' text-2xl lg:text-3xl font-semibold'>Latest Posts</h1>
-        <div>
-            <div className=' grid sm:grid-cols-2 gap-6'>
-                {data.map((post) => ( 
-                  <Link key={post._id} href={`/${post.slug?.current}`} aria-label={`Read more about ${post.title}`}>
-                    <div className=' flex flex-row gap-4 p-1 sm:flex-col overflow-hidden'>
-                      <Image 
-                        src={post.postImage} 
-                        alt={`Image for the post titled ${post.title}`}
-                        width={1000} 
-                        height={800} 
-                        priority
-                        className=' w-32 h-28 bg-white object-cover sm:mt-0 sm:ml-0 sm:w-full sm:h-[200px]'
-                      />
-                      <div className=' space-y-2'>
-                        <div className=' hidden sm:flex text-xs text-gray-600 justify-between'>
-                          <h4 className=' font-semibold text-primary'>
-                            {post.categories.map((category) => (
-                              <span key={category.slug.current} className="inline-block mr-2 last:mr-0">
-                                {category.title}
-                              </span>
-                            ))}
-                          </h4>
-                          <h4>{post.author}</h4>
-                        </div>
-                        <h2 className=' text-base sm:text-lg font-bold leading-normal hover:text-primary line-clamp-3'>
-                          {post.title}
-                        </h2>
-                        <div className=''>
-                          <p className=' hidden sm:block text-sm text-gray-500 line-clamp-3'>
-                            {truncatedText(toPlainText(post.body || []), 150)} 
-                            <span className=' font-normal text-black/90 dark:text-white/80'>Read more</span>
-                          </p>
-                        </div>
-                        <p className=' text-xs text-gray-400'>
-                          {formatDistanceToNow(new Date(post.publishedAt), { addSuffix: true })}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-            </div>
-        </div>
-
-        <Button className={" py-2 rounded-sm text-white bg-primary"}>
-          Load More
-        </Button>
-    </div>
+    <LatestPostsClient initialPosts={initialPosts} totalPostCount={totalPostCount}/>
   )
 }
 
