@@ -24,7 +24,7 @@ export const myPortableTextComponents = {
       if (!value?.slug || !value?.title) return null;
 
       return (
-        <div className="my-4 p-3 bg-blue-50 rounded-lg border border-blue-100">
+        <div className="my-4 px-2 py-1 bg-blue-50 rounded-lg border border-blue-100">
           <Link href={`/${value.slug.current}`}>
             <span className="text-blue-600 hover:underline font-medium">
               See Also: {value.title}
