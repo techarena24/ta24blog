@@ -79,7 +79,7 @@ export const LatestPostsClient = ({ initialPosts, totalPostCount }) => {
                               {post.title}
                             </h2>
                             <div className=''>
-                              <p className=' hidden sm:block text-sm text-gray-500 line-clamp-3'>
+                              <p className=' hidden sm:block text-sm text-gray-500'>
                                 {truncatedText(toPlainText(post.body || []), 150)} 
                                 <span className=' font-normal text-black/90 dark:text-white/80'>Read more</span>
                               </p>
