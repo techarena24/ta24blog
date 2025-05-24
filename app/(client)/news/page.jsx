@@ -28,19 +28,21 @@ const page = async () => {
       </div>
 
       <div className=' md:flex md:gap-8 items-start md:min-h-screen'>
-        <div className=' block md:flex-[70%] space-y-6 md:space-y-8 md:h-screen md:overflow-y-auto'>
+        <div className=' flex flex-col md:gap-5 md:flex-[70%] gap-6 md:space-y-2 md:h-screen md:overflow-y-auto'>
           <div>
             {posts.length > 0 && (
               <Link key={posts[0]._id} href={`/${posts[0].slug}`} aria-label={`Read more about ${posts[0].title}`}>
-                <div className=' flex flex-col shadow-sm border p-4 gap-4 rounded-sm'>
-                  <Image 
-                    src={posts[0].postImage}
-                    alt={`Image for the post titled ${posts[0].title}`}
-                    width={1000}
-                    height={700}
-                    priority
-                    className=' h-28 w-full md:h-80 object-cover bg-white rounded-sm'
-                  />
+                <div className=' flex flex-col shadow-sm gap-4'>
+                  <div className=' relative h-40 w-full md:h-80'>
+                    <Image 
+                      src={posts[0].postImage}
+                      alt={`Image for the post titled ${posts[0].title}`}
+                      fill
+                      priority
+                      sizes="(max-width: 640px) 8rem, 100vw"
+                      className=' object-cover'
+                    />
+                  </div>
                   <div className=' space-y-2'>
                     <div className=' hidden sm:flex text-xs text-gray-600 justify-between'>
                       <h4 className=' font-semibold text-primary'>{posts[0].category}</h4>
@@ -60,17 +62,17 @@ const page = async () => {
             )}
           </div>
 
-          <div className=' block md:grid md:grid-cols-2 md:gap-6 space-y-6'>
+          <div className=' flex flex-col gap-7 md:grid md:grid-cols-2 md:gap-7'>
             {posts.slice(1).map((post) => (
               <Link key={post._id} href={`/${post.slug}`}>
-                <div className=' flex flex-col shadow-sm border p-4 gap-4 rounded-sm'>
+                <div className=' flex flex-col shadow-sm gap-3.5'>
                   <Image 
                     src={post.postImage}
                     alt={`Image for the post titled ${post.title}`}
                     width={1000}
                     height={700}
                     priority
-                    className=' w-full h-28 md:h-40 object-cover bg-white rounded-sm'
+                    className=' w-full h-40 md:h-48 object-cover bg-white'
                   />
                   <div className=' space-y-2'>
                     <h2 className=' font-bold text-base md:text-lg'>{post.title}</h2>

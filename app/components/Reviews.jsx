@@ -37,15 +37,17 @@ const Reviews = ({ posts }) => {
                 {posts.slice(0, visiblePosts).map((post) => (
                   <Link key={post._id} href={`/${post.slug}`} aria-label={`Read more about ${post.title}`}>
                     <div key={post._id} className=' flex flex-row p-4 gap-4 sm:flex-col border border-gray-300 shadow-sm rounded-sm overflow-hidden'>
-                      <Image 
-                        src={post.postImage} 
-                        alt={`Image for the post titled ${post.title}`}
-                        width={1000} 
-                        height={800} 
-                        priority
-                        className=' w-32 h-28 rounded-sm bg-white object-cover sm:mt-0 sm:ml-0 sm:w-full sm:h-[200px] sm:rounded-t-sm '
-                      />
-                        <div className=' space-y-2'>
+                      <div className=' relative w-[35%] h-28 sm:w-full sm:h-[200px] rounded-sm sm:rounded-t-sm bg-white overflow-hidden'>
+                        <Image 
+                          src={post.postImage} 
+                          alt={`Image for the post titled ${post.title}`}
+                          fill
+                          sizes="(max-width: 640px) 8rem, 100vw"
+                          priority
+                          className=' bg-white object-cover'
+                        />
+                      </div>
+                      <div className=' space-y-2 w-[65%] sm:w-full'>
                         <div className=' hidden sm:flex text-xs text-gray-600 justify-between'>
                           <h4 className=' font-semibold text-primary'>{post.category}</h4>
                           <h4>{post.author}</h4>
@@ -54,7 +56,7 @@ const Reviews = ({ posts }) => {
                           {post.title}
                         </h2>
                         <p className=' text-sm text-gray-500'>
-                          {truncatedText(toPlainText(post.body || []), 150)}
+                          {truncatedText(toPlainText(post.body || []), 120)}
                           <span className=' font-normal text-black/90 dark:text-white/80'>Read more</span>
                         </p>
                         <p className=' text-xs text-gray-400'>

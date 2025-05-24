@@ -10,9 +10,9 @@ const truncatedText = (text, length) => {
 
 const PhoneComparisons = ({ posts }) => {
   return (
-    <div className=' flex flex-col space-y-6'>
+    <div className=' flex flex-col'>
         <h1 className=' text-2xl lg:text-3xl font-semibold'>Phone Comparisons</h1>
-        <div className=' flex flex-col gap-6 sm:flex-row sm:overflow-x-auto whitespace-nowrap snap-x snap-mandatory '>
+        <div className=' flex flex-col sm:flex-row sm:overflow-x-auto whitespace-nowrap snap-x snap-mandatory '>
             {posts.map((post) => (
               <Link key={post._id} href={`/${post.slug}`} aria-label={`Read more about ${post.title}`}>
                 <div className=' flex flex-row w-full p-4 gap-4 sm:min-w-[350px] sm:flex-col shadow-sm rounded-sm overflow-hidden'>
