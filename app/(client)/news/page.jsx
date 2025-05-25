@@ -65,7 +65,7 @@ const page = async () => {
           <div className=' flex flex-col gap-7 md:grid md:grid-cols-2 md:gap-7'>
             {posts.slice(1).map((post) => (
               <Link key={post._id} href={`/${post.slug}`}>
-                <div className=' flex flex-col shadow-sm gap-3.5'>
+                <div className=' flex flex-col gap-3.5'>
                   <Image 
                     src={post.postImage}
                     alt={`Image for the post titled ${post.title}`}
