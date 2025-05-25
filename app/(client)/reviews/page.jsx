@@ -10,6 +10,7 @@ export const metadata = {
     "Read expert tech reviews on Tech Arena24. Get in-depth analysis, unbiased opinions, and detailed evaluations of the latest smartphones, laptops, gadgets, and other tech devices.",
 };
 
+
 const page = () => {
   return (
     <div className=" flex flex-col space-y-10">
@@ -26,8 +27,8 @@ const page = () => {
                   <Image
                     src={posts[0].img}
                     alt={posts[0].title}
-                    width={500}
-                    height={300}
+                    width={1000}
+                    height={700}
                     priority
                     className=" h-28 w-full md:h-80 object-contain bg-white rounded-sm"
                   />
