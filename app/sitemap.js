@@ -15,7 +15,7 @@ export default async function sitemap() {
   const posts = await client.fetch(query, {}, { cache: "no-store" });
 
   const postUrls = posts.map((post) => ({
-    url: `${baseURL}/${post.slug.current}`, // Use slug.current
+    url: `${baseURL}/${post.slug.current}`,
     lastModified: new Date(post.publishedAt),
   }));
 
