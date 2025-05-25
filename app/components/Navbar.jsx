@@ -29,8 +29,8 @@ const Navbar = () => {
           <Image
             src="/images/logoTa24.jpeg"
             alt="Tech Arena24 logo"
-            width={1800}
-            height={900}
+            width={180}
+            height={75}
             priority
           />
         </Link>

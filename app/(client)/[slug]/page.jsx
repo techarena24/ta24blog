@@ -79,6 +79,9 @@ export async function generateMetadata({ params }) {
   }
 
   const featuredImage = post.postImage?.asset;
+  const firstTextBlock = post.body?.find(
+    (block) => block._type === "block" && block.children
+  );
   const description =
     firstTextBlock?.children?.[0]?.text?.slice(0, 160) ||
     "No description available";
@@ -97,10 +100,13 @@ export async function generateMetadata({ params }) {
       locale: "en_US",
       url: `${baseURL}/${params.slug}`,
       siteName: "Tech Arena24",
-      images: featuredImage
+      images: post.postImage?.asset?._ref
         ? [
             {
-              url: urlFor(featuredImage).width(1200).height(630).url(),
+              url: urlFor(post.postImage.asset._ref)
+                .width(1200)
+                .height(630)
+                .url(),
               width: 1200,
               height: 630,
               alt: post.postImage?.alt || post.title,
