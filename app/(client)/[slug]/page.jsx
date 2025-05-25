@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react";
 import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { urlFor } from "@/sanity/lib/image";
 
 // Revalidate every 5 mins
 export const revalidate = 300;
@@ -77,23 +78,22 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const featuredImage = post.postImage?.asset._ref;
+  const featuredImage = post.postImage?.asset;
+  const description =
+    firstTextBlock?.children?.[0]?.text?.slice(0, 160) ||
+    "No description available";
 
   return {
     title: post.title,
-    description: post.body
-      ? post.body[0]?.children[0]?.text?.slice(0, 160) + "..."
-      : "No description available",
+    description,
     openGraph: {
       title: post.title,
-      description: post.body
-        ? post.body[0]?.children[0]?.text?.slice(0, 160) + "..."
-        : "No description available",
+      description,
       type: "article",
       locale: "en_US",
       url: `${baseURL}/${params.slug}`,
       siteName: "Tech Arena24",
-      images: featuredImage
+      images: featuredImage?.url
         ? [
             {
               url: urlFor(featuredImage).width(1200).height(630).url(),
