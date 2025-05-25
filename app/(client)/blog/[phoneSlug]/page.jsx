@@ -3,7 +3,7 @@
 
 import phoneSpecs from "../../../phones.json";
 import React, { use } from "react";
-import Reviews from "@/app/components/Reviews";
+// import Reviews from "@/app/components/Reviews";
 import TableHead from "@/app/components/TableHead";
 import TableBody from "@/app/components/TableBody";
 import LatestDevicesPosts from "@/app/components/LatestDevicesPosts";
