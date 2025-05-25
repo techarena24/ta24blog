@@ -13,19 +13,21 @@ const News = ({ posts }) => {
   return (
     <div className=' flex flex-col space-y-6'>
         <h1 className=' text-2xl lg:text-3xl font-semibold'>Top Stories</h1>
-        <div className=' flex flex-col gap-6 sm:flex-row sm:overflow-x-auto whitespace-nowrap snap-x snap-mandatory '>
+        <div className=' flex flex-col sm:flex-row sm:overflow-x-auto whitespace-nowrap snap-x snap-mandatory '>
             {posts.map((post) => (
               <Link key={post._id} href={`/${post.slug}`} aria-label={`Read more about ${post.title}`}>
-                <div className=' flex flex-row w-full p-4 gap-4 sm:min-w-[350px] sm:flex-col shadow-sm rounded-sm overflow-hidden'>
-                  <Image 
-                    src={post.postImage}
-                    alt={`Image for the post titled ${post.title}`} 
-                    width={1000} 
-                    height={700} 
-                    priority
-                    className=' w-20 h-20 rounded-full sm:rounded-sm bg-white object-cover sm:mt-0 sm:ml-0 sm:w-full sm:h-[200px] sm:rounded-t-sm '
-                  />
-                  <div className=' space-y-2'>
+                <div className=' flex flex-row w-full p-4 gap-4 sm:min-w-[350px] sm:flex-col rounded-sm overflow-hidden'>
+                  <div className=' relative w-20 h-20 rounded-full sm:rounded-sm bg-white object-cover sm:mt-0 sm:ml-0 sm:w-full sm:h-[200px] sm:rounded-t-sm overflow-hidden'>
+                    <Image 
+                      src={post.postImage}
+                      alt={`Image for the post titled ${post.title}`} 
+                      fill
+                      sizes="(max-width: 640px) 8rem, 100vw"
+                      priority
+                      className=' object-cover '
+                    />
+                  </div>
+                  <div className=' space-y-2 flex-1 sm:w-full'>
                     <div className=' hidden sm:flex text-xs text-gray-600 justify-between'>
                       <h4 className=' font-semibold text-primary'>{post.category}</h4>
                       <h4>{post.author}</h4>
