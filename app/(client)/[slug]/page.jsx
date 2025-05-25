@@ -78,10 +78,14 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const featuredImage = post.postImage?.asset._ref;
+  const featuredImage = post.postImage?.asset;
   const description =
     firstTextBlock?.children?.[0]?.text?.slice(0, 160) ||
     "No description available";
+
+  console.log("Slug:", slug);
+  console.log("Post:", post);
+  console.log("Featured Image:", featuredImage);
 
   return {
     title: post.title,
