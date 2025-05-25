@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+// import { MetadataRoute } from "next";
 import { client } from "@/sanity/lib/client";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
