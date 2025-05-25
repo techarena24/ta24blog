@@ -10,6 +10,8 @@ import { notFound } from "next/navigation";
 // Revalidate every 5 mins
 export const revalidate = 300;
 
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
 /*{ fetching single post from sanity backend }*/
 const getPostBySlug = async (slug) => {
   const query = `*[_type == "post" && slug.current == $slug][0]{
@@ -89,7 +91,7 @@ export async function generateMetadata({ params }) {
         : "No description available",
       type: "article",
       locale: "en_US",
-      url: `https://techarena24.com/posts/${params.slug}`,
+      url: `${baseURL}/${params.slug}`,
       siteName: "Tech Arena24",
       images: featuredImage
         ? [

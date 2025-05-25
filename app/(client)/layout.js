@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import ThemeProvider from "../components/theme-provider";
 import Footer from "../components/Footer";
 
-
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "900"],
@@ -14,11 +13,13 @@ const poppins = Poppins({
 export const metadata = {
   title: {
     default: "Tech Arena24: Expert Tech News, Reviews, Comparisons & Top Deals",
-    template:
-      "%s | Tech Arena24",
+    template: "%s | Tech Arena24",
   },
   description:
     "Discover the latest smartphones, laptops, and gadgets with expert reviews, side-by-side comparisons, and exclusive tech deals — all at Tech Arena24.",
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({ children }) {
