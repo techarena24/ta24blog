@@ -32,7 +32,7 @@ const page = async () => {
           <div>
             {posts.length > 0 && (
               <Link key={posts[0]._id} href={`/${posts[0].slug}`} aria-label={`Read more about ${posts[0].title}`}>
-                <div className=' flex flex-col shadow-sm gap-4'>
+                <div className=' flex flex-col gap-4'>
                   <div className=' relative h-40 w-full md:h-80'>
                     <Image 
                       src={posts[0].postImage}
