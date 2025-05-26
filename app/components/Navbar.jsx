@@ -20,7 +20,7 @@ const links = [
 
 const Navbar = () => {
   const pathName = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className=" max-w-6xl w-full mx-auto mb-8">
@@ -54,45 +54,52 @@ const Navbar = () => {
             </div>
           ))}
         </nav>
-        
+
         {/* Buttons */}
         <div className=" flex flex-row gap-5 ">
           <ModeToggle />
           <Button className=" lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X /> : <MenuIcon />}
           </Button>
-        </div> 
+        </div>
       </div>
-      
-      {/* Mobile Navigation */}
-      <div className={`bg-blue-950 fixed top-0 left-0 h-screen w-full z-50 transform 
-      ${menuOpen ? "translate-y-0 opacity-100 pointer-events-auto visible" : 
-      "-translate-y-full opacity-0 pointer-events-none invisible"} transition-transform duration-300 ease-in-out lg:hidden`}>
-          <div className=" flex justify-between items-center p-5">
-            <h2 className=" text-xl font-semibold text-white">
-              Menu
-            </h2>
-            <Button onClick={() => setMenuOpen(false)}>
-              <X />
-            </Button>
-          </div>
 
-          <nav className=" flex flex-col items-center space-y-6 mt-10">
-            {links.map((link, id) => (
-              <Link key={id} href={link.href} className=" text-white text-lg font-semibold hover:text-primary" 
-              onClick={() => setMenuOpen(false)}>
-                {link.name}
-              </Link>
-            ))}
-          </nav>
+      {/* Mobile Navigation */}
+      <div
+        className={`bg-blue-950 fixed top-0 left-0 h-screen w-full z-50 transform 
+      ${
+        menuOpen
+          ? "translate-y-0 opacity-100 pointer-events-auto visible"
+          : "-translate-y-full opacity-0 pointer-events-none invisible"
+      } transition-transform duration-300 ease-in-out lg:hidden`}
+      >
+        <div className=" flex justify-between items-center p-5">
+          <h2 className=" text-xl font-semibold text-white">Menu</h2>
+          <Button onClick={() => setMenuOpen(false)}>
+            <X />
+          </Button>
+        </div>
+
+        <nav className=" flex flex-col items-center space-y-6 mt-10">
+          {links.map((link, id) => (
+            <Link
+              key={id}
+              href={link.href}
+              className=" text-white text-lg font-semibold hover:text-primary"
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
       </div>
-      
+
       {/* Search Bar */}
       <div className=" bg-primary px-6 sm:px-4">
         <div className=" md:max-w-[50%] mx-auto h-12 flex items-center">
           <div className=" flex w-full rounded-tr-sm rounded-br-sm border dark:border-secondary ">
-            <input 
-              type="text" 
+            <input
+              type="text"
               className=" bg-secondary w-[90%] text-sm px-4 py-1 focus:outline-2 focus:ring-2 focus:ring-blue-800"
             />
             <button className=" px-4 py-1">
