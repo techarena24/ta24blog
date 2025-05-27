@@ -140,7 +140,7 @@ const singlePostPage = async ({ params }) => {
       author: {
         "@type": "Person",
         name: post.author,
-        url: baseURL,
+        url: baseURL, //this should be dynamic. this is just to test the schema on Google
       },
       datePublished: post.publishedAt,
       image: [metaDataImage],
