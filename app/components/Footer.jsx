@@ -10,8 +10,8 @@ const Footer = () => {
         <div className=" flex flex-col items-center sm:block sm:items-start">
           <Link href={"/"}>
             <Image
-              src={"/images/logoTA24.jpeg"}
-              alt={"Logo"}
+              src="/images/logoTa24.jpeg"
+              alt="Tech Arena24 logo"
               width={1000}
               height={700}
               priority

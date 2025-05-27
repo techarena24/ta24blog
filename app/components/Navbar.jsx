@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center h-18 border-b border-b-primary px-6 sm:px-4 xl:px-0">
         <Link href={"/"}>
           <Image
-            src="/images/logoTA24.jpeg"
+            src="/images/logoTa24.jpeg"
             alt="Tech Arena24 logo"
             width={180}
             height={75}
