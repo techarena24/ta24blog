@@ -84,6 +84,8 @@ export async function generateMetadata({ params }) {
   // console.log("Post:", post);
   // console.log("Featured Image:", metaDataImage);
 
+  // console.log("Author Url " + post.author.slug);
+
   return {
     title: post.title,
     description,
@@ -138,6 +140,7 @@ const singlePostPage = async ({ params }) => {
       author: {
         "@type": "Person",
         name: post.author,
+        url: baseURL,
       },
       datePublished: post.publishedAt,
       image: [metaDataImage],
