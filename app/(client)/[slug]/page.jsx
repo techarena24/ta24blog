@@ -77,7 +77,7 @@ export async function generateMetadata({ params }) {
     (block) => block._type === "block" && block.children
   );
   const description =
-    firstTextBlock?.children?.[0]?.text?.slice(0, 160) ||
+    firstTextBlock?.children?.[0]?.text?.slice(0, 164) ||
     "No description available";
 
   // console.log("Slug:", slug);
@@ -108,31 +108,6 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  headline: post.title,
-  description,
-  author: {
-    "@type": "Person",
-    name: post.author,
-  },
-  datePublished: post.publishedAt,
-  image: [metaDataImage],
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": `${baseURL}/${slug}`,
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "Tech Arena24",
-    logo: {
-      "@type": "ImageObject",
-      url: `${baseURL}/images/logoTa24.jpeg`,
-    },
-  },
-};
-
 const singlePostPage = async ({ params }) => {
   const { slug } = await params;
 
@@ -144,6 +119,41 @@ const singlePostPage = async ({ params }) => {
     }
 
     // console.log(post.body);
+
+    const firstTextBlock = post.body?.find(
+      (block) => block._type === "block" && block.children
+    );
+
+    const description =
+      firstTextBlock?.children?.[0]?.text?.slice(0, 170) ||
+      "No description available";
+
+    const metaDataImage = post.postImage?.asset?.url;
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description,
+      author: {
+        "@type": "Person",
+        name: post.author,
+      },
+      datePublished: post.publishedAt,
+      image: [metaDataImage],
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${baseURL}/${slug}`,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Tech Arena24",
+        logo: {
+          "@type": "ImageObject",
+          url: `${baseURL}/images/logoTa24.jpeg`,
+        },
+      },
+    };
 
     return (
       <>
