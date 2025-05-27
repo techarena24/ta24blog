@@ -68,17 +68,11 @@ const getPostBySlug = async (slug) => {
 };
 
 export async function generateMetadata({ params }) {
-  const slug = params.slug;
+  // const slug = params.slug;
+  const { slug } = await params;
   const post = await getPostBySlug(slug);
 
-  // if (!post) {
-  //   return {
-  //     title: "Post Not Found",
-  //     description: "The requested post could not be found.",
-  //   };
-  // }
-
-  const metaDataImage = post.postImage?.asset?._ref;
+  const metaDataImage = post.postImage?.asset?.url;
   const firstTextBlock = post.body?.find(
     (block) => block._type === "block" && block.children
   );
@@ -98,7 +92,7 @@ export async function generateMetadata({ params }) {
       description,
       type: "article",
       locale: "en_US",
-      url: `${baseURL}/${params.slug}`,
+      url: `${baseURL}/${slug}`,
       siteName: "Tech Arena24",
       images: metaDataImage
         ? [
