@@ -45,7 +45,9 @@ const page = async () => {
                   <div className=' space-y-2'>
                     <div className=' hidden sm:flex text-xs text-gray-600 justify-between'>
                       <h4 className=' font-semibold text-primary'>{posts[0].category}</h4>
-                      <h4>{posts[0].author}</h4>
+                      <h4 className=' text-[10px] py-0.5 px-1 bg-gray-300 rounded-xs text-black'>
+                        {posts[0].author}
+                      </h4>
                     </div>
                     <h2 className=' font-bold text-lg md:text-2xl line-clamp-3'>{posts[0].title}</h2>
                     <p className=' text-sm line-clamp-3'>

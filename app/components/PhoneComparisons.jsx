@@ -29,7 +29,9 @@ const PhoneComparisons = ({ posts }) => {
                   <div className=' space-y-2 w-[80%] sm:w-full'>
                     <div className=' hidden sm:flex text-xs text-gray-600 justify-between'>
                       <h4 className=' font-semibold text-primary'>{post.category}</h4>
-                      <h4>{post.author}</h4>
+                      <h4 className=' text-[10px] py-0.5 px-1 bg-gray-300 rounded-xs text-black'>
+                        {post.author}
+                      </h4>
                     </div>
                     <h2 className=' text-base sm:text-lg font-bold leading-normal hover:text-primary line-clamp-3 text-wrap'>
                       {post.title}
