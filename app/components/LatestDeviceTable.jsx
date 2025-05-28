@@ -1,39 +1,29 @@
-// app/components/LatestDeviceTable.jsx
-"use client";
-
 import React from "react";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
+import { PortableText } from "next-sanity";
+import { myPortableTextComponents } from "./portableTextComponents";
 
-function LatestDeviceTable() {
+const LatestDeviceTable = async ({ device }) => {
+
   return (
     <div className="gap-2 lg:w-[60%]">
       <div className="">
-        <TableHead />
-        <TableBody />
+        <TableHead device={device} />
+        <TableBody device={device} /> 
+        
         {/* ... rest of your component */}
         <section className="px-2">
           <article>
-            <h2 className="py-2">Phone Specifications</h2>
-            <p>Below are the specifications of the latest phones</p>
-            <p className="py-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas aut
-              repellendus quasi expedita, nulla deleniti enim dolore at
-              distinctio quos, pariatur neque eum sapiente minima dolores
-              obcaecati nemo aliquam porro!
-            </p>
-            <p className="py-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas aut
-              repellendus quasi expedita, nulla deleniti enim dolore at
-              distinctio quos, pariatur neque eum sapiente minima dolores
-              obcaecati nemo aliquam porro!
-            </p>
-            <p className="py-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas aut
-              repellendus quasi expedita, nulla deleniti enim dolore at
-              distinctio quos, pariatur neque eum sapiente minima dolores
-              obcaecati nemo aliquam porro!
-            </p>
+            <h2 className="py-2">
+              {device?.title}
+            </h2>
+            <div>
+              <PortableText 
+                value={device.body} 
+                components={myPortableTextComponents} 
+              />
+            </div>
           </article>
         </section>
       </div>

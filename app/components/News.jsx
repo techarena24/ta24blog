@@ -30,7 +30,9 @@ const News = ({ posts }) => {
                   <div className=' space-y-2 flex-1 sm:w-full'>
                     <div className=' hidden sm:flex text-xs text-gray-600 justify-between'>
                       <h4 className=' font-semibold text-primary'>{post.category}</h4>
-                      <h4>{post.author}</h4>
+                      <h4 className=' text-[10px] bg-gray-300 text-black py-0.5 px-1 rounded-xs'>
+                        {post.author}
+                      </h4>
                     </div>
                     <h2 className=' text-base sm:text-lg font-bold leading-normal hover:text-primary line-clamp-3 text-wrap'>
                       {post.title}
