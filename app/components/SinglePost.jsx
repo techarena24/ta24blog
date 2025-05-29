@@ -6,20 +6,61 @@ import BigAdBanner from "./BigAdBanner";
 import { notFound } from "next/navigation";
 import { myPortableTextComponents } from "./portableTextComponents";
 
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
 // SinglePost Code
 const SinglePostPage = async ({ post }) => {
-    //const { slug } = await params;
-  
-    try {
-  
-      console.log(post.body);
-  
-      return (
+  // const { slug } = await params;
+  const firstTextBlock = post.body?.find(
+    (block) => block._type === "block" && block.children
+  );
+  const description =
+    firstTextBlock?.children?.[0]?.text?.slice(0, 170) ||
+    "No description available";
+
+  const metaDataImage = post.postImage?.asset?.url;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description,
+    author: {
+      "@type": "Person",
+      name: post.author,
+      url: baseURL, //this should be dynamic. this is just to test the schema on Google
+    },
+    datePublished: post.publishedAt,
+    image: [metaDataImage],
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseURL}/${post.slug}`,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Tech Arena24",
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseURL}/images/logoTa24.jpeg`,
+      },
+    },
+  };
+
+  try {
+    // console.log(post.body);
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         <div className=" flex flex-col space-y-10">
           <div className=" block md:hidden">
             <AdBanner />
           </div>
-  
+
           <div className=" md:flex md:gap-8 items-start md:min-h-screen">
             <div className=" block md:flex-[70%] space-y-2 md:space-y-2 md:h-screen md:overflow-y-auto">
               <div className=" relative h-48 sm:h-60 md:h-80 w-full bg-gray-200">
@@ -40,7 +81,7 @@ const SinglePostPage = async ({ post }) => {
               </div>
               <div className=" flex flex-row justify-between lg:px-4">
                 <div className=" flex flex-col md:block space-x-2">
-                  <span className=' text-[10px] py-0.5 px-1 bg-gray-300 rounded-xs text-black'>
+                  <span className=" text-[10px] py-0.5 px-1 bg-gray-300 rounded-xs text-black">
                     {post.author || "Guest"}
                   </span>
                   <span className=" text-xs">
@@ -67,21 +108,22 @@ const SinglePostPage = async ({ post }) => {
                 />
               </div>
             </div>
-  
+
             <div className=" hidden md:block md:w-[300px] md:h-screen ">
               <div className=" md:sticky md:top-0 md:h-[100vh] md:overflow-y-auto border">
                 <p>ads</p>
               </div>
             </div>
           </div>
-  
+
           <BigAdBanner />
         </div>
-      );
-    } catch (error) {
-      console.error("Failed to load post:", error);
-      notFound();
-    }
-  };
-  
-  export default SinglePostPage;
+      </>
+    );
+  } catch (error) {
+    console.error("Failed to load post:", error);
+    notFound();
+  }
+};
+
+export default SinglePostPage;

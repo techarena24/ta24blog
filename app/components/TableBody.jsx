@@ -1,10 +1,10 @@
 import React from "react";
 
 function TableBody({ device }) {
-
   return (
     <>
-      <h2 className="text-center py-2 border bg-gray-100 dark:text-gray-800">
+      <section className="my-3">
+        <h2 className="text-center py-2 border font-bold bg-gray-100 dark:text-gray-800">
         {device?.title}
       </h2>
 
@@ -18,21 +18,33 @@ function TableBody({ device }) {
         <tbody>
           <tr className="border border-gray-300 sm:table-row">
             <td className="border border-gray-300 p-2">Display</td>
-            <td className="border border-gray-300 p-2">{device?.specs?.display}</td>
+            <td className="border border-gray-300 p-2">
+              {device?.specs?.display}
+            </td>
           </tr>
           <tr className="border border-gray-300 sm:table-row">
-            <td className="border border-gray-300 p-2">Camera</td>
+            <td className="border border-gray-300 p-2">Back Camera</td>
+            <td className="border border-gray-300 p-2">
+              {device?.specs?.camera}
+            </td>
+          </tr>
+          <tr className="border border-gray-300 sm:table-row">
+            <td className="border border-gray-300 p-2">Front Camera</td>
             <td className="border border-gray-300 p-2">
               {device?.specs?.camera}
             </td>
           </tr>
           <tr className="border border-gray-300 sm:table-row">
             <td className="border border-gray-300 p-2">Chipset</td>
-            <td className="border border-gray-300 p-2">{device?.specs?.chipset}</td>
+            <td className="border border-gray-300 p-2">
+              {device?.specs?.chipset}
+            </td>
           </tr>
           <tr className="border border-gray-300 sm:table-row">
             <td className="border border-gray-300 p-2">Battery</td>
-            <td className="border border-gray-300 p-2">{device?.specs?.battery}</td>
+            <td className="border border-gray-300 p-2">
+              {device?.specs?.battery}
+            </td>
           </tr>
           <tr className="border border-gray-300 sm:table-row">
             <td className="border border-gray-300 p-2">Memory</td>
@@ -41,11 +53,26 @@ function TableBody({ device }) {
             </td>
           </tr>
           <tr className="border border-gray-300 sm:table-row">
-            <td className="border border-gray-300 p-2">OS</td>
-            <td className="border border-gray-300 p-2">{device?.specs?.software}</td>
+            <td className="border border-gray-300 p-2">RAM</td>
+            <td className="border border-gray-300 p-2">
+              {device?.specs?.storage}
+            </td>
+          </tr>
+          <tr className="border border-gray-300 sm:table-row">
+            <td className="border border-gray-300 p-2">Software</td>
+            <td className="border border-gray-300 p-2">
+              {device?.specs?.software}
+            </td>
+          </tr>
+          <tr className="border border-gray-300 sm:table-row">
+            <td className="border border-gray-300 p-2">Network</td>
+            <td className="border border-gray-300 p-2">
+              {device?.specs?.software}
+            </td>
           </tr>
         </tbody>
       </table>
+      </section>
     </>
   );
 }

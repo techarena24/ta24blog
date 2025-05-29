@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import logo from "../../public/images/logoTa24.jpeg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "./ModeToggle";
@@ -32,6 +31,7 @@ const Navbar = () => {
             width={180}
             height={75}
             priority
+            className="w-auto h-auto"
           />
         </Link>
 

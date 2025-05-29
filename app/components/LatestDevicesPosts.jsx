@@ -18,22 +18,25 @@ function LatestDevices(props) {
 
         {/* personal note "i removed the h-[2rem] from the class below. I used this to size the three card layout of the sidebar component. I might need to add css as props for the sidebar later" */}
 
-        <div className={` grid justify-center gap-1 my-2 ${grid || "grid-cols-3"}`} >
+        <div
+          className={` grid justify-center gap-1 my-2 ${grid || "grid-cols-3"}`}
+        >
           {posts.map((post) => (
-              <Link key={post._id} href={`/${post.slug}`}>
-                  <div className="bg-gray-100 flex flex-col items-center py-3">
-                    <Image
-                      src={post.deviceImage}
-                      height={1000}
-                      width={800}
-                      alt="phone"
-                      className="w-32 h-28"
-                    />
-                    <h3 className="text-center dark:text-black">
-                      {post.title}
-                    </h3>
-                  </div>
-              </Link>
+            <Link key={post._id} href={`/${post.slug}`}>
+              <div className="bg-blue-200 flex flex-col items-center h-44 relative">
+                <Image
+                  src={post.deviceImage}
+                  height={1000}
+                  width={800}
+                  alt="phone"
+                  priority
+                  className="w-full h-full object-fill"
+                />
+                <h3 className="text-center text-black absolute bottom-0 top-30 bg-white/70 py-1 px-1">
+                  {post.title}
+                </h3>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
