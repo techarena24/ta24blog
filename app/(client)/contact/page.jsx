@@ -37,6 +37,7 @@ const page = () => {
   };
 
   const formRef = useRef();
+  const recaptchaRef = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -59,6 +60,7 @@ const page = () => {
           alert("Message sent!");
           setFormData({ name: "", email: "", message: "" });
           setCaptchaToken(null);
+          recaptchaRef.current.reset();
         },
         (error) => {
           console.error("Email send error:", error.text);
@@ -153,7 +155,11 @@ const page = () => {
               />
             </div>
 
-            <ReCAPTCHA sitekey={siteKey} onChange={handleCaptchaChange} />
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={siteKey}
+              onChange={handleCaptchaChange}
+            />
             <button
               type="submit"
               className=" bg-primary py-2 text-white hover:bg-blue-700 rounded-md"
