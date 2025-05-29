@@ -34,7 +34,7 @@ const SinglePostPage = async ({ post }) => {
     image: [metaDataImage],
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${baseURL}/${post.slug}`,
+      "@id": `${baseURL}${post.slug}`,
     },
     publisher: {
       "@type": "Organization",
