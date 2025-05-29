@@ -3,7 +3,7 @@
 import AdBanner from "@/app/components/AdBanner";
 import BigAdBanner from "@/app/components/BigAdBanner";
 import Image from "next/image";
-import { React, useState } from "react";
+import React, { useState, useRef } from "react";
 import emailjs from "emailjs-com";
 
 const emailjsPublicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY;
@@ -19,31 +19,26 @@ const emailjsPublicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY;
 // }
 
 const page = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const formRef = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
-      .send("service_xjssz65", "template_i1d3h92", formData, emailjsPublicKey)
+      .sendForm(
+        "service_xjssz65", // Your EmailJS service ID
+        "template_i1d3h92", // Your EmailJS template ID
+        formRef.current, // The actual form DOM element
+        emailjsPublicKey // Your public API key from EmailJS
+      )
       .then(
         (result) => {
           console.log("Email sent successfully!", result.text);
           alert("Message sent!");
-          formData.name = "";
-          formData.email = "";
-          formData.message = "";
+          formRef.current.reset(); // Reset the form fields
         },
         (error) => {
-          console.error("Email send error:", error.text);
+          console.error("Email send error:", error);
           alert("Something went wrong!");
         }
       );
@@ -84,7 +79,11 @@ const page = () => {
           <p>We hope to hear from you soon.</p>
         </div>
         <div>
-          <form onSubmit={sendEmail} className=" flex flex-col gap-4">
+          <form
+            ref={formRef}
+            onSubmit={sendEmail}
+            className=" flex flex-col gap-4"
+          >
             <div className=" flex flex-col">
               <label htmlFor="name" className=" font-bold text-base">
                 Name:
