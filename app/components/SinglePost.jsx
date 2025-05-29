@@ -44,6 +44,9 @@ const SinglePostPage = async ({ post }) => {
         url: `${baseURL}/images/logoTa24.jpeg`,
       },
     },
+    articleSection: post.categories.title,
+    inLanguage: "en",
+    isAccessibleForFree: true,
   };
 
   try {
