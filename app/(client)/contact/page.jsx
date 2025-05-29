@@ -1,15 +1,57 @@
+"use client";
+
 import AdBanner from "@/app/components/AdBanner";
 import BigAdBanner from "@/app/components/BigAdBanner";
 import Image from "next/image";
-import React from "react";
+import { React, useState } from "react";
+import emailjs from "emailjs-com";
 
-export const metadata = {
-  title: "Contact Us",
-  description:
-    "Need to get in touch with Tech Arena24? Contact us for inquiries, feedback, or collaborations related to expert tech news, reviews, comparisons, and top deals.",
-};
+// export const metadata = {
+//   title: "Contact Us",
+//   description:
+//     "Need to get in touch with Tech Arena24? Contact us for inquiries, feedback, or collaborations related to expert tech news, reviews, comparisons, and top deals.",
+// };
+
+// export default function ContactForm() {
+
+// }
 
 const page = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_xjssz65",
+        "template_i1d3h92",
+        formData,
+        "QES1o6ZafYcIGfqAb"
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully!", result.text);
+          alert("Message sent!");
+          formData.name = "";
+          formData.email = "";
+          formData.message = "";
+        },
+        (error) => {
+          console.error("Email send error:", error.text);
+          alert("Something went wrong!");
+        }
+      );
+  };
+
   return (
     <div className=" flex flex-col">
       <AdBanner />
@@ -45,7 +87,7 @@ const page = () => {
           <p>We hope to hear from you soon.</p>
         </div>
         <div>
-          <form action="" className=" flex flex-col gap-4">
+          <form onSubmit={sendEmail} className=" flex flex-col gap-4">
             <div className=" flex flex-col">
               <label htmlFor="name" className=" font-bold text-base">
                 Name:
@@ -54,6 +96,8 @@ const page = () => {
                 id="name"
                 name="name"
                 autoComplete="name"
+                value={formData.name}
+                onChange={handleInputChange}
                 type="text"
                 className=" border border-gray-400 p-2 w-full md:w-1/2"
                 required
@@ -67,6 +111,8 @@ const page = () => {
                 id="email"
                 name="email"
                 autoComplete="email"
+                value={formData.email}
+                onChange={handleInputChange}
                 type="email"
                 className=" border border-gray-400 p-2 w-full md:w-1/2"
                 required
@@ -79,6 +125,8 @@ const page = () => {
               <textarea
                 id="message"
                 name="message"
+                value={formData.message}
+                onChange={handleInputChange}
                 autoComplete="off"
                 type="text"
                 className=" border border-gray-400 p-2 w-full min-h-[200px]"
