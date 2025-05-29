@@ -5,8 +5,10 @@ import BigAdBanner from "@/app/components/BigAdBanner";
 import Image from "next/image";
 import React, { useState, useRef } from "react";
 import emailjs from "emailjs-com";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const emailjsPublicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY;
+const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 // export const metadata = {
 //   title: "Contact Us",
@@ -24,15 +26,25 @@ const page = () => {
     email: "",
     message: "",
   });
+  const [captchaToken, setCaptchaToken] = useState(null);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleCaptchaChange = (token) => {
+    setCaptchaToken(token);
   };
 
   const formRef = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      alert("Please verify the reCAPTCHA.");
+      return;
+    }
 
     emailjs
       .sendForm(
@@ -45,7 +57,8 @@ const page = () => {
         (result) => {
           console.log("Email sent successfully!", result.text);
           alert("Message sent!");
-          setFormData("");
+          setFormData({ name: "", email: "", message: "" });
+          setCaptchaToken(null);
         },
         (error) => {
           console.error("Email send error:", error.text);
@@ -139,6 +152,8 @@ const page = () => {
                 required
               />
             </div>
+
+            <ReCAPTCHA sitekey={siteKey} onChange={handleCaptchaChange} />
             <button
               type="submit"
               className=" bg-primary py-2 text-white hover:bg-blue-700 rounded-md"
