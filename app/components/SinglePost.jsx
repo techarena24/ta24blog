@@ -44,7 +44,8 @@ const SinglePostPage = async ({ post }) => {
         url: `${baseURL}/images/logoTa24.jpeg`,
       },
     },
-    articleSection: post.categories.title,
+    articleSection:
+      post.categories?.map((cat) => cat.title).join(", ") || "Uncategorized",
     inLanguage: "en",
     isAccessibleForFree: true,
   };
