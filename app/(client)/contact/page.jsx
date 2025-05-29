@@ -6,6 +6,8 @@ import Image from "next/image";
 import { React, useState } from "react";
 import emailjs from "emailjs-com";
 
+const emailjsPublicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY;
+
 // export const metadata = {
 //   title: "Contact Us",
 //   description:
@@ -31,12 +33,7 @@ const page = () => {
     e.preventDefault();
 
     emailjs
-      .send(
-        "service_xjssz65",
-        "template_i1d3h92",
-        formData,
-        "QES1o6ZafYcIGfqAb"
-      )
+      .send("service_xjssz65", "template_i1d3h92", formData, emailjsPublicKey)
       .then(
         (result) => {
           console.log("Email sent successfully!", result.text);
