@@ -19,6 +19,16 @@ const emailjsPublicKey = process.env.NEXT_PUBLIC_EMAILJS_KEY;
 // }
 
 const page = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const formRef = useRef();
 
   const sendEmail = (e) => {
@@ -26,19 +36,19 @@ const page = () => {
 
     emailjs
       .sendForm(
-        "service_xjssz65", // Your EmailJS service ID
-        "template_i1d3h92", // Your EmailJS template ID
-        formRef.current, // The actual form DOM element
-        emailjsPublicKey // Your public API key from EmailJS
+        "service_xjssz65",
+        "template_i1d3h92",
+        formRef.current,
+        emailjsPublicKey
       )
       .then(
         (result) => {
           console.log("Email sent successfully!", result.text);
           alert("Message sent!");
-          formRef.current.reset(); // Reset the form fields
+          setFormData("");
         },
         (error) => {
-          console.error("Email send error:", error);
+          console.error("Email send error:", error.text);
           alert("Something went wrong!");
         }
       );
