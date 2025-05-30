@@ -1,50 +1,109 @@
+import Link from "next/link";
 import React from "react";
 
-function TableBody() {
+function TableBody({ device }) {
   return (
     <>
-      <h2 className="text-center py-2 border bg-gray-100 dark:text-gray-800">
-        Smartphone Full Specifications
-      </h2>
+      <section className="my-3">
+        <h2 className="text-center py-2 border font-bold bg-gray-100 dark:text-gray-800">
+          {device?.title}
+        </h2>
 
-      <table className="w-full border-collapse border border-gray-300 sm:table">
-        <thead>
-          <tr className="bg-gray-100 dark:text-gray-800">
-            <th className="border border-gray-300 p-2">Specification</th>
-            <th className="border border-gray-300 p-2">Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="border border-gray-300 sm:table-row">
-            <td className="border border-gray-300 p-2">Display</td>
-            <td className="border border-gray-300 p-2">6.7 inches, AMOLED</td>
-          </tr>
-          <tr className="border border-gray-300 sm:table-row">
-            <td className="border border-gray-300 p-2">Camera</td>
-            <td className="border border-gray-300 p-2">
-              108MP Main, 12MP Ultra-wide
-            </td>
-          </tr>
-          <tr className="border border-gray-300 sm:table-row">
-            <td className="border border-gray-300 p-2">Chipset</td>
-            <td className="border border-gray-300 p-2">Snapdragon 8 Gen 2</td>
-          </tr>
-          <tr className="border border-gray-300 sm:table-row">
-            <td className="border border-gray-300 p-2">Battery</td>
-            <td className="border border-gray-300 p-2">5000 mAh</td>
-          </tr>
-          <tr className="border border-gray-300 sm:table-row">
-            <td className="border border-gray-300 p-2">Memory</td>
-            <td className="border border-gray-300 p-2">
-              8GB RAM, 256GB Storage
-            </td>
-          </tr>
-          <tr className="border border-gray-300 sm:table-row">
-            <td className="border border-gray-300 p-2">OS</td>
-            <td className="border border-gray-300 p-2">Android 13</td>
-          </tr>
-        </tbody>
-      </table>
+        <table className="w-full border-collapse border border-gray-300 sm:table">
+          <thead>
+            <tr className="bg-gray-100 dark:text-gray-800">
+              <th className="border border-gray-300 p-2">Specification</th>
+              <th className="border border-gray-300 p-2">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Display</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.display}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Back Camera</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.camera}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Front Camera</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.camera}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Chipset</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.chipset}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Battery</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.battery}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Memory</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.storage}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">RAM</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.storage}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Software</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.software}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Network</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.software}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Launch Date</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.software}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Release Date</td>
+              <td className="border border-gray-300 p-2">
+                {device?.specs?.software}
+              </td>
+            </tr>
+            <tr className="border border-gray-300 sm:table-row">
+              <td className="border border-gray-300 p-2">Available</td>
+              {/* you can map through the Link below. This way you can delete three of the Link below and use just one. The structure for front end is already created. */}
+              <td className="border border-gray-300 grid md:grid-cols-2 gap-1 p-1">
+                <Link href={"/"} className="bg-blue-500 text-center py-1">
+                  Buy on Giztop
+                </Link>
+                <Link href={"/"} className="bg-blue-500 text-center py-1">
+                  Buy on Amazon US
+                </Link>
+                <Link href={"/"} className="bg-blue-500 text-center py-1">
+                  Buy on Amazon UK
+                </Link>
+                <Link href={"/"} className="bg-blue-500 text-center py-1">
+                  Buy on Amazon EUR
+                </Link>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
     </>
   );
 }

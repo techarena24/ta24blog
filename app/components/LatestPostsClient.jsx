@@ -73,7 +73,9 @@ export const LatestPostsClient = ({ initialPosts, totalPostCount }) => {
                                   </span>
                                 ))}
                               </h4>
-                              <h4>{post.author}</h4>
+                              <h4 className=' text-[10px] py-0.5 px-1 bg-gray-300 rounded-xs text-black'>
+                                {post.author}
+                              </h4>
                             </div>
                             <h2 className=' text-base sm:text-lg font-bold leading-normal hover:text-primary line-clamp-3'>
                               {post.title}
