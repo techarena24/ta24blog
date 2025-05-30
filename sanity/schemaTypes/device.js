@@ -78,12 +78,12 @@ export default {
                 },
                 {
                     name: 'ram',
-                    type: 'number',
+                    type: 'string',
                     title: 'Ram'
                 },
                 {
                     name: 'storage',
-                    type: 'number',
+                    type: 'string',
                     title: 'Storage'
                 },
                 {
@@ -110,8 +110,90 @@ export default {
         },
         {
             name: 'body',
-            type: 'blockContent',
-            title: 'Body'
-        }
+            type: 'array',
+            title: 'Post Body',
+            initialValue: [],
+            of: [
+                {
+                  type: 'block',
+                  styles: [
+                    { title: 'Normal', value: 'normal' },
+                    { title: 'Heading 1', value: 'h1' },
+                    { title: 'Heading 2', value: 'h2' },
+                    { title: 'Heading 3', value: 'h3' },
+                    { title: 'Heading 4', value: 'h4' },
+                    { title: 'Heading 5', value: 'h5' },
+                    { title: 'Heading 6', value: 'h6' },
+                    { title: 'Quote', value: 'blockquote' }, 
+                  ],
+                  lists: [
+                    { title: 'Bullet', value: 'bullet' },
+                    { title: 'Numbered', value: 'number' }
+                  ],
+                  marks: {
+                    decorators: [
+                      { title: 'Strong', value: 'strong' },
+                      { title: 'Emphasis', value: 'em' },
+                      { title: 'Code', value: 'code' },
+                    ],
+                    annotations: [
+                      {
+                        name: 'link',
+                        type: 'object',
+                        title: 'URL',
+                        fields: [
+                          {
+                            name: 'href',
+                            type: 'url',
+                            title: 'URL',
+                            validation: Rule => Rule.uri({
+                              scheme: ['http', 'https', 'mailto', 'tel']
+                            }).required()
+                          },
+                          {
+                            name: 'openInNewTab',
+                            type: 'boolean',
+                            title: 'Open in new tab?',
+                            initialValue: false
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                    type: 'image',
+                    fields: [
+                        {
+                            name: 'alt',
+                            type: 'string',
+                            title: 'Alternative Text',
+                            validation: Rule => Rule.required()
+                        },
+                        {
+                            name: 'caption',
+                            type: 'string',
+                            title: 'Caption'
+                        }
+                    ]
+                }, 
+                {
+                  type: 'reference',
+                  name: 'deviceReference',
+                  title: 'Device Reference',
+                  to: [{ type: 'device' }],
+                  validation: Rule => Rule.required()
+                },
+                {
+                  type: 'reference',
+                  name: 'postReference',
+                  title: 'Post Reference',
+                  to: [{ type: 'post' }],
+                  validation: Rule => Rule.required()
+                },     
+                  
+            ],
+            validation: Rule => Rule.required().min(1).error('Post body is required'),
+        },
     ]
 };

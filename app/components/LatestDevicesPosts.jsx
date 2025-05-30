@@ -3,11 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 function LatestDevices(props) {
-  const { phone, width, grid } = props;
+  const { posts, width, grid } = props;
 
   const propStyleForCards = {
     width: width || "100%",
   };
+
   return (
     <>
       <div className="w-full" style={propStyleForCards}>
@@ -20,20 +21,20 @@ function LatestDevices(props) {
         <div
           className={` grid justify-center gap-1 my-2 ${grid || "grid-cols-3"}`}
         >
-          {phone.map((spec, index) => (
-            <Link key={index} href={`/blog/${encodeURIComponent(spec.slug)}`}>
-              <div
-                key={index}
-                className="bg-gray-100 flex flex-col items-center py-3"
-              >
+          {posts.map((post) => (
+            <Link key={post._id} href={`/${post.slug}`}>
+              <div className="bg-blue-200 flex flex-col items-center h-44 relative">
                 <Image
-                  src={spec.image}
+                  src={post.deviceImage}
                   height={1000}
                   width={800}
                   alt="phone"
-                  className="w-32 h-28"
+                  priority
+                  className="w-full h-full object-fill"
                 />
-                <h3 className="text-center">{spec.phone_name}</h3>
+                <h3 className="text-center text-black absolute bottom-0 top-30 bg-white/70 py-1 px-1">
+                  {post.title}
+                </h3>
               </div>
             </Link>
           ))}
