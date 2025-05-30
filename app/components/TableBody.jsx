@@ -86,7 +86,7 @@ function TableBody({ device }) {
             <tr className="border border-gray-300 sm:table-row">
               <td className="border border-gray-300 p-2">Available</td>
               {/* you can map through the Link below. This way you can delete three of the Link below and use just one. The structure for front end is already created. */}
-              <td className="border border-gray-300 grid md:grid-cols-2 gap-1 p-1">
+              <td className="border border-gray-300 grid md:grid-cols-2 gap-1 p-1 text-white">
                 <Link href={"/"} className="bg-blue-500 text-center py-1">
                   Buy on Giztop
                 </Link>
