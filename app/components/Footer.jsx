@@ -38,10 +38,10 @@ const Footer = () => {
           <Link className=" font-medium text-sm" href={"/contact"}>
             Contact Us
           </Link>
-          <Link className=" font-medium text-sm" href={""}>
+          <Link className=" font-medium text-sm" href={"/contact"}>
             Advertise
           </Link>
-          <Link className=" font-medium text-sm" href={""}>
+          <Link className=" font-medium text-sm" href={"/contact"}>
             Privacy Policy
           </Link>
         </div>
@@ -52,13 +52,10 @@ const Footer = () => {
           <Link className=" font-medium text-sm" href={"/reviews"}>
             Reviews
           </Link>
-          <Link className=" font-medium text-sm" href={""}>
-            Phone Comparison
-          </Link>
-          <Link className=" font-medium text-sm" href={""}>
+          <Link className=" font-medium text-sm" href={"/latestdevices"}>
             Phone Specifications
           </Link>
-          <Link className=" font-medium text-sm" href={""}>
+          <Link className=" font-medium text-sm" href={"/contact"}>
             Promotions
           </Link>
         </div>
