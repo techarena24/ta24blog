@@ -87,7 +87,7 @@ function TableBody({ device }) {
             <tr className="border border-gray-300 sm:table-row">
               <td className="border border-gray-300 p-2">Available</td>
               {/* you can map through the Link below. This way you can delete three of the Link below and use just one. The structure for front end is already created. */}
-              <td className="border border-gray-300 grid md:grid-cols-2 gap-1 p-1">
+              <td className="border border-gray-300 grid md:grid-cols-2 gap-1 p-1 text-white">
                 {device.specs?.buyOptions?.map((option, index) => (
                   <a key={index} href={option.url} target="_blank" rel="noopener noreferrer"
                   className="bg-blue-500 text-white text-center py-1 rounded hover:bg-blue-600 transition">
