@@ -17,7 +17,7 @@ const LatestDevicesHomepage = ({ posts }) => {
       <h1 className="text-2xl lg:text-3xl font-semibold">Latest Devices</h1>
       <div className="flex flex-row overflow-x-auto gap-6 whitespace-nowrap snap-x snap-mandatory">
         {posts.map((post) => (
-          <Link key={post._id} href={`/${post.slug}`} className="bg-red-400">
+          <Link key={post._id} href={`/${post.slug}`}>
             <div className="w-64 h-56 relative">
               <div className="h-full">
                 <Image

@@ -18,7 +18,7 @@ const LatestDevices = async () => {
       <section>
         <AdBanner />
         <div className="my-10 flex flex-col lg:flex-row lg:gap-2.5">
-          <LatestDevicesPosts posts={posts} width="w-full lg:75%" grid="grid-cols-2 md:grid-cols-4" />
+          <LatestDevicesPosts posts={posts} width="w-full lg:75%" grid="grid-cols-1 md:grid-cols-3" />
           <div className="w-[25%] hidden lg:block h-40">
             <BigAdBanner />
           </div>

@@ -23,7 +23,7 @@ function LatestDevices(props) {
         >
           {posts.map((post) => (
             <Link key={post._id} href={`/${post.slug}`}>
-              <div className="bg-blue-200 flex flex-col items-center h-44 relative">
+              <div className="bg-blue-200 flex flex-col items-center h-56 relative">
                 <Image
                   src={post.deviceImage}
                   height={1000}
@@ -32,7 +32,7 @@ function LatestDevices(props) {
                   priority
                   className="w-full h-full object-fill"
                 />
-                <h3 className="text-center font-bold text-black absolute bottom-0 top-30 bg-white/80 py-1 px-1 left-0 right-0 hover:text-blue-500 dark:text-gray-700">
+                <h3 className="text-center font-bold text-black absolute bottom-0 top-40 bg-white/80 py-1 px-1 left-0 right-0 hover:text-blue-500 dark:text-gray-700">
                   {post.title}
                 </h3>
               </div>
