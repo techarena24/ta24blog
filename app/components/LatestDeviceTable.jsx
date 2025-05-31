@@ -7,7 +7,7 @@ import LatestDevicesPosts from "@/app/components/LatestDevicesPosts";
 import { fetchedLatestDevices } from "@/lib/fetchedDevices";
 import AdBanner from "./AdBanner";
 import BigAdBanner from "./BigAdBanner";
-import Reviews from "./Reviews";
+// import Reviews from "./Reviews";
 // import LatestPosts from "./LatestPosts";
 // import LatestDevices from "./LatestDevicesPosts";
 
@@ -47,7 +47,7 @@ const LatestDeviceTable = async ({ device }) => {
           <LatestDevicesPosts
             posts={posts}
             width="w-full lg:75%"
-            grid="grid-cols-2"
+            grid="grid-cols-1 md:grid-cols-2"
           />
           <div>
             <BigAdBanner />

@@ -38,7 +38,7 @@ function TableHead({ device }) {
                 <div className=" border dark:border-white flex flex-col md:flex-row gap-2 h-[25%] items-center px-2 py-2">
                   <Aperture />
                   <p className="overflow-hidden">
-                    {device?.specs?.camera.slice(0, 10)}
+                    {device?.specs?.backcamera}
                   </p>
                 </div>
                 <div className=" border dark:border-white flex flex-col md:flex-row gap-2 h-[25%] items-center px-2 py-1">

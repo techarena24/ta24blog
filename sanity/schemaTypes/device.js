@@ -57,9 +57,14 @@ export default {
                     title: 'Display'
                 },
                 {
-                    name: 'camera',
+                    name: 'backcamera',
                     type: 'string',
-                    title: 'Camera'
+                    title: 'Back Camera'
+                },
+                {
+                    name: 'frontcamera',
+                    type: 'string',
+                    title: 'Front Camera'
                 },
                 {
                     name: 'chipset',
@@ -92,14 +97,50 @@ export default {
                     title: 'Software'
                 },
                 {
-                    name: 'launchDate',
+                    name: 'announcedDate',
                     type: 'date',
-                    title: 'Launch Date'
+                    title: 'Announced Date'
                 },
                 {
                     name: 'availableDate',
                     type: 'date',
                     title: 'Available Date'
+                },
+                {
+                    name: 'buyOptions',
+                    title: 'Available For Purchase',
+                    type: 'array',
+                    of: [
+                      {
+                        type: 'object',
+                        name: 'buyOption',
+                        fields: [
+                          {
+                            name: 'platform',
+                            title: 'Platform',
+                            type: 'string',
+                            options: {
+                              list: [
+                                { title: 'Giztop', value: 'Buy on Giztop' },
+                                { title: 'Amazon EUR', value: 'Buy on Amazon EUR' },
+                                { title: 'Amazon UK', value: 'Buy on Amazon EUR' },
+                                { title: 'Amazon US', value: 'Buy on Amazon US' },
+                              ],
+                              layout: 'dropdown',
+                            },
+                            validation: Rule => Rule.required(),
+                          },
+                          {
+                            name: 'url',
+                            title: 'Affiliate Link',
+                            type: 'url',
+                            validation: Rule => Rule.uri({
+                              scheme: ['http', 'https'],
+                            }),
+                          },
+                        ],
+                      },
+                    ],
                 },
             ]
         },
