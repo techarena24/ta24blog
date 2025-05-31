@@ -11,8 +11,8 @@ const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 export const revalidate = 300;
 
 // Dynamic Metadata
-export async function generateMetadata({ params }) {
-  const { slug } = params;
+export async function generateMetadata(props) {
+  const { slug } = await Promise.resolve(props.params);
 
   const post = await getPostBySlug(slug).catch(() => null);
 

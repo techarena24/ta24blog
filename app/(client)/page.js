@@ -9,21 +9,24 @@ import Reviews from "../components/Reviews";
 import { fetchedNewsPosts } from "@/lib/fetchedNewsApi";
 import { fetchedPhoneComparisonPosts } from "@/lib/fetchedPhoneComparisonApi";
 import { fetchedDealsPosts } from "@/lib/fetchedDealsApi";
-
+import LatestDevicesHomepage from "../components/LatestDevicesHomepage";
+import { fetchedLatestDevices } from "@/lib/fetchedDevices";
 
 export default async function Home() {
   const posts = await fetchedReviewPosts();
   const topStories = await fetchedNewsPosts();
   const phoneComparison = await fetchedPhoneComparisonPosts();
   const deals = await fetchedDealsPosts();
+  const latestDevices = await fetchedLatestDevices();
 
   return (
     <div className=" flex flex-col space-y-8">
       <AdBanner />
       <div className=" flex flex-col lg:flex-row justify-between gap-8">
         <LatestPosts />
-        <Reviews posts={posts} />
+        <Reviews posts={posts} /> 
       </div>
+      <LatestDevicesHomepage posts={latestDevices} />
       <News posts={topStories} />
       <BigAdBanner />
       <PhoneComparisons posts={phoneComparison} />
