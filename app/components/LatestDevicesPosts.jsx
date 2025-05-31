@@ -32,7 +32,7 @@ function LatestDevices(props) {
                   priority
                   className="w-full h-full object-fill"
                 />
-                <h3 className="text-center text-black absolute bottom-0 top-30 bg-white/70 py-1 px-1 left-0 right-0">
+                <h3 className="text-center font-bold text-black absolute bottom-0 top-30 bg-white/80 py-1 px-1 left-0 right-0 hover:text-blue-500">
                   {post.title}
                 </h3>
               </div>
