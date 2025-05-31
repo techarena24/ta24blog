@@ -1,7 +1,8 @@
-import Link from "next/link";
 import React from "react";
 
 function TableBody({ device }) {
+  console.log('Device data:', device);
+
   return (
     <>
       <section className="my-3">
@@ -26,13 +27,13 @@ function TableBody({ device }) {
             <tr className="border border-gray-300 sm:table-row">
               <td className="border border-gray-300 p-2">Back Camera</td>
               <td className="border border-gray-300 p-2">
-                {device?.specs?.camera}
+                {device?.specs?.backcamera}
               </td>
             </tr>
             <tr className="border border-gray-300 sm:table-row">
               <td className="border border-gray-300 p-2">Front Camera</td>
               <td className="border border-gray-300 p-2">
-                {device?.specs?.camera}
+                {device?.specs?.frontcamera}
               </td>
             </tr>
             <tr className="border border-gray-300 sm:table-row">
@@ -68,37 +69,31 @@ function TableBody({ device }) {
             <tr className="border border-gray-300 sm:table-row">
               <td className="border border-gray-300 p-2">Network</td>
               <td className="border border-gray-300 p-2">
-                {device?.specs?.software}
+                {device?.specs?.network}
               </td>
             </tr>
             <tr className="border border-gray-300 sm:table-row">
-              <td className="border border-gray-300 p-2">Launch Date</td>
+              <td className="border border-gray-300 p-2">Announced</td>
               <td className="border border-gray-300 p-2">
-                {device?.specs?.software}
+                {device?.specs?.announcedDate}
               </td>
             </tr>
             <tr className="border border-gray-300 sm:table-row">
-              <td className="border border-gray-300 p-2">Release Date</td>
+              <td className="border border-gray-300 p-2">Available Date</td>
               <td className="border border-gray-300 p-2">
-                {device?.specs?.software}
+                {device?.specs?.availableDate}
               </td>
             </tr>
             <tr className="border border-gray-300 sm:table-row">
               <td className="border border-gray-300 p-2">Available</td>
               {/* you can map through the Link below. This way you can delete three of the Link below and use just one. The structure for front end is already created. */}
               <td className="border border-gray-300 grid md:grid-cols-2 gap-1 p-1">
-                <Link href={"/"} className="bg-blue-500 text-center py-1">
-                  Buy on Giztop
-                </Link>
-                <Link href={"/"} className="bg-blue-500 text-center py-1">
-                  Buy on Amazon US
-                </Link>
-                <Link href={"/"} className="bg-blue-500 text-center py-1">
-                  Buy on Amazon UK
-                </Link>
-                <Link href={"/"} className="bg-blue-500 text-center py-1">
-                  Buy on Amazon EUR
-                </Link>
+                {device.specs?.buyOptions?.map((option, index) => (
+                  <a key={index} href={option.url} target="_blank" rel="noopener noreferrer"
+                  className="bg-blue-500 text-white text-center py-1 rounded hover:bg-blue-600 transition">
+                    {option.platform}
+                  </a>
+                ))}
               </td>
             </tr>
           </tbody>
@@ -108,4 +103,4 @@ function TableBody({ device }) {
   );
 }
 
-export default TableBody;
+export default TableBody; 
