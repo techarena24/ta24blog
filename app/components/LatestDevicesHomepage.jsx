@@ -29,7 +29,7 @@ const LatestDevicesHomepage = ({ posts }) => {
                   className="w-full h-full object-fill"
                 />
               </div>
-              <h3 className="text-center font-bold text-wrap hover:text-blue-500 absolute bottom-0 top-40 bg-white/70 py-1 px-1 left-0 right-0">
+              <h3 className="text-center font-bold text-wrap hover:text-blue-500 absolute bottom-0 top-40 bg-white/80 py-1 px-1 left-0 right-0 dark:text-gray-500">
                 {post.title}
               </h3>
             </div>
