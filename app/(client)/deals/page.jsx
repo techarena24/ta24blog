@@ -89,6 +89,12 @@ const page = async () => {
               </Link>
             ))}
           </div>
+
+          <div>
+            <button className=' bg-blue-500 hover:bg-blue-600 transition text-white py-2 px-4'>
+              Load More
+            </button>
+          </div>
         </div>
 
         <div className=" hidden md:block md:w-[300px] md:h-screen ">
