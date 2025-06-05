@@ -18,6 +18,17 @@ export default {
             }
         },
         {
+          name: 'summary',
+          type: 'text',
+          title: 'SEO Summary',
+          description: 'Concise 1-2 sentence summary for Google snippets (max 160 chars)',
+          validation: Rule => [
+            Rule.required().error('Required for SEO previews'),
+            Rule.max(160).warning('Ideal length for search results')
+          ],
+          rows: 2 // Keeps input compact
+        },
+        {
             name: 'deviceImage',
             type: 'image',
             title: 'Device Image',

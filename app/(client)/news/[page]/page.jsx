@@ -128,14 +128,14 @@ const NewsPage = async (props) => {
           {/* Pagination */}
           <div className="flex justify-between mt-10">
             {!isFirstPage && (
-              <Link href={`/deals/${pageNumber - 1}`}>
+              <Link href={`/news/${pageNumber - 1}`}>
                 <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">
                   ← Previous
                 </button>
               </Link>
             )}
             {!isLastPage && (
-              <Link href={`/deals/${pageNumber + 1}`}>
+              <Link href={`/news/${pageNumber + 1}`}>
                 <button className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded ml-auto">
                   Next →
                 </button>
