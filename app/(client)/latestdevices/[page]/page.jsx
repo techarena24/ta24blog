@@ -4,12 +4,6 @@ import AdBanner from "@/app/components/AdBanner";
 import BigAdBanner from "@/app/components/BigAdBanner";
 import { fetchedLatestDevices } from "@/lib/fetchedDevices";
 
-/* export const metadata = {
-  title: "Latest Devices",
-  description:
-    "Discover the latest tech devices at Tech Arena24! Get expert news, first looks, and potential future reviews on the newest smartphones, wearables, gadgets, and more hitting the market.",
-}; */
-
 export const dynamic = "force-dynamic";
 
 const POSTS_PER_PAGE = 10;

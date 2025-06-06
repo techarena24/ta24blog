@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ModeToggle } from "./ModeToggle";
 import { Button } from "@/components/ui/button";
 import { MenuIcon, SearchIcon, X } from "lucide-react";
@@ -20,6 +20,18 @@ const links = [
 const Navbar = () => {
   const pathName = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const [searchQuery, setSearchQuery] = useState("")
+  const router = useRouter()
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery(""); // Optional: clear search input
+      setMenuOpen(false); // Optional: close mobile menu
+    }
+  }
 
   return (
     <header className=" max-w-6xl w-full mx-auto mb-8">
@@ -97,15 +109,17 @@ const Navbar = () => {
       {/* Search Bar */}
       <div className=" bg-primary px-6 sm:px-4">
         <div className=" md:max-w-[50%] mx-auto h-12 flex items-center">
-          <div className=" flex w-full rounded-tr-sm rounded-br-sm border dark:border-secondary ">
-            <input
-              type="text"
-              className=" bg-secondary w-[90%] text-sm px-4 py-1 focus:outline-2 focus:ring-2 focus:ring-blue-800"
-            />
-            <button className=" px-4 py-1">
-              <SearchIcon className=" text-white dark:text-secondary" />
-            </button>
-          </div>
+            <form onSubmit={handleSearch} className=" flex w-full rounded-tr-sm rounded-br-sm border dark:border-secondary ">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className=" bg-secondary w-[90%] text-sm px-4 py-1 focus:outline-2 focus:ring-2 focus:ring-blue-800"
+              />
+              <button type="submit" className=" px-4 py-1">
+                <SearchIcon className=" text-white dark:text-secondary" />
+              </button>
+            </form>
         </div>
       </div>
     </header>
