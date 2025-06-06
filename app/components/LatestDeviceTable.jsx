@@ -53,7 +53,7 @@ const LatestDeviceTable = async ({ device }) => {
         <div className="lg:w-[40%]">
           <div className=" mt-10 md:mt-0 mb-5">
             <div className=" grid grid-cols-2 gap-3">
-              {posts.map((post) => (
+              {posts.slice(0, 10).map((post) => (
                 <Link key={post._id} href={`/${post.slug}`}>
                 <div className="bg-blue-200 flex flex-col items-center h-56 relative">
                   <Image

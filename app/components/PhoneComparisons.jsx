@@ -13,7 +13,7 @@ const PhoneComparisons = ({ posts }) => {
     <div className=' flex flex-col'>
         <h1 className=' text-2xl lg:text-3xl font-semibold'>Phone Comparisons</h1>
         <div className=' flex flex-col sm:flex-row sm:overflow-x-auto whitespace-nowrap snap-x snap-mandatory '>
-            {posts.map((post) => (
+            {posts.slice(0, 6).map((post) => (
               <Link key={post._id} href={`/${post.slug}`} aria-label={`Read more about ${post.title}`}>
                 <div className=' flex flex-row w-full p-4 gap-4 sm:min-w-[350px] sm:flex-col rounded-sm overflow-hidden'>
                   <div className='relative w-[20%] h-15 rounded-sm sm:rounded-sm bg-white object-cover sm:mt-0 sm:ml-0 sm:w-full sm:h-[200px] sm:rounded-t-sm '>

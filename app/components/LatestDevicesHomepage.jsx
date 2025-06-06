@@ -16,7 +16,7 @@ const LatestDevicesHomepage = ({ posts }) => {
     <div className="flex flex-col space-y-6">
       <h1 className="text-2xl lg:text-3xl font-semibold">Latest Devices</h1>
       <div className="flex flex-row overflow-x-auto gap-6 whitespace-nowrap snap-x snap-mandatory">
-        {posts.slice(0, 6).map((post) => (
+        {posts.slice(0, 8).map((post) => (
           <Link key={post._id} href={`/${post.slug}`}>
            <div className="w-64 h-56 relative">
              <div className="h-full">
