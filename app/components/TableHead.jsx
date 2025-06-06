@@ -16,7 +16,7 @@ function TableHead({ device }) {
     <>
       <div className="border dark:border-white">
         <h2 className="text-center py-2 border bg-gray-100 font-bold dark:text-gray-800">
-          {device.title} Highlight
+          {device.phoneName} Overview
         </h2>
         <div className="flex flex-col lg:flex-row">
           <div className="flex items-center justify-center lg:w-[30%]">
@@ -38,7 +38,7 @@ function TableHead({ device }) {
                 <div className=" border dark:border-white flex flex-col md:flex-row gap-2 h-[25%] items-center px-2 py-2">
                   <Aperture />
                   <p className="overflow-hidden">
-                    {device?.specs?.backcamera}
+                    {device?.specs?.maincamera}
                   </p>
                 </div>
                 <div className=" border dark:border-white flex flex-col md:flex-row gap-2 h-[25%] items-center px-2 py-1">
