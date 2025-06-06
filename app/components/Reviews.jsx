@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
-import { toPlainText } from '@portabletext/react';
-import { formatDistanceToNow } from 'date-fns';
-import Link from 'next/link';
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { toPlainText } from "@portabletext/react";
+import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
 
 const Reviews = ({ posts }) => {
-  const [visiblePosts, setVisiblePosts] = useState(5)
+  const [visiblePosts, setVisiblePosts] = useState(5);
 
   useEffect(() => {
     const updateVisiblePosts = () => {
       if (window.innerWidth >= 1024) {
-        setVisiblePosts(3)
+        setVisiblePosts(3);
       } else {
-        setVisiblePosts(5)
+        setVisiblePosts(5);
       }
     };
 
@@ -22,11 +22,11 @@ const Reviews = ({ posts }) => {
     window.addEventListener("resize", updateVisiblePosts);
 
     return () => window.removeEventListener("resize", updateVisiblePosts);
-  }, [])
+  }, []);
 
   // Truncated text function to line-clamp the post paragraphs
   const truncatedText = (text, length) => {
-    return text.length > length ? text.slice(0, length) + '...' : text;
+    return text.length > length ? text.slice(0, length) + "..." : text;
   };
 
   return (
@@ -79,4 +79,4 @@ const Reviews = ({ posts }) => {
   )
 }
 
-export default Reviews
+export default Reviews;
