@@ -10,6 +10,7 @@ const getAllPosts = async () => {
     _id,
     title,
     slug,
+    summary,
     "postImage": postImage.asset->url,
     "author": author->name,
     publishedAt,

@@ -2,12 +2,14 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-function LatestDevices(props) {
+const LatestDevicesPosts = (props) => {
   const { posts, width, grid } = props;
 
   const propStyleForCards = {
     width: width || "100%",
   };
+
+  console.log("card fetch",posts)
 
   return (
     <>
@@ -44,4 +46,4 @@ function LatestDevices(props) {
   );
 }
 
-export default LatestDevices;
+export default LatestDevicesPosts;

@@ -20,6 +20,17 @@ export default {
             validation: Rule => Rule.required().error('Slug is required')
         },
         {
+          name: 'summary',
+          type: 'text',
+          title: 'SEO Summary',
+          description: 'Concise 1-2 sentence summary for Google snippets (max 160 chars)',
+          validation: Rule => [
+            Rule.required().error('Required for SEO previews'),
+            Rule.max(160).warning('Ideal length for search results')
+          ],
+          rows: 2 // Keeps input compact
+        },
+        {
             name: 'postImage',
             type: 'image',
             title: 'Post Image',

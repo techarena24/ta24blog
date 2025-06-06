@@ -13,24 +13,24 @@ import LatestDevicesHomepage from "../components/LatestDevicesHomepage";
 import { fetchedLatestDevices } from "@/lib/fetchedDevices";
 
 export default async function Home() {
-  const posts = await fetchedReviewPosts();
-  const topStories = await fetchedNewsPosts();
+  const { posts: reviewPosts = [] } = await fetchedReviewPosts();
+  const { posts: topStories = [] } = await fetchedNewsPosts();
   const phoneComparison = await fetchedPhoneComparisonPosts();
-  const deals = await fetchedDealsPosts();
-  const latestDevices = await fetchedLatestDevices();
+  const { posts: dealPosts = [] } = await fetchedDealsPosts();
+  const { posts: latestDevices = [] } = await fetchedLatestDevices();
 
   return (
     <div className=" flex flex-col space-y-8">
       <AdBanner />
       <div className=" flex flex-col lg:flex-row justify-between gap-8">
         <LatestPosts />
-        <Reviews posts={posts} /> 
+        <Reviews posts={reviewPosts} /> 
       </div>
       <LatestDevicesHomepage posts={latestDevices} />
       <News posts={topStories} />
       <BigAdBanner />
       <PhoneComparisons posts={phoneComparison} />
-      <Deals posts={deals} />
+      <Deals posts={dealPosts} />
       <BigAdBanner />
     </div>
   );
