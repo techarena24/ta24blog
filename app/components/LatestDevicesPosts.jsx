@@ -9,7 +9,7 @@ const LatestDevicesPosts = (props) => {
     width: width || "100%",
   };
 
-  console.log("card fetch",posts)
+  console.log("card fetch", posts);
 
   return (
     <>
@@ -32,7 +32,7 @@ const LatestDevicesPosts = (props) => {
                   width={800}
                   alt={post.title}
                   priority
-                  className="w-full h-full object-fill"
+                  className="w-full h-full object-cover"
                 />
                 <h3 className="text-center font-bold text-black absolute bottom-0 top-40 bg-white/80 py-1 px-1 left-0 right-0 hover:text-blue-500 dark:text-gray-700">
                   {post.title}
@@ -44,6 +44,6 @@ const LatestDevicesPosts = (props) => {
       </div>
     </>
   );
-}
+};
 
 export default LatestDevicesPosts;
