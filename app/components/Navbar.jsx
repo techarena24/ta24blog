@@ -71,7 +71,7 @@ const Navbar = () => {
         <div className=" flex flex-row gap-5 ">
           <ModeToggle />
           <Button className=" lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X /> : <MenuIcon />}
+            {menuOpen ? <span className=" text-white"><X /></span> : <MenuIcon />}
           </Button>
         </div>
       </div>
