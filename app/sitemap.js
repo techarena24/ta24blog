@@ -5,7 +5,7 @@ const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default async function sitemap() {
   // ✅ Fetch all posts instead of one by slug
-  const query = `*[_type == "post"]{
+  const query = `*[_type == "post" || _type == "device"]{
     _id,
     title,
     slug,
