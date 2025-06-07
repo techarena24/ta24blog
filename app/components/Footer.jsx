@@ -7,15 +7,15 @@ const Footer = () => {
   return (
     <footer className=" w-full max-w-6xl mx-auto bg-primary mt-18">
       <div className=" flex flex-col gap-10 sm:flex-row py-8 md:py-16 mx-6 lg:mx-20 justify-between sm:gap-0">
-        <div className=" flex flex-col items-center sm:block sm:items-start">
+        <div className=" flex flex-col items-center justify-center">
           <Link href={"/"}>
             <Image
               src="/images/logoTa24.jpeg"
               alt="Tech Arena24 logo"
-              width={1000}
-              height={700}
+              width={200}
+              height={75}
               priority
-              className=" mb-5 h-[75px] w-[150px]"
+              className=" mb-5 h-auto w-auto"
             />
           </Link>
           <p className=" text-xs font-medium mb-1">
