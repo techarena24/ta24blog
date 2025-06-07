@@ -18,6 +18,11 @@ export default {
             }
         },
         {
+            name: 'phoneName',
+            type: 'string',
+            title: 'Phone Name',
+        },
+        {
           name: 'summary',
           type: 'text',
           title: 'SEO Summary',
@@ -68,9 +73,14 @@ export default {
                     title: 'Display'
                 },
                 {
+                    name: 'maincamera',
+                    type: 'string',
+                    title: 'Main Camera'
+                },
+                {
                     name: 'backcamera',
                     type: 'string',
-                    title: 'Back Camera'
+                    title: 'Back Cameras'
                 },
                 {
                     name: 'frontcamera',
