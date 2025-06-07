@@ -18,12 +18,7 @@ export async function generateMetadata(props) {
 
   if (post) {
     const metaDataImage = post.postImage?.asset?.url;
-    const firstTextBlock = post.body?.find(
-      (block) => block._type === "block" && block.children
-    );
-    const description =
-      firstTextBlock?.children?.[0]?.text?.slice(0, 164) ||
-      "No description available";
+    const description = post.summary || "No description available";
     return {
       title: post.title,
       description,
@@ -52,10 +47,10 @@ export async function generateMetadata(props) {
   if (device) {
     return {
       title: device.title,
-      description: device.title,
+      description: device.summary,
       openGraph: {
         title: device.title,
-        description: device.title,
+        description: device.summary,
         type: "article",
         locale: "en_US",
         url: `${baseURL}/${slug}`,

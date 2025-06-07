@@ -18,7 +18,7 @@ const LatestDevicesHomepage = ({ posts }) => {
       <div className="flex flex-row overflow-x-auto gap-6 whitespace-nowrap snap-x snap-mandatory">
         {posts.slice(0, 8).map((post) => (
           <Link key={post._id} href={`/${post.slug}`}>
-            <div className="w-64 h-56 relative">
+            <div className="w-64 h-56 relative border">
               <div className="h-full">
                 <Image
                   src={post.deviceImage}
@@ -26,12 +26,12 @@ const LatestDevicesHomepage = ({ posts }) => {
                   width={800}
                   alt={post.title}
                   priority
-                  className="w-full h-full object-fill"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <h3
                 className="text-center font-bold text-wrap hover:text-blue-500 absolute bottom-0 top-40 bg-white/80 py-1 px-1
-             left-0 right-0 dark:text-gray-700 flex flex-row justify-center items-center"
+             left-0 right-0 dark:text-gray-700 flex flex-row justify-center items-center border-t"
               >
                 {post.phoneName}
               </h3>

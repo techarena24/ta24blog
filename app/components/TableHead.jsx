@@ -25,7 +25,7 @@ function TableHead({ device }) {
               width={1000}
               height={800}
               alt="phone"
-              className="w-48 lg:w-full lg:h-full lg:object-fill"
+              className="w-48 lg:w-full lg:h-full lg:object-cover"
             />
           </div>
           <div className=" lg:w-[70%]">
