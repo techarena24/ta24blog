@@ -24,7 +24,7 @@ export default async function Home() {
       <AdBanner />
       <div className=" flex flex-col lg:flex-row justify-between gap-8">
         <LatestPosts />
-        <Reviews posts={reviewPosts} /> 
+        <Reviews posts={reviewPosts} />
       </div>
       <LatestDevicesHomepage posts={latestDevices} />
       <News posts={topStories} />
