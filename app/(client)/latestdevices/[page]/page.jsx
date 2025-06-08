@@ -59,7 +59,7 @@ const LatestDevices = async (props) => {
     "@type": "ItemList",
     name: "Latest Devices",
     description: "List of the newest devices published on our site",
-    url: `${baseURL}/latest-devices`,
+    url: `${baseURL}/latestdevices/${pageNumber}`,
     itemListOrder: "http://schema.org/ItemListOrderDescending",
     numberOfItems: posts.length,
     itemListElement: posts.map((post, index) => ({
