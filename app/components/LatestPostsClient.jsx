@@ -67,11 +67,11 @@ export const LatestPostsClient = ({ initialPosts, totalPostCount }) => {
                           <div className=' space-y-2'>
                             <div className=' hidden sm:flex text-xs text-gray-600 justify-between'>
                               <h4 className=' font-semibold text-primary'>
-                                {post.categories.map((category) => (
-                                  <span key={category.slug.current} className="inline-block mr-2 last:mr-0">
-                                    {category.title}
-                                  </span>
-                                ))}
+                              {post.categories?.[0] && (
+                                <span className="inline-block mr-2">
+                                  {post.categories[0].title}
+                                </span>
+                              )}
                               </h4>
                               <h4 className=' text-[10px] py-0.5 px-1 bg-gray-300 rounded-xs text-black'>
                                 {post.author}

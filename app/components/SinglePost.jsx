@@ -95,14 +95,11 @@ const SinglePostPage = async ({ post }) => {
                   </span>
                 </div>
                 <div>
-                  {post.categories?.map((cat) => (
-                    <span
-                      key={cat.slug}
-                      className="text-xs rounded-xs font-medium bg-primary px-1 py-0.5 text-gray-200"
-                    >
-                      {cat.title}
+                  {post.categories?.[0] && (
+                    <span className="text-xs rounded-xs font-medium bg-primary px-1 py-0.5 text-gray-200">
+                      {post.categories[0].title}
                     </span>
-                  ))}
+                  )}
                 </div>
               </div>
               <div className=" lg:px-4 pb-6">
