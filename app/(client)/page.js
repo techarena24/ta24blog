@@ -11,6 +11,7 @@ import { fetchedPhoneComparisonPosts } from "@/lib/fetchedPhoneComparisonApi";
 import { fetchedDealsPosts } from "@/lib/fetchedDealsApi";
 import LatestDevicesHomepage from "../components/LatestDevicesHomepage";
 import { fetchedLatestDevices } from "@/lib/fetchedDevices";
+import Head from "next/head";
 
 export default async function Home() {
   const { posts: reviewPosts = [] } = await fetchedReviewPosts();
@@ -20,18 +21,26 @@ export default async function Home() {
   const { posts: latestDevices = [] } = await fetchedLatestDevices();
 
   return (
-    <div className=" flex flex-col space-y-8">
-      <AdBanner />
-      <div className=" flex flex-col lg:flex-row justify-between gap-8">
-        <LatestPosts />
-        <Reviews posts={reviewPosts} />
+    <>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="DQqhkMBfxRqhdBjVKdhPjT-qv_cdCmDg9F1P8sUtMVY"
+        />
+      </Head>
+      <div className=" flex flex-col space-y-8">
+        <AdBanner />
+        <div className=" flex flex-col lg:flex-row justify-between gap-8">
+          <LatestPosts />
+          <Reviews posts={reviewPosts} />
+        </div>
+        <LatestDevicesHomepage posts={latestDevices} />
+        <News posts={topStories} />
+        <BigAdBanner />
+        <PhoneComparisons posts={phoneComparison} />
+        <Deals posts={dealPosts} />
+        <BigAdBanner />
       </div>
-      <LatestDevicesHomepage posts={latestDevices} />
-      <News posts={topStories} />
-      <BigAdBanner />
-      <PhoneComparisons posts={phoneComparison} />
-      <Deals posts={dealPosts} />
-      <BigAdBanner />
-    </div>
+    </>
   );
 }
