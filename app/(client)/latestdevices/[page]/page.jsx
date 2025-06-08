@@ -72,12 +72,10 @@ const LatestDevices = async (props) => {
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
 
       <section>
         <AdBanner />
@@ -94,20 +92,22 @@ const LatestDevices = async (props) => {
 
         {/* Pagination */}
         <div className="flex justify-between mt-10">
-          {!isFirstPage && (
-            <Link href={`/latestdevices/${pageNumber - 1}`}>
-              <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">
-                ← Previous
-              </button>
-            </Link>
-          )}
-          {!isLastPage && (
-            <Link href={`/latestdevices/${pageNumber + 1}`}>
-              <button className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded ml-auto">
-                Next →
-              </button>
-            </Link>
-          )}
+          <Head>
+            {!isFirstPage && (
+              <Link rel="prev" href={`/latestdevices/${pageNumber - 1}`}>
+                <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">
+                  ← Previous
+                </button>
+              </Link>
+            )}
+            {!isLastPage && (
+              <Link rel="next" href={`/latestdevices/${pageNumber + 1}`}>
+                <button className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded ml-auto">
+                  Next →
+                </button>
+              </Link>
+            )}
+          </Head>
         </div>
         <AdBanner />
       </section>
