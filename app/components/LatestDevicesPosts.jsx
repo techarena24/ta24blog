@@ -1,9 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Head from "next/head";
-
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const LatestDevicesPosts = (props) => {
   const { posts, width, grid } = props;
@@ -14,32 +11,8 @@ const LatestDevicesPosts = (props) => {
 
   console.log("card fetch", posts);
 
-  // Generate JSON-LD schema dynamically from posts
-  const itemListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Latest Devices",
-    description: "List of the newest devices published on our site",
-    url: `${baseURL}/latest-devices`,
-    itemListOrder: "http://schema.org/ItemListOrderDescending",
-    numberOfItems: posts.length,
-    itemListElement: posts.map((post, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `${baseURL}/${post.slug}`,
-      name: post.phoneName,
-    })),
-  };
-
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
-        />
-      </Head>
-
       <div className="w-full" style={propStyleForCards}>
         <h2 className="col-span-3 bg-gray-100 self-baseline px-2 py-2 dark:text-gray-800">
           Latest Phones
