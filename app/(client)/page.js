@@ -20,18 +20,20 @@ export default async function Home() {
   const { posts: latestDevices = [] } = await fetchedLatestDevices();
 
   return (
-    <div className=" flex flex-col space-y-8">
-      <AdBanner />
-      <div className=" flex flex-col lg:flex-row justify-between gap-8">
-        <LatestPosts />
-        <Reviews posts={reviewPosts} />
+    <>
+      <div className=" flex flex-col space-y-8">
+        <AdBanner />
+        <div className=" flex flex-col lg:flex-row justify-between gap-8">
+          <LatestPosts />
+          <Reviews posts={reviewPosts} />
+        </div>
+        <LatestDevicesHomepage posts={latestDevices} />
+        <News posts={topStories} />
+        <BigAdBanner />
+        <PhoneComparisons posts={phoneComparison} />
+        <Deals posts={dealPosts} />
+        <BigAdBanner />
       </div>
-      <LatestDevicesHomepage posts={latestDevices} />
-      <News posts={topStories} />
-      <BigAdBanner />
-      <PhoneComparisons posts={phoneComparison} />
-      <Deals posts={dealPosts} />
-      <BigAdBanner />
-    </div>
+    </>
   );
 }
