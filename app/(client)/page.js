@@ -37,10 +37,10 @@ export default async function Home() {
       {
         "@type": "WebPage",
         "@id": "https://www.techarena24.com/#webpage",
-        "url": "https://www.techarena24.com/",
-        "name": "Tech Arena24 - Latest Tech News, Reviews & Deals",
-        "isPartOf": { "@id": "https://www.techarena24.com/#website" },
-        "about": { "@id": "https://www.techarena24.com/#organization" }
+        url: "https://www.techarena24.com/",
+        name: "Tech Arena24 - Latest Tech News, Reviews & Deals",
+        isPartOf: { "@id": "https://www.techarena24.com/#website" },
+        about: { "@id": "https://www.techarena24.com/#organization" },
       },
       {
         "@type": "Organization",
@@ -49,7 +49,7 @@ export default async function Home() {
         url: "https://www.techarena24.com/",
         logo: {
           "@type": "ImageObject",
-          url: "https://www.techarena24.com/images/logoTa24.jpeg", // Make sure this path is correct
+          url: "https://www.techarena24.com/images/logoTa24.jpeg",
         },
         sameAs: [
           "https://www.facebook.com/techarena24blog",
