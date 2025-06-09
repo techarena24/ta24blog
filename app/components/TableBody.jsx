@@ -17,7 +17,7 @@ function TableBody({ device }) {
               <th className="border border-gray-300 p-2">Value</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-left">
             <tr className="border border-gray-300 sm:table-row">
               <th className="border border-gray-300 p-2">Display</th>
               <td className="border border-gray-300 p-2">
