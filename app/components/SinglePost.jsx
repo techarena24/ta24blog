@@ -20,7 +20,7 @@ const SinglePostPage = async ({ post }) => {
 
   const metaDataImage = post.postImage?.asset?.url;
 
-  const jsonLd = {
+  const postSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
@@ -28,13 +28,13 @@ const SinglePostPage = async ({ post }) => {
     author: {
       "@type": "Person",
       name: post.author,
-      url: baseURL, //this should be dynamic. this is just to test the schema on Google
+      url: baseURL, // Can be updated dynamically if author has profile pages
     },
     datePublished: post.publishedAt,
     image: [metaDataImage],
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${baseURL}${post.slug}`,
+      "@id": `${baseURL}/${post.slug}`,
     },
     publisher: {
       "@type": "Organization",
@@ -48,6 +48,12 @@ const SinglePostPage = async ({ post }) => {
       post.categories?.map((cat) => cat.title).join(", ") || "Uncategorized",
     inLanguage: "en",
     isAccessibleForFree: true,
+
+    // Speakable added schema
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [`${post.tlte}, ${post.summary}`],
+    },
   };
 
   try {
@@ -57,7 +63,7 @@ const SinglePostPage = async ({ post }) => {
       <>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(postSchema) }}
         />
 
         <div className=" flex flex-col space-y-10">
