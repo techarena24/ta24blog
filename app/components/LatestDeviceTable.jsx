@@ -9,9 +9,6 @@ import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
 import { fetchedLatestDevices } from "@/lib/fetchedDevices";
 import Link from "next/link";
-import DeviceSchemaHead from "./DeviceSchemaHead";
-
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const LatestDeviceTable = async ({ device }) => {
   const { posts } = await fetchedLatestDevices();
@@ -95,12 +92,6 @@ const LatestDeviceTable = async ({ device }) => {
 
   return (
     <>
-      <DeviceSchemaHead
-        device={posts}
-        baseURL={baseURL}
-        metaDataImage={posts.deviceImage}
-        description={posts.summary}
-      />
       <div className="mb-5">
         <AdBanner />
       </div>
@@ -116,7 +107,7 @@ const LatestDeviceTable = async ({ device }) => {
                 <AdBanner />
               </div>
               <article>
-                <h2 className="py-2 font-bold">{device?.title}</h2>
+                <h2 className="py-2 font-bold">{device?.title} Overview</h2>
                 <div>
                   <PortableText
                     value={device.body}
