@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import ThemeProvider from "../components/theme-provider";
 import Footer from "../components/Footer";
 
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "900"],
@@ -22,9 +24,56 @@ export const metadata = {
   },
 };
 
+// JSON-LD Schema
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${baseURL}/#website`,
+      name: "Tech Arena24",
+      url: { baseURL },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${baseURL}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${baseURL}/#webpage`,
+      url: { baseURL },
+      name: "Tech Arena24 - Latest Tech News, Reviews & Deals",
+      isPartOf: { "@id": `${baseURL}/#website` },
+      about: { "@id": `${baseURL}/#organization` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${baseURL}/#organization`,
+      name: "Tech Arena24",
+      url: { baseURL },
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseURL}/images/logoTa24.jpeg`,
+      },
+      sameAs: [
+        "https://www.facebook.com/techarena24blog",
+        "https://x.com/techarena24blog",
+        "https://www.instagram.com/techarena24blog/",
+      ],
+    },
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      </head>
       <body
         className={`${poppins.className} antialiased flex flex-col min-h-screen`}
       >
