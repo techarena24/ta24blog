@@ -96,7 +96,7 @@ const LatestDeviceTable = async ({ device }) => {
   return (
     <>
       <DeviceSchemaHead
-        device={device}
+        device={posts}
         baseURL={baseURL}
         metaDataImage={posts.deviceImage}
         description={posts.summary}
