@@ -1,11 +1,28 @@
-import React from 'react'
+// components/AdBanner.js
+"use client";
+import { useEffect } from "react";
 
-const AdBanner = () => {
+const AdBanner = ({ slot, format = "auto", responsive = "true" }) => {
+  useEffect(() => {
+    try {
+      if (typeof window !== "undefined") {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    } catch (e) {
+      console.error("Adsense error", e);
+    }
+  }, []);
+
   return (
-    <div className=' max-w-4xl w-full h-28 border border-gray-300 mx-auto flex justify-center items-center'>
-        <p>Ad Space</p>
-    </div>
-  )
-}
+    <ins
+      className="adsbygoogle"
+      style={{ display: "block" }}
+      data-ad-client="ca-pub-1557100683793492"
+      data-ad-slot={slot}
+      data-ad-format={format}
+      data-full-width-responsive={responsive}
+    />
+  );
+};
 
-export default AdBanner
+export default AdBanner;
