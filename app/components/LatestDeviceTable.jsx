@@ -47,7 +47,7 @@ const LatestDeviceTable = async ({ device }) => {
     // Speakable added schema
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: [`${device.tlte}, ${device.summary}`],
+      cssSelector: [`${device.title}, ${device.summary}`],
     },
   };
 
