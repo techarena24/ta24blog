@@ -4,7 +4,6 @@ import { fetchDeviceBySlug } from "@/lib/fetchDeviceSpecsBySlug";
 import { getPostBySlug } from "@/lib/getPostBySlug";
 import { notFound } from "next/navigation";
 import { urlFor } from "@/sanity/lib/image";
-import DeviceSchemaHead from "@/app/components/DeviceSchemaHead";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -68,7 +67,6 @@ export async function generateMetadata(props) {
           : [], // Handle cases where there's no featured image
       },
     };
-    
   }
 
   return {
@@ -89,12 +87,6 @@ const Page = async (props) => {
   if (device) {
     return (
       <>
-        <DeviceSchemaHead
-          device={device}
-          baseURL={baseURL}
-          metaDataImage={device.deviceImage}
-          description={device.summary}
-        />
         <LatestDeviceTable device={device} />
       </>
     );
