@@ -8,6 +8,7 @@ import BigAdBanner from "@/app/components/BigAdBanner";
 import { fetchedNewsPosts } from "@/lib/fetchedNewsApi";
 
 export const dynamic = "force-dynamic";
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const POSTS_PER_PAGE = 10;
 

@@ -24,7 +24,7 @@ export async function generateMetadata(props) {
   }
 
   return {
-    title: `Latest Devices - Page ${pageNumber} | Tech Arena24`,
+    title: `Latest Devices - Page ${pageNumber}`,
     description: `Browse page ${pageNumber} of the latest tech devices at Tech Arena24! Get expert news, first looks, and potential future reviews on the newest smartphones, wearables, gadgets, and more hitting the market`,
   };
 }

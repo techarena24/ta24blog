@@ -85,7 +85,7 @@ function TableBody({ device }) {
               </td>
             </tr>
             <tr className="border border-gray-300 sm:table-row">
-              <th className="border border-gray-300 p-2">Available</th>
+              <th className="border border-gray-300 p-2">Buy Now</th>
               {/* you can map through the Link below. This way you can delete three of the Link below and use just one. The structure for front end is already created. */}
               <td className="border border-gray-300 grid md:grid-cols-2 gap-1 p-1 text-white">
                 {device.specs?.buyOptions?.map((option, index) => (
