@@ -68,6 +68,7 @@ export async function generateMetadata(props) {
           : [], // Handle cases where there's no featured image
       },
     };
+    
   }
 
   return {

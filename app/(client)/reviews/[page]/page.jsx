@@ -8,6 +8,7 @@ import BigAdBanner from "@/app/components/BigAdBanner";
 import { fetchedReviewPosts } from "@/lib/fetchedReviewApi";
 
 export const dynamic = "force-dynamic";
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const POSTS_PER_PAGE = 10;
 
@@ -22,7 +23,7 @@ export async function generateMetadata(props) {
   if (isNaN(pageNumber) || pageNumber < 1) {
     // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
     return {
-      title: `Reviews | Tech Arena24`,
+      title: `Reviews`,
       description: `Browse Reviews on Tech Arena24.`,
     };
   }

@@ -23,7 +23,7 @@ export async function generateMetadata(props) {
   if (isNaN(pageNumber) || pageNumber < 1) {
     // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
     return {
-      title: `Deals | Tech Arena24`,
+      title: `Latest Deals`,
       description: `Browse deals on Tech Arena24.`,
     };
   }
