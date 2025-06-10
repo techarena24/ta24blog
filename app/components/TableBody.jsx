@@ -57,7 +57,7 @@ function TableBody({ device }) {
             <tr className="border border-gray-300 sm:table-row">
               <th className="border border-gray-300 p-2">RAM</th>
               <td className="border border-gray-300 p-2">
-                {device?.specs?.storage}
+                {device?.specs?.ram}
               </td>
             </tr>
             <tr className="border border-gray-300 sm:table-row">
