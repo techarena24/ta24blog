@@ -68,7 +68,7 @@ const Navbar = () => {
         </nav>
 
         {/* Buttons */}
-        <div className=" flex flex-row gap-5 ">
+        <div className=" flex flex-row gap-5">
           <ModeToggle />
           <Button className=" lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X /> : <MenuIcon />}
@@ -115,11 +115,16 @@ const Navbar = () => {
           >
             <input
               type="text"
+              aria-label="Search query"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className=" bg-secondary w-[90%] text-sm px-4 py-1 focus:outline-2 focus:ring-2 focus:ring-blue-800"
             />
-            <button type="submit" className=" px-4 py-1">
+            <button
+              aria-label="Search search button"
+              type="submit"
+              className=" px-4 py-1"
+            >
               <SearchIcon className=" text-white dark:text-secondary" />
             </button>
           </form>
