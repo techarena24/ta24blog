@@ -16,7 +16,7 @@ const Footer = () => {
                 width={200}
                 height={75}
                 priority
-                className=" mb-5 w-auto h-auto"
+                className=" mb-5 w-52 h-14"
               />
             </Link>
             <p className=" text-xs font-medium mb-1">
