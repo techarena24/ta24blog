@@ -5,7 +5,7 @@ const AdBanner = ({
   slot,
   format = "auto",
   responsive = "true",
-  height = "250px",
+  height = "192px",
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const adRef = useRef();
@@ -48,7 +48,7 @@ const AdBanner = ({
         style={{
           display: "block",
           width: "100%",
-          height: "192px", // explicitly setting height
+          height: height, // explicitly setting height
         }}
         data-ad-client="ca-pub-1557100683793492"
         data-ad-slot={slot}

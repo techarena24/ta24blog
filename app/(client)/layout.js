@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import ThemeProvider from "../components/theme-provider";
 import Footer from "../components/Footer";
 import AdBanner from "../components/AdBanner";
+import Script from "next/script";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -71,7 +72,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
+        <cript
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
@@ -90,11 +91,12 @@ export default function RootLayout({ children }) {
           </div>
           <Footer />
         </ThemeProvider>
-        <script
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557100683793492"
+          strategy="lazyOnload"
           crossorigin="anonymous"
-        ></script>
+        ></Script>
       </body>
     </html>
   );
