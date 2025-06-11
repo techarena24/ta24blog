@@ -11,7 +11,6 @@ export const metadata = {
 function About() {
   return (
     <div>
-      <AdBanner />
       <h1 className=" font-semibold text-2xl my-8">About</h1>
       <div className=" space-y-6 mb-10">
         <p>
@@ -102,7 +101,6 @@ function About() {
           </div>
         </div>
       </div>
-      <BigAdBanner />
     </div>
   );
 }

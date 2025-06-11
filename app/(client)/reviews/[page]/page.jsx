@@ -75,10 +75,10 @@ const ReviewPage = async (props) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
-      <div className="flex flex-col space-y-10">
-        <div className="block md:hidden">
+      <div className="flex flex-col space-y-10 mt-5">
+        {/* <div className="block md:hidden">
           <AdBanner />
-        </div>
+        </div> */}
 
         <div className="md:flex md:gap-8 items-start md:min-h-screen">
           <div className="flex flex-col gap-6 md:flex-[70%] md:h-screen md:overflow-y-auto">
@@ -182,12 +182,10 @@ const ReviewPage = async (props) => {
           {/* Sidebar Ads */}
           <aside className="hidden md:block md:w-[300px] md:h-screen">
             <div className="md:sticky md:top-0 md:h-[100vh] md:overflow-y-auto border">
-              <p>ads</p>
+              <AdBanner slot="4220368538" />
             </div>
           </aside>
         </div>
-
-        <BigAdBanner />
       </div>
     </>
   );

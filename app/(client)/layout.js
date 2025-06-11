@@ -82,7 +82,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <AdBanner slot="4220368538" />
-          <main className="w-full max-w-6xl mx-auto px-6 sm:px-4 xl:px-0 overflow-x-hidden flex-1">
+          <main className="w-full max-w-6xl min-h-[80vh] mx-auto px-6 sm:px-4 xl:px-0 overflow-x-hidden flex-1">
             {children}
           </main>
           <div className="mt-10">

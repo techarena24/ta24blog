@@ -10,7 +10,7 @@ export const myPortableTextComponents = {
           alt={value?.alt || ''}
           width={1000}
           height={800}
-          className="object-contain mx-auto w-[1200px] h-[630px] sm:w-3/4 md:w-2/3 lg:w-1/2"
+          className="object-contain mx-auto sm:w-3/4 md:w-2/3 lg:w-1/2"
         />
         {value?.caption && (
           <figcaption className="text-center text-sm mt-2 text-gray-600">

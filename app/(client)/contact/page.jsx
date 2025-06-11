@@ -1,7 +1,5 @@
 "use client";
 
-import AdBanner from "@/app/components/AdBanner";
-import BigAdBanner from "@/app/components/BigAdBanner";
 import Image from "next/image";
 import React, { useState, useRef } from "react";
 import emailjs from "emailjs-com";
@@ -61,7 +59,6 @@ const page = () => {
 
   return (
     <div className=" flex flex-col">
-      <AdBanner />
       <h1 className=" font-semibold text-2xl mt-8">Contact Us</h1>
 
       <div className=" space-y-6 mt-8">
@@ -176,12 +173,18 @@ const page = () => {
               <p className=" font-bold text-[22px] mb-2">
                 Call or Whatsapp Number
               </p>
-              <a href="tel:+447349006479" className="bg-blue-600 text-white font-medium text-[20px] px-6 py-2 rounded-lg mb-2
-              hover:bg-blue-700 transition">
+              <a
+                href="tel:+447349006479"
+                className="bg-blue-600 text-white font-medium text-[20px] px-6 py-2 rounded-lg mb-2
+              hover:bg-blue-700 transition"
+              >
                 +447349006479
               </a>
-              <a href="tel:+16723351001" className="bg-blue-600 text-white font-medium text-[20px] px-6 py-2 rounded-lg mb-2
-              hover:bg-blue-700 transition">
+              <a
+                href="tel:+16723351001"
+                className="bg-blue-600 text-white font-medium text-[20px] px-6 py-2 rounded-lg mb-2
+              hover:bg-blue-700 transition"
+              >
                 +16723351001
               </a>
             </div>
@@ -202,9 +205,6 @@ const page = () => {
             />
           </div>
         </div>
-      </div>
-      <div className=" mt-10">
-        <BigAdBanner />
       </div>
     </div>
   );
