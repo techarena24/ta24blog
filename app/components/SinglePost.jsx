@@ -99,7 +99,7 @@ const SinglePostPage = async ({ post }) => {
                 </div>
                 <div>
                   {post.categories?.[0] && (
-                    <span className="text-xs rounded-xs font-medium bg-primary px-1 py-0.5 text-white">
+                    <span className="text-sm rounded-xs font-medium bg-gray-500 px-1 py-0.5 text-white">
                       {post.categories[0].title}
                     </span>
                   )}
