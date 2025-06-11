@@ -1,5 +1,3 @@
-import AdBanner from "@/app/components/AdBanner";
-import BigAdBanner from "@/app/components/BigAdBanner";
 import React from "react";
 
 export const metadata = {
