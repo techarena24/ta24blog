@@ -57,7 +57,7 @@ const LatestDeviceTable = async ({ device }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(postSchema) }}
       />
-      <section className="flex flex-col lg:flex-row gap-3">
+      <section className="flex flex-col lg:flex-row gap-3 my-5">
         <div className="gap-2 lg:w-[60%]">
           <div className="">
             <TableHead device={device} />
