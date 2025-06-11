@@ -76,7 +76,7 @@ const SinglePostPage = async ({ post }) => {
                   alt={post.postImage?.alt || post.title}
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 640px) 75vw, (max-width: 768px) 66vw, (max-width: 1024px) 50vw, 33vw"
                   className=" object-cover w-[1200px] h-[630px]"
                 />
                 <div className=" absolute inset-0 bg-gradient-to-b from-black/20 via-black/60 to-black/80 z-10" />
