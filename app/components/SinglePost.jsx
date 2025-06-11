@@ -66,11 +66,7 @@ const SinglePostPage = async ({ post }) => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(postSchema) }}
         />
 
-        <div className=" flex flex-col space-y-10">
-          {/* <div className=" block h-38 w-full mx-auto md:w-[90%]">
-            <AdBanner slot="4220368538" />
-          </div> */}
-
+        <div className=" flex flex-col space-y-10 mt-5">
           <div className=" md:flex md:gap-8 items-start md:min-h-screen">
             <div className=" block md:flex-[70%] space-y-2 md:space-y-2 md:h-screen md:overflow-y-auto">
               <div className=" relative h-48 sm:h-60 md:h-80 w-full bg-gray-200">
