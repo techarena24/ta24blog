@@ -21,7 +21,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className=" flex flex-col space-y-8">
+      <div className=" flex flex-col space-y-8 mt-5">
         <div className=" flex flex-col lg:flex-row justify-between gap-8">
           <LatestPosts />
           <Reviews posts={reviewPosts} />
