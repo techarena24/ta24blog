@@ -1,6 +1,6 @@
 import { fetchedReviewPosts } from "@/lib/fetchedReviewApi";
 import AdBanner from "../components/AdBanner";
-import BigAdBanner from "../components/BigAdBanner";
+// import BigAdBanner from "../components/BigAdBanner";
 import Deals from "../components/Deals";
 import LatestPosts from "../components/LatestPosts";
 import News from "../components/News";
@@ -29,10 +29,10 @@ export default async function Home() {
         </div>
         <LatestDevicesHomepage posts={latestDevices} />
         <News posts={topStories} />
-        <BigAdBanner />
+        <AdBanner slot="4220368538" />
         <PhoneComparisons posts={phoneComparison} />
         <Deals posts={dealPosts} />
-        <BigAdBanner />
+        <AdBanner slot="4220368538" />
       </div>
     </>
   );
