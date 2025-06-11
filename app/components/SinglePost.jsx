@@ -2,7 +2,7 @@ import Image from "next/image";
 import AdBanner from "./AdBanner";
 import { formatDistanceToNow } from "date-fns";
 import { PortableText } from "next-sanity";
-import BigAdBanner from "./BigAdBanner";
+// import BigAdBanner from "./BigAdBanner";
 import { notFound } from "next/navigation";
 import { myPortableTextComponents } from "./portableTextComponents";
 
@@ -118,7 +118,7 @@ const SinglePostPage = async ({ post }) => {
 
             <div className=" hidden md:block md:w-[300px] md:h-screen ">
               <div className=" md:sticky md:top-0 md:h-[100vh] md:overflow-y-auto border">
-                <AdBanner slot="4220368538" />
+                <p>Ad space</p>
               </div>
             </div>
           </div>

@@ -22,7 +22,6 @@ export default async function Home() {
   return (
     <>
       <div className=" flex flex-col space-y-8">
-        <AdBanner slot="4220368538" />
         <div className=" flex flex-col lg:flex-row justify-between gap-8">
           <LatestPosts />
           <Reviews posts={reviewPosts} />
@@ -32,7 +31,6 @@ export default async function Home() {
         <AdBanner slot="4220368538" />
         <PhoneComparisons posts={phoneComparison} />
         <Deals posts={dealPosts} />
-        <AdBanner slot="4220368538" />
       </div>
     </>
   );
