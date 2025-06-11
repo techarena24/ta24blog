@@ -70,7 +70,11 @@ const Navbar = () => {
         {/* Buttons */}
         <div className=" flex flex-row gap-5">
           <ModeToggle />
-          <Button className=" lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+          <Button
+            className=" lg:hidden"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             {menuOpen ? <X /> : <MenuIcon />}
           </Button>
         </div>
@@ -87,7 +91,10 @@ const Navbar = () => {
       >
         <div className=" flex justify-between items-center p-5">
           <h2 className=" text-xl font-semibold text-white">Menu</h2>
-          <Button onClick={() => setMenuOpen(false)}>
+          <Button
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setMenuOpen(false)}
+          >
             <X className=" text-white" />
           </Button>
         </div>
