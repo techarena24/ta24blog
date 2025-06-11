@@ -67,8 +67,8 @@ const SinglePostPage = async ({ post }) => {
         />
 
         <div className=" flex flex-col space-y-10">
-          <div className=" block md:hidden">
-            <AdBanner />
+          <div className=" block h-38 w-full mx-auto md:w-[90%]">
+            <AdBanner slot="4220368538" />
           </div>
 
           <div className=" md:flex md:gap-8 items-start md:min-h-screen">
@@ -118,12 +118,10 @@ const SinglePostPage = async ({ post }) => {
 
             <div className=" hidden md:block md:w-[300px] md:h-screen ">
               <div className=" md:sticky md:top-0 md:h-[100vh] md:overflow-y-auto border">
-                <p>ads</p>
+                <AdBanner slot="4220368538" />
               </div>
             </div>
           </div>
-
-          <BigAdBanner />
         </div>
       </>
     );
