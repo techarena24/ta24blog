@@ -41,19 +41,21 @@ const AdBanner = ({
   }, [isVisible]);
 
   return (
-    <ins
-      ref={adRef}
-      className="adsbygoogle"
-      style={{
-        display: "block",
-        width: "100%",
-        height: height, // explicitly setting height
-      }}
-      data-ad-client="ca-pub-1557100683793492"
-      data-ad-slot={slot}
-      data-ad-format={format}
-      data-full-width-responsive={responsive}
-    />
+    <div className=" w-100% md:w-[80%] h-48 mx-auto">
+      <ins
+        ref={adRef}
+        className="adsbygoogle"
+        style={{
+          display: "block",
+          width: "100%",
+          height: "192px", // explicitly setting height
+        }}
+        data-ad-client="ca-pub-1557100683793492"
+        data-ad-slot={slot}
+        data-ad-format={format}
+        data-full-width-responsive={responsive}
+      />
+    </div>
   );
 };
 

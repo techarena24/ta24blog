@@ -74,8 +74,7 @@ const SinglePostPage = async ({ post }) => {
                 <Image
                   src={post.postImage.asset?.url || ""}
                   alt={post.postImage?.alt || post.title}
-                  width={1200}
-                  height={630}
+                  fill
                   priority
                   className=" object-cover w-[1200px] h-[630px]"
                 />
