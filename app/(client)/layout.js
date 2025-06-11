@@ -11,6 +11,7 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "900"],
   variable: "--font-poppins",
+  display: "swap",
 });
 
 export const metadata = {
@@ -84,7 +85,9 @@ export default function RootLayout({ children }) {
           <main className="w-full max-w-6xl mx-auto px-6 sm:px-4 xl:px-0 overflow-x-hidden flex-1">
             {children}
           </main>
-          <AdBanner slot="4220368538" />
+          <div className="mt-10">
+            <AdBanner slot="4220368538" />
+          </div>
           <Footer />
         </ThemeProvider>
         <script

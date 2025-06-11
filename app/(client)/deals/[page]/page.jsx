@@ -76,10 +76,6 @@ const DealsPage = async (props) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <div className="flex flex-col space-y-10">
-        <div className="block md:hidden">
-          <AdBanner />
-        </div>
-
         <div className="md:flex md:gap-8 items-start md:min-h-screen">
           <div className="flex flex-col gap-6 md:flex-[70%] md:h-screen md:overflow-y-auto">
             {/* Featured Post */}
