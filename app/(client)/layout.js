@@ -73,11 +73,6 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557100683793492"
-          crossorigin="anonymous"
-        ></script>
       </head>
       <body
         className={`${poppins.className} antialiased flex flex-col min-h-screen`}
@@ -89,6 +84,11 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
         </ThemeProvider>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557100683793492"
+          crossorigin="anonymous"
+        ></script>
       </body>
     </html>
   );
