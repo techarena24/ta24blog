@@ -5,6 +5,7 @@ import { PortableText } from "next-sanity";
 // import BigAdBanner from "./BigAdBanner";
 import { notFound } from "next/navigation";
 import { myPortableTextComponents } from "./portableTextComponents";
+import AdBanner from "./AdBanner";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -114,7 +115,7 @@ const SinglePostPage = async ({ post }) => {
 
             <div className=" hidden md:block md:w-[300px] md:h-screen ">
               <div className=" md:sticky md:top-0 md:h-[100vh] md:overflow-y-auto border">
-                <p>Ad space</p>
+                <AdBanner slot="4220368538" />
               </div>
             </div>
           </div>
