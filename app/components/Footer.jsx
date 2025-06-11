@@ -13,10 +13,10 @@ const Footer = () => {
               <Image
                 src="/images/logoTa24.jpeg"
                 alt="Tech Arena24 logo"
-                width={200}
-                height={75}
+                width={256}
+                height={64}
                 priority
-                className=" mb-5 w-52 h-14"
+                className=" mb-5 aspect-[4/1]"
               />
             </Link>
             <p className=" text-xs font-medium mb-1">
