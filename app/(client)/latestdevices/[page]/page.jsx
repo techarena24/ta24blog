@@ -78,7 +78,7 @@ const LatestDevices = async (props) => {
       />
 
       <section>
-        <AdBanner />
+        {/* <AdBanner /> */}
         <div className="my-10 flex flex-col lg:flex-row lg:gap-2.5">
           <LatestDevicesPosts
             posts={safePosts}
@@ -86,7 +86,7 @@ const LatestDevices = async (props) => {
             grid="grid-cols-2 md:grid-cols-4"
           />
           <div className="w-[25%] hidden lg:block h-40">
-            <BigAdBanner />
+            <AdBanner slot="4220368538" />
           </div>
         </div>
 
@@ -109,7 +109,7 @@ const LatestDevices = async (props) => {
             )}
           </Head>
         </div>
-        <AdBanner />
+        {/* <AdBanner /> */}
       </section>
     </>
   );

@@ -4,7 +4,7 @@ import TableBody from "./TableBody";
 import { PortableText } from "next-sanity";
 import { myPortableTextComponents } from "./portableTextComponents";
 import AdBanner from "./AdBanner";
-import BigAdBanner from "./BigAdBanner";
+// import BigAdBanner from "./BigAdBanner";
 import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
 import { fetchedLatestDevices } from "@/lib/fetchedDevices";
@@ -57,9 +57,6 @@ const LatestDeviceTable = async ({ device }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(postSchema) }}
       />
-      <div className="mb-5">
-        <AdBanner />
-      </div>
       <section className="flex flex-col lg:flex-row gap-3">
         <div className="gap-2 lg:w-[60%]">
           <div className="">
@@ -69,7 +66,7 @@ const LatestDeviceTable = async ({ device }) => {
             {/* ... rest of your component */}
             <section className="px-2">
               <div className="my-5">
-                <AdBanner />
+                <AdBanner slot="4220368538" />
               </div>
               <article>
                 <h2 className="py-2 font-bold text-[1.5rem]">
@@ -117,9 +114,6 @@ const LatestDeviceTable = async ({ device }) => {
                 </Link>
               ))}
             </div>
-          </div>
-          <div>
-            <BigAdBanner />
           </div>
         </div>
       </section>
