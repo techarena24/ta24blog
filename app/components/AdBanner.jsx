@@ -41,7 +41,7 @@ const AdBanner = ({
   }, [isVisible]);
 
   return (
-    <div className="bg-red-400 w-full md:w-[90%] h-[170px] mx-auto">
+    <div className="w-full md:w-[90%] h-[170px] mx-auto">
       <ins
         ref={adRef}
         className="adsbygoogle"
