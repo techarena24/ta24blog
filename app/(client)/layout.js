@@ -76,6 +76,14 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4XFSF9HS2G');
+          `}
+        </Script>
       </head>
       <body
         className={`${poppins.className} antialiased flex flex-col min-h-screen`}
