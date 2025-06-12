@@ -5,7 +5,7 @@ const AdBanner = ({
   slot,
   format = "auto",
   responsive = "true",
-  height = "192px",
+  height = "170px",
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const adRef = useRef();
@@ -41,7 +41,7 @@ const AdBanner = ({
   }, [isVisible]);
 
   return (
-    <div className=" w-100% md:w-[80%] h-48 mx-auto">
+    <div className="bg-red-400 w-full md:w-[90%] h-[170px] mx-auto">
       <ins
         ref={adRef}
         className="adsbygoogle"
