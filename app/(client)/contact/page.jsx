@@ -30,10 +30,10 @@ const schema = {
       },
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Lewisham Shopping Centre",
-        addressLocality: "London",
-        postalCode: "SE13 7EP",
-        addressCountry: "GB",
+        streetAddress: "942 E 57th Avenue",
+        addressLocality: "Vancouver, BC",
+        postalCode: "V5X 1T5",
+        addressCountry: "Canada",
       },
       sameAs: [
         "https://www.facebook.com/techarena24blog",
