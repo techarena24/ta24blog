@@ -1,7 +1,6 @@
 import LatestDevicesPosts from "@/app/components/LatestDevicesPosts";
 import React from "react";
 import AdBanner from "@/app/components/AdBanner";
-import BigAdBanner from "@/app/components/BigAdBanner";
 import { fetchedLatestDevices } from "@/lib/fetchedDevices";
 import Head from "next/head";
 

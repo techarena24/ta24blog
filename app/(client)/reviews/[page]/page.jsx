@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { formatDistanceToNow } from "date-fns";
 import { toPlainText } from "@portabletext/react";
 import AdBanner from "@/app/components/AdBanner";
-import BigAdBanner from "@/app/components/BigAdBanner";
 import { fetchedReviewPosts } from "@/lib/fetchedReviewApi";
 
 export const dynamic = "force-dynamic";
@@ -29,7 +28,7 @@ export async function generateMetadata(props) {
   }
 
   return {
-    title: `Reviews - Page ${pageNumber} | Tech Arena24`,
+    title: `Reviews - Page ${pageNumber}`,
     description: `Browse page ${pageNumber} of the latest Reviews on Tech Arena24.`,
   };
 }

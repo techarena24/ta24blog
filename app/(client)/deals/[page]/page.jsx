@@ -5,7 +5,6 @@ import { fetchedDealsPosts } from "@/lib/fetchedDealsApi";
 import { formatDistanceToNow } from "date-fns";
 import { toPlainText } from "@portabletext/react";
 import AdBanner from "@/app/components/AdBanner";
-import BigAdBanner from "@/app/components/BigAdBanner";
 
 export const dynamic = "force-dynamic";
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -29,7 +28,7 @@ export async function generateMetadata(props) {
   }
 
   return {
-    title: `Deals - Page ${pageNumber} | Tech Arena24`,
+    title: `Deals - Page ${pageNumber}`,
     description: `Browse page ${pageNumber} of the latest deals on Tech Arena24.`,
   };
 }
