@@ -52,12 +52,12 @@ const schema = {
 function About() {
   return (
     <>
-      <head>
+      
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
-      </head>
+      
       <div>
         <h1 className=" font-semibold text-2xl my-8">About</h1>
         <div className=" space-y-6 mb-10">
