@@ -25,7 +25,7 @@ const schema = {
         "@type": "ContactPoint",
         telephone: "+44-7349-006479",
         contactType: "Technical Inquiry",
-        areaServed: ["GB", "US", "CA"],
+        areaServed: "Worldwide",
         availableLanguage: ["English"],
       },
       address: {
