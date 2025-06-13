@@ -1,4 +1,3 @@
-import Head from "next/head";
 import React from "react";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -53,12 +52,12 @@ const schema = {
 function About() {
   return (
     <>
-      <Head>
+      <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
-      </Head>
+      </head>
       <div>
         <h1 className=" font-semibold text-2xl my-8">About</h1>
         <div className=" space-y-6 mb-10">
