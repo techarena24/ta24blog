@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { formatDistanceToNow } from "date-fns";
 import { toPlainText } from "@portabletext/react";
 import AdBanner from "@/app/components/AdBanner";
-import BigAdBanner from "@/app/components/BigAdBanner";
 import { fetchedNewsPosts } from "@/lib/fetchedNewsApi";
 
 export const dynamic = "force-dynamic";
@@ -23,13 +22,13 @@ export async function generateMetadata(props) {
   if (isNaN(pageNumber) || pageNumber < 1) {
     // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
     return {
-      title: `News | Tech Arena24`,
+      title: `News`,
       description: `Browse News on Tech Arena24.`,
     };
   }
 
   return {
-    title: `News - Page ${pageNumber} | Tech Arena24`,
+    title: `News - Page ${pageNumber}`,
     description: `Browse page ${pageNumber} of the latest News on Tech Arena24.`,
   };
 }
