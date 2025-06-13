@@ -30,13 +30,17 @@ const schema = {
     "Tech Arena24 is a mobile phone tech blog offering reviews, comparisons, and pre-order services. Owned and managed by two brothers from South-South Nigeria.",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Lewisham, London",
-    addressCountry: "United Kingdom",
+    streetAddress: "942 E 57th Avenue",
+    addressLocality: "Vancouver, BC",
+    postalCode: "V5X 1T5",
+    addressCountry: "Canada",
   },
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+44-7349-006479",
     contactType: "Technical Inquiry",
+    areaServed: ["GB", "US", "CA"],
+    availableLanguage: ["English"],
   },
   sameAs: [
     "https://www.facebook.com/techarena24blog",
@@ -52,12 +56,11 @@ const schema = {
 function About() {
   return (
     <>
-      
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+
       <div>
         <h1 className=" font-semibold text-2xl my-8">About</h1>
         <div className=" space-y-6 mb-10">
