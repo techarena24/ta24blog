@@ -1,6 +1,5 @@
 import React from "react";
 import ContactForm from "@/app/components/ContactForm";
-import Head from "next/head";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -59,12 +58,12 @@ const schema = {
 function page() {
   return (
     <>
-      <Head>
+      <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
-      </Head>
+      </head>
       <ContactForm />
     </>
   );
