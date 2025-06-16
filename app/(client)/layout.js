@@ -113,18 +113,18 @@ const schema = {
     },
 
     // 4. A minimal BreadcrumbList (one item)
-    {
-      "@type": "BreadcrumbList",
-      "@id": `${baseURL}/#breadcrumbs`,
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: baseURL,
-        },
-      ],
-    },
+    // {
+    //   "@type": "BreadcrumbList",
+    //   "@id": `${baseURL}/#breadcrumbs`,
+    //   itemListElement: [
+    //     {
+    //       "@type": "ListItem",
+    //       position: 1,
+    //       name: "Home",
+    //       item: baseURL,
+    //     },
+    //   ],
+    // },
   ],
 };
 
