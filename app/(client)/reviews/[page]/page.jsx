@@ -52,27 +52,64 @@ const ReviewPage = async (props) => {
   const isLastPage = pageNumber >= totalPages;
 
   // Generate JSON-LD schema dynamically from posts
-  const itemListSchema = {
+  const pageSchema = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Latest Reviews",
-    description: "List of the latest reviews published on our site",
-    url: `${baseURL}/reviews/${pageNumber}`,
-    itemListOrder: "http://schema.org/ItemListOrderDescending",
-    numberOfItems: posts.length,
-    itemListElement: posts.map((post, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `${baseURL}/${post.slug}`,
-      name: post.title,
-    })),
+    "@graph": [
+      // 1. The CollectionPage itself
+      {
+        "@type": "CollectionPage",
+        "@id": `${baseURL}/reviews/${pageNumber}#collectionpage`,
+        url: `${baseURL}/reviews/${pageNumber}`,
+        name: "Latest Reviews",
+        isPartOf: { "@id": `${baseURL}/#website` },
+        breadcrumb: { "@id": `${baseURL}/reviews/${pageNumber}#breadcrumbs` },
+        mainEntity: { "@id": `${baseURL}/reviews/${pageNumber}#itemlist` },
+      },
+
+      // 2. The breadcrumb trail (Home → Reviews)
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${baseURL}/reviews/${pageNumber}#breadcrumbs`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: baseURL,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Reviews",
+            item: `${baseURL}/reviews`,
+          },
+        ],
+      },
+
+      // 3. Your original ItemList (now with an @id so CollectionPage can reference it)
+      {
+        "@type": "ItemList",
+        "@id": `${baseURL}/reviews/${pageNumber}#itemlist`,
+        name: "Latest Reviews",
+        description: "List of the latest reviews published on our site",
+        url: `${baseURL}/reviews/${pageNumber}`,
+        itemListOrder: "http://schema.org/ItemListOrderDescending",
+        numberOfItems: posts.length,
+        itemListElement: posts.map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `${baseURL}/${post.slug}`,
+          name: post.title,
+        })),
+      },
+    ],
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
       <div className="flex flex-col space-y-10 mt-5">
         {/* <div className="block md:hidden">

@@ -5,7 +5,7 @@ import ThemeProvider from "../components/theme-provider";
 import Footer from "../components/Footer";
 import AdBanner from "../components/AdBanner";
 import Script from "next/script";
-import Head from "next/head";
+// import Head from "next/head";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -16,46 +16,29 @@ const poppins = Poppins({
   display: "swap",
 });
 
-export const metadata = {
-  title: {
-    default: "Tech Arena24: Expert Tech News, Reviews, Comparisons & Top Deals",
-    template: "%s | Tech Arena24",
-  },
-  description:
-    "Discover the latest smartphones, laptops, and gadgets with expert reviews, side-by-side comparisons, and exclusive tech deals — all at Tech Arena24.",
-  twitter: {
-    card: "summary_large_image",
-  },
-};
-
-// JSON-LD Schema
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
+    // 1. Your WebSite with a publisher link
     {
       "@type": "WebSite",
       "@id": `${baseURL}/#website`,
+      url: baseURL,
       name: "Tech Arena24",
-      url: { baseURL },
+      publisher: { "@id": `${baseURL}/#organization` },
       potentialAction: {
         "@type": "SearchAction",
         target: `${baseURL}/search?q={search_term_string}`,
         "query-input": "required name=search_term_string",
       },
     },
+
+    // 2. A NewsMediaOrganization (helps Google recognize you as a news source)
     {
-      "@type": "WebPage",
-      "@id": `${baseURL}/#webpage`,
-      url: { baseURL },
-      name: "Tech Arena24 - Latest Tech News, Reviews & Deals",
-      isPartOf: { "@id": `${baseURL}/#website` },
-      about: { "@id": `${baseURL}/#organization` },
-    },
-    {
-      "@type": "Organization",
+      "@type": "NewsMediaOrganization",
       "@id": `${baseURL}/#organization`,
       name: "Tech Arena24",
-      url: { baseURL },
+      url: baseURL,
       logo: {
         "@type": "ImageObject",
         url: `${baseURL}/images/logoTa24.jpeg`,
@@ -65,17 +48,136 @@ const schema = {
         "https://x.com/techarena24blog",
         "https://www.instagram.com/techarena24blog/",
       ],
+      foundingDate: "2018-06-01",
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "Customer Support",
+          telephone: "+44-734-900-6479",
+        },
+      ],
+    },
+
+    // 3. Your HomePage with rich metadata
+    {
+      "@type": "WebPage",
+      "@id": `${baseURL}/#homepage`,
+      url: baseURL,
+      name: "Tech Arena24 – Latest Tech News, Reviews & Deals",
+      description:
+        "Tech Arena24 brings you the latest technology news, in-depth reviews, and exclusive deals on gadgets.",
+      inLanguage: "en-US",
+      datePublished: "2018-06-01T08:00:00+00:00",
+      dateModified: "2025-06-15T12:00:00+00:00",
+      isPartOf: { "@id": `${baseURL}/#website` },
+      about: { "@id": `${baseURL}/#organization` },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: `${baseURL}/images/TechArena24_Banner.jpg`,
+        width: 1200,
+        height: 600,
+      },
+      breadcrumb: { "@id": `${baseURL}/#breadcrumbs` },
+      hasPart: [
+        {
+          "@type": "SiteNavigationElement",
+          name: "News",
+          url: `${baseURL}/news`,
+        },
+        {
+          "@type": "SiteNavigationElement",
+          name: "Reviews",
+          url: `${baseURL}/reviews`,
+        },
+        {
+          "@type": "SiteNavigationElement",
+          name: "Deals",
+          url: `${baseURL}/deals`,
+        },
+        {
+          "@type": "SiteNavigationElement",
+          name: "Latest Devices",
+          url: `${baseURL}/latest-devices`,
+        },
+        {
+          "@type": "SiteNavigationElement",
+          name: "Contact",
+          url: `${baseURL}/contact`,
+        },
+        {
+          "@type": "SiteNavigationElement",
+          name: "About",
+          url: `${baseURL}/about`,
+        },
+      ],
+    },
+
+    // 4. A minimal BreadcrumbList (one item)
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${baseURL}/#breadcrumbs`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: baseURL,
+        },
+      ],
     },
   ],
 };
 
+// JSON-LD Schema
+// const schema = {
+//   "@context": "https://schema.org",
+//   "@graph": [
+//     {
+//       "@type": "WebSite",
+//       "@id": `${baseURL}/#website`,
+//       name: "Tech Arena24",
+//       url: { baseURL },
+//       potentialAction: {
+//         "@type": "SearchAction",
+//         target: `${baseURL}/search?q={search_term_string}`,
+//         "query-input": "required name=search_term_string",
+//       },
+//     },
+//     {
+//       "@type": "WebPage",
+//       "@id": `${baseURL}/#webpage`,
+//       url: { baseURL },
+//       name: "Tech Arena24 - Latest Tech News, Reviews & Deals",
+//       isPartOf: { "@id": `${baseURL}/#website` },
+//       about: { "@id": `${baseURL}/#organization` },
+//     },
+//     {
+//       "@type": "Organization",
+//       "@id": `${baseURL}/#organization`,
+//       name: "Tech Arena24",
+//       url: { baseURL },
+//       logo: {
+//         "@type": "ImageObject",
+//         url: `${baseURL}/images/logoTa24.jpeg`,
+//       },
+//       sameAs: [
+//         "https://www.facebook.com/techarena24blog",
+//         "https://x.com/techarena24blog",
+//         "https://www.instagram.com/techarena24blog/",
+//       ],
+//     },
+//   ],
+// };
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      </head>
 
       <Script id="google-analytics" strategy="afterInteractive">
         {`
