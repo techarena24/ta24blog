@@ -87,8 +87,8 @@ export async function generateMetadata({ params }) {
     const description =
       post.summary || `Read our latest article: ${post.title}`;
     const imageUrl = post.postImage?.asset?.url
-      ? urlFor(post.postImage.asset.url)
-      : `${base}/images/default-og.jpg`;
+      ? urlFor(post.postImage.asset.url).width(1200).height(630).url()
+      : `${base}/opengraph-image.jpg`;
     const published = post.publishedAt;
     const modified = post.updatedAt || published;
     const authorSlug =
