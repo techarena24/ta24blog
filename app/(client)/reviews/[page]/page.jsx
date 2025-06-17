@@ -5,6 +5,7 @@ import { formatDistanceToNow } from "date-fns";
 import { toPlainText } from "@portabletext/react";
 import AdBanner from "@/app/components/AdBanner";
 import { fetchedReviewPosts } from "@/lib/fetchedReviewApi";
+// import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -14,22 +15,83 @@ const POSTS_PER_PAGE = 10;
 const truncate = (text, length) =>
   text.length > length ? text.slice(0, length) + "..." : text;
 
-export async function generateMetadata(props) {
-  const params = await props.params;
-  const page = params.page;
-  const pageNumber = parseInt(page, 10);
+//commented the first metadata
+// export async function generateMetadata(props) {
+//   const params = await props.params;
+//   const page = params.page;
+//   const pageNumber = parseInt(page, 10);
 
-  if (isNaN(pageNumber) || pageNumber < 1) {
-    // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
-    return {
-      title: `Reviews`,
-      description: `Browse Reviews on Tech Arena24.`,
-    };
-  }
+//   if (isNaN(pageNumber) || pageNumber < 1) {
+//     // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
+//     return {
+//       title: `Reviews`,
+//       description: `Browse Reviews on Tech Arena24.`,
+//     };
+//   }
+
+//   return {
+//     title: `Reviews - Page ${pageNumber}`,
+//     description: `Browse page ${pageNumber} of the latest Reviews on Tech Arena24.`,
+//   };
+// }
+
+export async function generateMetadata({ params }) {
+  const pageNumber = parseInt(params.page, 10);
+  const isValid = !isNaN(pageNumber) && pageNumber > 0;
+  const currentPage = isValid ? pageNumber : 1;
+
+  const title = isValid
+    ? `Tech Gadget Reviews – Page ${currentPage} | Tech Arena24`
+    : `Tech Gadget Reviews | Tech Arena24`;
+
+  const description = isValid
+    ? `Explore page ${currentPage} of in-depth tech gadget reviews—from the latest smartphones and gaming consoles to laptops and desktops—at Tech Arena24.`
+    : `Explore in-depth tech gadget reviews on Tech Arena24: smartphones, gaming consoles, laptops, desktops, and more.`;
+
+  const url = `${process.env.BASE_URL}/reviews/${currentPage}`;
+  const ogImage = `${process.env.BASE_URL}/images/reviews-og.jpg`;
 
   return {
-    title: `Reviews - Page ${pageNumber}`,
-    description: `Browse page ${pageNumber} of the latest Reviews on Tech Arena24.`,
+    title,
+    description,
+
+    // canonical link
+    alternates: {
+      canonical: url,
+    },
+
+    // Open Graph for Facebook, LinkedIn, etc.
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Tech Arena24",
+      type: "website",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "Tech Arena24 Reviews",
+        },
+      ],
+    },
+
+    // Twitter card
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+      site: "@techarena24",
+      creator: "@techarena24",
+    },
+
+    // Tell bots to index and follow
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 

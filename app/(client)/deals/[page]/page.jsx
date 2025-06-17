@@ -52,27 +52,81 @@ const DealsPage = async (props) => {
   const isLastPage = pageNumber >= totalPages;
 
   // Generate JSON-LD schema dynamically from posts
-  const itemListSchema = {
+  // const itemListSchema = {
+  //   "@context": "https://schema.org",
+  //   "@type": "ItemList",
+  //   name: "Latest Deals",
+  //   description: "List of the latest deals published on our site",
+  //   url: `${baseURL}/deals/${pageNumber}`,
+  //   itemListOrder: "http://schema.org/ItemListOrderDescending",
+  //   numberOfItems: posts.length,
+  //   itemListElement: posts.map((post, index) => ({
+  //     "@type": "ListItem",
+  //     position: index + 1,
+  //     url: `${baseURL}/${post.slug}`,
+  //     name: post.title,
+  //   })),
+  // };
+
+  // Generate JSON-LD schema dynamically from posts
+  const pageSchema = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Latest Deals",
-    description: "List of the latest deals published on our site",
-    url: `${baseURL}/deals/${pageNumber}`,
-    itemListOrder: "http://schema.org/ItemListOrderDescending",
-    numberOfItems: posts.length,
-    itemListElement: posts.map((post, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `${baseURL}/${post.slug}`,
-      name: post.title,
-    })),
+    "@graph": [
+      // 1. The CollectionPage itself
+      {
+        "@type": "CollectionPage",
+        "@id": `${baseURL}/deals/${pageNumber}#collectionpage`,
+        url: `${baseURL}/deals/${pageNumber}`,
+        name: "Latest Reviews",
+        isPartOf: { "@id": `${baseURL}/#website` },
+        breadcrumb: { "@id": `${baseURL}/deals/${pageNumber}#breadcrumbs` },
+        mainEntity: { "@id": `${baseURL}/deals/${pageNumber}#itemlist` },
+      },
+
+      // 2. The breadcrumb trail (Home → Deals)
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${baseURL}/deals/${pageNumber}#breadcrumbs`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: baseURL,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Deals",
+            item: `${baseURL}/deals`,
+          },
+        ],
+      },
+
+      // 3. Your original ItemList (now with an @id so CollectionPage can reference it)
+      {
+        "@type": "ItemList",
+        "@id": `${baseURL}/deals/${pageNumber}#itemlist`,
+        name: "Latest Deals",
+        description: "List of the latest reviews published on our site",
+        url: `${baseURL}/deals/${pageNumber}`,
+        itemListOrder: "http://schema.org/ItemListOrderDescending",
+        numberOfItems: posts.length,
+        itemListElement: posts.map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `${baseURL}/${post.slug}`,
+          name: post.title,
+        })),
+      },
+    ],
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
       <div className="flex flex-col space-y-10 mt-5">
         <div className="md:flex md:gap-8 items-start md:min-h-screen">

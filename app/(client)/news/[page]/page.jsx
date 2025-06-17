@@ -14,22 +14,85 @@ const POSTS_PER_PAGE = 10;
 const truncate = (text, length) =>
   text.length > length ? text.slice(0, length) + "..." : text;
 
-export async function generateMetadata(props) {
-  const params = await props.params;
-  const page = params.page;
-  const pageNumber = parseInt(page, 10);
+//former schema for news page
+// export async function generateMetadata(props) {
+//   const params = await props.params;
+//   const page = params.page;
+//   const pageNumber = parseInt(page, 10);
 
-  if (isNaN(pageNumber) || pageNumber < 1) {
-    // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
-    return {
-      title: `News`,
-      description: `Browse News on Tech Arena24.`,
-    };
-  }
+//   if (isNaN(pageNumber) || pageNumber < 1) {
+//     // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
+//     return {
+//       title: `News`,
+//       description: `Browse News on Tech Arena24.`,
+//     };
+//   }
+
+//   return {
+//     title: `News - Page ${pageNumber}`,
+//     description: `Browse page ${pageNumber} of the latest News on Tech Arena24.`,
+//   };
+// }
+
+//schema for the news page
+export async function generateMetadata({ params }) {
+  const pageNumber = parseInt(params.page, 10);
+  const isValid = !isNaN(pageNumber) && pageNumber > 0;
+  const current = isValid ? pageNumber : null;
+
+  // 1. Dynamic title & description
+  const title = isValid
+    ? `Tech News – Page ${current} | Tech Arena24`
+    : `Tech News | Tech Arena24`;
+  const description = isValid
+    ? `Stay updated with page ${current} of the latest tech news on Tech Arena24: breaking announcements, trending gadget headlines, industry insights, and expert analysis.`
+    : `Stay updated with the latest tech news on Tech Arena24: breaking announcements, trending gadget headlines, industry insights, and expert analysis.`;
+
+  // 2. Base URL & social image
+  const base = process.env.BASE_URL || "https://techarena24.com";
+  const url = isValid ? `${base}/news/${current}` : `${base}/news`;
+  const ogImage = `${base}/images/news-og.jpg`;
 
   return {
-    title: `News - Page ${pageNumber}`,
-    description: `Browse page ${pageNumber} of the latest News on Tech Arena24.`,
+    // Core meta
+    title,
+    description,
+
+    // Self‐canonicalization
+    alternates: { canonical: url },
+
+    // Open Graph for FB/LinkedIn/etc.
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Tech Arena24",
+      type: "website",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "Tech Arena24 News",
+        },
+      ],
+    },
+
+    // Twitter Card
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+      site: "@techarena24",
+      creator: "@techarena24",
+    },
+
+    // Encourage crawling of paginated sections
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
@@ -52,27 +115,85 @@ const NewsPage = async (props) => {
   const isLastPage = pageNumber >= totalPages;
 
   // Generate JSON-LD schema dynamically from posts
-  const itemListSchema = {
+  // const itemListSchema = {
+  //   "@context": "https://schema.org",
+  //   "@type": "ItemList",
+  //   name: "Latest News",
+  //   description: "List of the latest news published on our site",
+  //   url: `${baseURL}/news/${pageNumber}`,
+  //   itemListOrder: "http://schema.org/ItemListOrderDescending",
+  //   numberOfItems: posts.length,
+  //   itemListElement: posts.map((post, index) => ({
+  //     "@type": "ListItem",
+  //     position: index + 1,
+  //     url: `${baseURL}/${post.slug}`,
+  //     name: post.title,
+  //   })),
+  // };
+
+  // Generate JSON-LD schema dynamically from posts
+  const pageSchema = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Latest News",
-    description: "List of the latest news published on our site",
-    url: `${baseURL}/news/${pageNumber}`,
-    itemListOrder: "http://schema.org/ItemListOrderDescending",
-    numberOfItems: posts.length,
-    itemListElement: posts.map((post, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `${baseURL}/${post.slug}`,
-      name: post.title,
-    })),
+    "@graph": [
+      // 1. The CollectionPage itself
+      {
+        "@type": "CollectionPage",
+        "@id": `${baseURL}/news/${pageNumber}#collectionpage`,
+        url: `${baseURL}/news/${pageNumber}`,
+        name: "Latest News",
+        isPartOf: { "@id": `${baseURL}/#website` },
+        breadcrumb: {
+          "@id": `${baseURL}/news/${pageNumber}#breadcrumbs`,
+        },
+        mainEntity: {
+          "@id": `${baseURL}/news/${pageNumber}#itemlist`,
+        },
+      },
+
+      // 2. The breadcrumb trail (Home → News)
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${baseURL}/news/${pageNumber}#breadcrumbs`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: baseURL,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Latest News",
+            item: `${baseURL}/news`,
+          },
+        ],
+      },
+
+      // 3. Your original ItemList (now with an @id so CollectionPage can reference it)
+      {
+        "@type": "ItemList",
+        "@id": `${baseURL}/news/${pageNumber}#itemlist`,
+        name: "Latest News",
+        description: "List of the latest news published on our site",
+        url: `${baseURL}/news/${pageNumber}`,
+        itemListOrder: "http://schema.org/ItemListOrderDescending",
+        numberOfItems: posts.length,
+        itemListElement: posts.map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `${baseURL}/${post.slug}`,
+          name: post.title,
+        })),
+      },
+    ],
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
       <div className="flex flex-col space-y-10 mt-5">
         <div className="md:flex md:gap-8 items-start md:min-h-screen">

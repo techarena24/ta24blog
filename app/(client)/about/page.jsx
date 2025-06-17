@@ -2,55 +2,242 @@ import React from "react";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
+//old metadata
+// export const metadata = {
+//   title: "About Us",
+//   description:
+//     "About Tech Arena24: Your trusted source for expert tech news, reviews, comparisons, and top deals. Get to know our team and our commitment to quality tech information.",
+// };
+
+//new metadata
+// app/about/page.jsx
+
 export const metadata = {
-  title: "About Us",
+  title: "About Us | Tech Arena24 – Our Story & Team",
   description:
-    "About Tech Arena24: Your trusted source for expert tech news, reviews, comparisons, and top deals. Get to know our team and our commitment to quality tech information.",
+    "Learn about Tech Arena24’s mission, editorial team, and commitment to delivering unbiased tech news, in-depth reviews, and the best gadget deals. Meet the experts behind your favorite tech site.",
+
+  // Self-canonical URL
+  alternates: {
+    canonical: `${baseURL}/about`,
+  },
+
+  // SEO-focused keywords and authors
+  keywords: [
+    "Tech Arena24",
+    "About Tech Arena24",
+    "Tech News Team",
+    "Tech Reviews",
+    "Gadget Deals",
+  ],
+  authors: [
+    {
+      name: "Tech Arena24 Editorial Team",
+      url: `${baseURL}/about`,
+    },
+  ],
+
+  // Open Graph for rich social previews
+  openGraph: {
+    title: "About Us | Tech Arena24",
+    description:
+      "Discover Tech Arena24’s journey, editorial philosophy, and the team that brings you the latest in tech news, reviews, and deals.",
+    url: `${baseURL}/about`,
+    siteName: "Tech Arena24",
+    type: "website",
+    images: [
+      {
+        url: "https://techarena24.com/images/about-us-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Meet the Tech Arena24 Team",
+      },
+    ],
+  },
+
+  // Twitter Card metadata
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | Tech Arena24",
+    description:
+      "Get to know Tech Arena24’s mission, values, and the expert team behind your go-to tech news, reviews, and deals.",
+    images: [`${baseURL}/images/about-us-og.jpg`],
+    site: "@techarena24",
+    creator: "@techarena24",
+  },
+
+  // Guide search engines to index & follow
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
+//old schema
+// const schema = {
+//   "@context": "https://schema.org",
+//   "@type": "Organization",
+//   name: "Tech Arena24",
+//   url: { baseURL },
+//   logo: `${baseURL}/images/logoTa24.jpeg`,
+//   founders: [
+//     {
+//       "@type": "Person",
+//       name: "Marvellous Ayomike",
+//       description: "Co-founder of Tech Arena24",
+//     },
+//     {
+//       "@type": "Person",
+//       name: "Festus Ayomike",
+//       description: "Co-founder of Tech Arena24",
+//     },
+//   ],
+//   description:
+//     "Tech Arena24 is a mobile phone tech blog offering reviews, comparisons, and pre-order services. Owned and managed by two brothers from South-South Nigeria.",
+//   address: {
+//     "@type": "PostalAddress",
+//     streetAddress: "942 E 57th Avenue",
+//     addressLocality: "Vancouver, BC",
+//     postalCode: "V5X 1T5",
+//     addressCountry: "Canada",
+//   },
+//   contactPoint: {
+//     "@type": "ContactPoint",
+//     telephone: "+44-7349-006479",
+//     contactType: "Technical Inquiry",
+//     areaServed: "Worldwide",
+//     availableLanguage: ["English"],
+//   },
+//   sameAs: [
+//     "https://www.facebook.com/techarena24blog",
+//     "https://x.com/techarena24blog",
+//     "https://www.instagram.com/techarena24blog/",
+//   ],
+//   mainEntityOfPage: {
+//     "@type": "WebPage",
+//     "@id": `${baseURL}/about`,
+//   },
+// };
+
+//new schema
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Tech Arena24",
-  url: { baseURL },
-  logo: `${baseURL}/images/logoTa24.jpeg`,
-  founders: [
+  "@graph": [
+    // 1. Your website entity
     {
-      "@type": "Person",
-      name: "Marvellous Ayomike",
-      description: "Co-founder of Tech Arena24",
+      "@type": "WebSite",
+      "@id": `${baseURL}/#website`,
+      url: baseURL,
+      name: "Tech Arena24",
+      publisher: { "@id": `${baseURL}/#organization` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${baseURL}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
     },
+
+    // 2. Your organization with founders, contact points, etc.
     {
-      "@type": "Person",
-      name: "Festus Ayomike",
-      description: "Co-founder of Tech Arena24",
+      "@type": "Organization",
+      "@id": `${baseURL}/#organization`,
+      name: "Tech Arena24",
+      url: baseURL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseURL}/images/logoTa24.jpeg`,
+      },
+      foundingDate: "2018-06-01",
+      founders: [
+        {
+          "@type": "Person",
+          "@id": `${baseURL}/#person-marvellous`,
+          name: "Marvellous Ayomike",
+          description: "Co-founder of Tech Arena24",
+        },
+        {
+          "@type": "Person",
+          "@id": `${baseURL}/#person-festus`,
+          name: "Festus Ayomike",
+          description: "Co-founder of Tech Arena24",
+        },
+      ],
+      description:
+        "Tech Arena24 is a mobile phone tech blog offering reviews, comparisons, and pre-order services. Owned and operated by two brothers from South-South Nigeria.",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "942 E 57th Avenue",
+        addressLocality: "Vancouver",
+        addressRegion: "BC",
+        postalCode: "V5X 1T5",
+        addressCountry: "CA",
+      },
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          telephone: "+44-734-900-6479",
+          contactType: "Technical Inquiry",
+          areaServed: "Worldwide",
+          availableLanguage: ["English"],
+        },
+        {
+          "@type": "ContactPoint",
+          telephone: "+44-734-900-6479",
+          contactType: "Customer Service",
+          areaServed: "Worldwide",
+          availableLanguage: ["English"],
+        },
+      ],
+      sameAs: [
+        "https://www.facebook.com/techarena24blog",
+        "https://x.com/techarena24blog",
+        "https://www.instagram.com/techarena24blog/",
+      ],
+    },
+
+    // 3. The About page as an AboutPage
+    {
+      "@type": "AboutPage",
+      "@id": `${baseURL}/about#aboutpage`,
+      url: `${baseURL}/about`,
+      name: "About Us – Tech Arena24",
+      description:
+        "Learn about Tech Arena24’s mission, editorial philosophy, and meet the expert team behind your go-to source for tech news, reviews, and deals.",
+      inLanguage: "en-US",
+      isPartOf: { "@id": `${baseURL}/#website` },
+      about: { "@id": `${baseURL}/#organization` },
+      publisher: { "@id": `${baseURL}/#organization` },
+      mainEntity: { "@id": `${baseURL}/#organization` },
+      breadcrumb: { "@id": `${baseURL}/about#breadcrumbs` },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: `${baseURL}/images/about-banner.jpg`,
+        width: 1200,
+        height: 628,
+        alt: "Tech Arena24 Team",
+      },
+    },
+
+    // 4. Breadcrumb trail for Home → About
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${baseURL}/about#breadcrumbs`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: baseURL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "About",
+          item: `${baseURL}/about`,
+        },
+      ],
     },
   ],
-  description:
-    "Tech Arena24 is a mobile phone tech blog offering reviews, comparisons, and pre-order services. Owned and managed by two brothers from South-South Nigeria.",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "942 E 57th Avenue",
-    addressLocality: "Vancouver, BC",
-    postalCode: "V5X 1T5",
-    addressCountry: "Canada",
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+44-7349-006479",
-    contactType: "Technical Inquiry",
-    areaServed: "Worldwide",
-    availableLanguage: ["English"],
-  },
-  sameAs: [
-    "https://www.facebook.com/techarena24blog",
-    "https://x.com/techarena24blog",
-    "https://www.instagram.com/techarena24blog/",
-  ],
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": `${baseURL}/about`,
-  },
 };
 
 function About() {
