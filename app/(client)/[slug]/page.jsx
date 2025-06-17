@@ -80,7 +80,7 @@ export async function generateMetadata({ params }) {
   const slug = params.slug;
   const url = `${baseURL}/${slug}`;
 
-  // 1️⃣ Try Blog Post
+  // Try Blog Post
   const post = await getPostBySlug(slug).catch(() => null);
   if (post) {
     const title = `${post.title} | Tech Arena24`;
@@ -139,7 +139,7 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // 2️⃣ Try Device Article
+  // Try Device Article
   const device = await fetchDeviceBySlug(slug).catch(() => null);
   if (device) {
     const title = `${device.title} Specs & Review | Tech Arena24`;
@@ -192,7 +192,7 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // 3️⃣ Fallback for 404
+  // Fallback for 404
   return {
     title: "Not Found | Tech Arena24",
     description: "Sorry, this page does not exist.",
