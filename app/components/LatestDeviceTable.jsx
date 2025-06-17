@@ -140,6 +140,11 @@ const LatestDeviceTable = async ({ device }) => {
           },
           // …repeat for each spec row
         ],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: device.rating?.average || 4.5,
+          reviewCount: device.rating?.count || 0,
+        },
       },
     ],
   };
