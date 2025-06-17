@@ -14,41 +14,134 @@ const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const LatestDeviceTable = async ({ device }) => {
   const { posts } = await fetchedLatestDevices();
+  //old schema
+  // const postSchema = {
+  //   "@context": "https://schema.org",
+  //   "@type": "BlogPosting",
+  //   headline: device.title,
+  //   description: device.summary,
+  //   author: {
+  //     "@type": "Person",
+  //     name: device.author,
+  //     url: baseURL, // Can be updated dynamically if author has profile pages
+  //   },
+  //   datePublished: device.publishedAt,
+  //   image: [device.deviceImage],
+  //   mainEntityOfPage: {
+  //     "@type": "WebPage",
+  //     "@id": `${baseURL}/${device.slug}`,
+  //   },
+  //   publisher: {
+  //     "@type": "Organization",
+  //     name: "Tech Arena24",
+  //     logo: {
+  //       "@type": "ImageObject",
+  //       url: `${baseURL}/images/logoTa24.jpeg`,
+  //     },
+  //   },
+  //   articleSection:
+  //     device.categories?.map((cat) => cat.title).join(", ") || "Uncategorized",
+  //   inLanguage: "en",
+  //   isAccessibleForFree: true,
 
+  //   // Speakable added schema
+  //   speakable: {
+  //     "@type": "SpeakableSpecification",
+  //     cssSelector: [`${device.title}, ${device.summary}`],
+  //   },
+  // };
+
+  // new schema
   const postSchema = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: device.title,
-    description: device.summary,
-    author: {
-      "@type": "Person",
-      name: device.author,
-      url: baseURL, // Can be updated dynamically if author has profile pages
-    },
-    datePublished: device.publishedAt,
-    image: [device.deviceImage],
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${baseURL}/${device.slug}`,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Tech Arena24",
-      logo: {
-        "@type": "ImageObject",
-        url: `${baseURL}/images/logoTa24.jpeg`,
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": `${baseURL}/${device.slug}#techarticle`,
+        headline: device.title,
+        description: device.summary,
+        author: {
+          "@type": "Person",
+          name: device.author,
+        },
+        datePublished: device.publishedAt,
+        publisher: {
+          "@type": "Organization",
+          "@id": `${baseURL}/#organization`,
+        },
+        mainEntity: {
+          "@id": `${baseURL}/${device.slug}#product`,
+        },
       },
-    },
-    articleSection:
-      device.categories?.map((cat) => cat.title).join(", ") || "Uncategorized",
-    inLanguage: "en",
-    isAccessibleForFree: true,
-
-    // Speakable added schema
-    speakable: {
-      "@type": "SpeakableSpecification",
-      cssSelector: [`${device.title}, ${device.summary}`],
-    },
+      {
+        "@type": "Product",
+        "@id": `${baseURL}/${device.slug}#product`,
+        name: device.title,
+        image: [device.deviceImage],
+        description: device.summary,
+        // optional: brand/model fields if you have them
+        // "brand": { "@type": "Brand", "name": device.brand },
+        // "model": device.model,
+        additionalProperty: [
+          {
+            "@type": "PropertyValue",
+            name: "Display",
+            value: device.specs.display,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Back Camera",
+            value: device.specs.backcamera,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Front Camera",
+            value: device.specs.frontcamera,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Chipset",
+            value: device.specs.chipset,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Battery",
+            value: device.specs.battery,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Storage",
+            value: device.specs.storage,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "RAM",
+            value: device.specs.ram,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Software",
+            value: device.specs.software,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Network",
+            value: device.specs.network,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Announce",
+            value: device.specs.announcedDate,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Available Date",
+            value: device.specs.availableDate,
+          },
+          // …repeat for each spec row
+        ],
+      },
+    ],
   };
 
   return (

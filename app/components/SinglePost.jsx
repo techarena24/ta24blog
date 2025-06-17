@@ -11,49 +11,112 @@ const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 // SinglePost Code
 const SinglePostPage = async ({ post }) => {
-  // const { slug } = await params;
-  const firstTextBlock = post.body?.find(
-    (block) => block._type === "block" && block.children
-  );
-  const description =
-    firstTextBlock?.children?.[0]?.text?.slice(0, 170) ||
-    "No description available";
+  const description = post.summary || "No description available";
 
   const metaDataImage = post.postImage?.asset?.url;
 
+  // old schema
+  // const postSchema = {
+  //   "@context": "https://schema.org",
+  //   "@type": "BlogPosting",
+  //   headline: post.title,
+  //   description,
+  //   author: {
+  //     "@type": "Person",
+  //     name: post.author,
+  //     url: baseURL, // Can be updated dynamically if author has profile pages
+  //   },
+  //   datePublished: post.publishedAt,
+  //   image: [metaDataImage],
+  //   mainEntityOfPage: {
+  //     "@type": "WebPage",
+  //     "@id": `${baseURL}/${post.slug}`,
+  //   },
+  //   publisher: {
+  //     "@type": "Organization",
+  //     name: "Tech Arena24",
+  //     logo: {
+  //       "@type": "ImageObject",
+  //       url: `${baseURL}/images/logoTa24.jpeg`,
+  //     },
+  //   },
+  //   articleSection:
+  //     post.categories?.map((cat) => cat.title).join(", ") || "Uncategorized",
+  //   inLanguage: "en",
+  //   isAccessibleForFree: true,
+
+  //   // Speakable added schema
+  //   speakable: {
+  //     "@type": "SpeakableSpecification",
+  //     cssSelector: [`${post.tlte}, ${post.summary}`],
+  //   },
+  // };
+
+  // new schema
   const postSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${baseURL}/${post.slug}#blogpost`,
+    url: `${baseURL}/${post.slug}`,
     headline: post.title,
-    description,
+    alternativeHeadline: post.subtitle || "",
+    description: description,
+    image: [
+      {
+        "@type": "ImageObject",
+        url: metaDataImage,
+        width: post.postImage?.asset?.metadata?.dimensions?.width || 1200,
+        height: post.postImage?.asset?.metadata?.dimensions?.height || 630,
+        caption: post.postImage?.caption || post.title,
+      },
+    ],
     author: {
       "@type": "Person",
       name: post.author,
-      url: baseURL, // Can be updated dynamically if author has profile pages
-    },
-    datePublished: post.publishedAt,
-    image: [metaDataImage],
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${baseURL}/${post.slug}`,
+      // If you have author profile pages, point here:
+      url: { baseURL },
+      // url: `${baseURL}/author/${post.authorSlug || post.author.replace(/\s+/g, "-").toLowerCase()}`,
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${baseURL}/#organization`,
       name: "Tech Arena24",
       logo: {
         "@type": "ImageObject",
         url: `${baseURL}/images/logoTa24.jpeg`,
       },
     },
-    articleSection:
-      post.categories?.map((cat) => cat.title).join(", ") || "Uncategorized",
-    inLanguage: "en",
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt || post.publishedAt,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseURL}/${post.slug}`,
+    },
+    keywords: (
+      post.tags?.join(", ") ||
+      post.categories?.map((c) => c.title).join(", ") ||
+      ""
+    ).trim(),
+    articleSection: post.categories?.map((c) => c.title) || ["Uncategorized"],
+    inLanguage: "en-US",
     isAccessibleForFree: true,
-
-    // Speakable added schema
+    wordCount: post.readingTime?.words || post.content?.split(/\s+/).length,
+    interactionStatistic: [
+      {
+        "@type": "InteractionCounter",
+        interactionType: "http://schema.org/CommentAction",
+        userInteractionCount: post.commentCount || 0,
+      },
+      {
+        "@type": "InteractionCounter",
+        interactionType: "http://schema.org/ShareAction",
+        userInteractionCount: post.shareCount || 0,
+      },
+    ],
+    discussionUrl: `${baseURL}/${post.slug}#comments`,
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: [`${post.tlte}, ${post.summary}`],
+      xpath: ["/html/head/title", "//article//p[1]"],
     },
   };
 
