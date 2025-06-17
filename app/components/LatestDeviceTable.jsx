@@ -143,7 +143,7 @@ const LatestDeviceTable = async ({ device }) => {
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: device.rating?.average || 4.5,
-          reviewCount: device.rating?.count || 0,
+          reviewCount: device.rating?.count || 1,
         },
       },
     ],
