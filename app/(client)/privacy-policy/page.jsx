@@ -1,62 +1,59 @@
 // pages/privacy-policy.jsx
-import Head from "next/head";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function PrivacyPolicy() {
   return (
     <>
-      <Head>
-        <title>Privacy Policy | Tech Arena24</title>
-        <meta
-          name="description"
-          content="Privacy policy for Tech Arena24 tech news blog. Learn how we collect, use, and protect your personal information."
-        />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`${baseURL}/privacy-policy`} />
+      <title>Privacy Policy | Tech Arena24</title>
+      <meta
+        name="description"
+        content="Privacy policy for Tech Arena24 tech news blog. Learn how we collect, use, and protect your personal information."
+      />
+      <meta name="robots" content="index, follow" />
+      <link rel="canonical" href={`${baseURL}/privacy-policy`} />
 
-        {/* Open Graph */}
-        <meta property="og:title" content="Privacy Policy - Tech Arena24" />
-        <meta
-          property="og:description"
-          content="Privacy policy for Tech Arena24 tech news blog. Learn how we collect, use, and protect your personal information."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${baseURL}/privacy-policy`} />
+      {/* Open Graph */}
+      <meta property="og:title" content="Privacy Policy - Tech Arena24" />
+      <meta
+        property="og:description"
+        content="Privacy policy for Tech Arena24 tech news blog. Learn how we collect, use, and protect your personal information."
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={`${baseURL}/privacy-policy`} />
 
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Privacy Policy - Tech Arena24" />
-        <meta
-          name="twitter:description"
-          content="Privacy policy for Tech Arena24 tech news blog. Learn how we collect, use, and protect your personal information."
-        />
+      {/* Twitter Card */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content="Privacy Policy - Tech Arena24" />
+      <meta
+        name="twitter:description"
+        content="Privacy policy for Tech Arena24 tech news blog. Learn how we collect, use, and protect your personal information."
+      />
 
-        {/* Schema.org JSON-LD */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              name: "Privacy Policy - Tech Arena24",
-              url: `${baseURL}/privacy-policy`,
-              description:
-                "Privacy policy for Tech Arena24 tech news blog. Learn how we collect, use, and protect your personal information.",
-              mainEntity: {
-                "@type": "PrivacyPolicy",
-                name: "Privacy Policy",
-                effectiveDate: "2025-06-19",
-                publisher: {
-                  "@type": "Organization",
-                  name: "Tech Arena24",
-                  url: { baseURL },
-                },
+      {/* Schema.org JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Privacy Policy - Tech Arena24",
+            url: `${baseURL}/privacy-policy`,
+            description:
+              "Privacy policy for Tech Arena24 tech news blog. Learn how we collect, use, and protect your personal information.",
+            mainEntity: {
+              "@type": "PrivacyPolicy",
+              name: "Privacy Policy",
+              effectiveDate: "2025-06-19",
+              publisher: {
+                "@type": "Organization",
+                name: "Tech Arena24",
+                url: { baseURL },
               },
-            }),
-          }}
-        />
-      </Head>
+            },
+          }),
+        }}
+      />
 
       <main className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-extrabold mb-6">Privacy Policy</h1>
