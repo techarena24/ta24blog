@@ -11,6 +11,8 @@ import { fetchedPhoneComparisonPosts } from "@/lib/fetchedPhoneComparisonApi";
 import { fetchedDealsPosts } from "@/lib/fetchedDealsApi";
 import LatestDevicesHomepage from "../components/LatestDevicesHomepage";
 import { fetchedLatestDevices } from "@/lib/fetchedDevices";
+import * as gtag from "@/lib/gtag";
+import Script from "next/script";
 
 const base = process.env.NEXT_PUBLIC_BASE_URL || "https://techarena24.com";
 
@@ -81,6 +83,20 @@ export default async function Home() {
 
   return (
     <>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_MEASUREMENT_ID}`}
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${gtag.GA_MEASUREMENT_ID}', {
+            page_path: window.location.pathname,
+          });
+        `}
+      </Script>
       <div className=" flex flex-col space-y-8 mt-5">
         <div className=" flex flex-col lg:flex-row justify-between gap-8">
           <LatestPosts />

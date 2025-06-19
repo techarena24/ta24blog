@@ -5,7 +5,6 @@ import ThemeProvider from "../components/theme-provider";
 import Footer from "../components/Footer";
 import AdBanner from "../components/AdBanner";
 import Script from "next/script";
-// import Head from "next/head";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -179,14 +178,6 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-4XFSF9HS2G');
-          `}
-      </Script>
       <body
         className={`${poppins.className} antialiased flex flex-col min-h-screen`}
       >
