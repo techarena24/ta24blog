@@ -5,6 +5,7 @@ import ThemeProvider from "../components/theme-provider";
 import Footer from "../components/Footer";
 import AdBanner from "../components/AdBanner";
 import Script from "next/script";
+import ClientScripts from "../components/ClientScripts";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -140,6 +141,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.className} antialiased flex flex-col min-h-screen`}
       >
+        <ClientScripts />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <section className="w-full max-w-6xl min-h-[80vh] mx-auto">
@@ -157,7 +159,7 @@ export default function RootLayout({ children }) {
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557100683793492"
           strategy="lazyOnload"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></Script>
       </body>
     </html>
