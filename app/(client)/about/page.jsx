@@ -2,16 +2,7 @@ import React from "react";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
-//old metadata
-// export const metadata = {
-//   title: "About Us",
-//   description:
-//     "About Tech Arena24: Your trusted source for expert tech news, reviews, comparisons, and top deals. Get to know our team and our commitment to quality tech information.",
-// };
-
 //new metadata
-// app/about/page.jsx
-
 export const metadata = {
   title: "About Us | Tech Arena24 – Our Story & Team",
   description:
@@ -72,52 +63,6 @@ export const metadata = {
     follow: true,
   },
 };
-
-//old schema
-// const schema = {
-//   "@context": "https://schema.org",
-//   "@type": "Organization",
-//   name: "Tech Arena24",
-//   url: { baseURL },
-//   logo: `${baseURL}/images/logoTa24.jpeg`,
-//   founders: [
-//     {
-//       "@type": "Person",
-//       name: "Marvellous Ayomike",
-//       description: "Co-founder of Tech Arena24",
-//     },
-//     {
-//       "@type": "Person",
-//       name: "Festus Ayomike",
-//       description: "Co-founder of Tech Arena24",
-//     },
-//   ],
-//   description:
-//     "Tech Arena24 is a mobile phone tech blog offering reviews, comparisons, and pre-order services. Owned and managed by two brothers from South-South Nigeria.",
-//   address: {
-//     "@type": "PostalAddress",
-//     streetAddress: "942 E 57th Avenue",
-//     addressLocality: "Vancouver, BC",
-//     postalCode: "V5X 1T5",
-//     addressCountry: "Canada",
-//   },
-//   contactPoint: {
-//     "@type": "ContactPoint",
-//     telephone: "+44-7349-006479",
-//     contactType: "Technical Inquiry",
-//     areaServed: "Worldwide",
-//     availableLanguage: ["English"],
-//   },
-//   sameAs: [
-//     "https://www.facebook.com/techarena24blog",
-//     "https://x.com/techarena24blog",
-//     "https://www.instagram.com/techarena24blog/",
-//   ],
-//   mainEntityOfPage: {
-//     "@type": "WebPage",
-//     "@id": `${baseURL}/about`,
-//   },
-// };
 
 //new schema
 const schema = {

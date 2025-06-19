@@ -127,47 +127,6 @@ const schema = {
   ],
 };
 
-// JSON-LD Schema
-// const schema = {
-//   "@context": "https://schema.org",
-//   "@graph": [
-//     {
-//       "@type": "WebSite",
-//       "@id": `${baseURL}/#website`,
-//       name: "Tech Arena24",
-//       url: { baseURL },
-//       potentialAction: {
-//         "@type": "SearchAction",
-//         target: `${baseURL}/search?q={search_term_string}`,
-//         "query-input": "required name=search_term_string",
-//       },
-//     },
-//     {
-//       "@type": "WebPage",
-//       "@id": `${baseURL}/#webpage`,
-//       url: { baseURL },
-//       name: "Tech Arena24 - Latest Tech News, Reviews & Deals",
-//       isPartOf: { "@id": `${baseURL}/#website` },
-//       about: { "@id": `${baseURL}/#organization` },
-//     },
-//     {
-//       "@type": "Organization",
-//       "@id": `${baseURL}/#organization`,
-//       name: "Tech Arena24",
-//       url: { baseURL },
-//       logo: {
-//         "@type": "ImageObject",
-//         url: `${baseURL}/images/logoTa24.jpeg`,
-//       },
-//       sameAs: [
-//         "https://www.facebook.com/techarena24blog",
-//         "https://x.com/techarena24blog",
-//         "https://www.instagram.com/techarena24blog/",
-//       ],
-//     },
-//   ],
-// };
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
