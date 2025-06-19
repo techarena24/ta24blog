@@ -15,6 +15,7 @@ const links = [
   { id: 4, name: "Latest Devices", href: "/latestdevices" },
   { id: 5, name: "Contact", href: "/contact" },
   { id: 6, name: "About Us", href: "/about" },
+  { id: 7, name: "Privacy Policy", href: "/privacy-policy" },
 ];
 
 const Navbar = () => {
@@ -48,16 +49,16 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className=" hidden lg:flex gap-10">
+        <nav className=" hidden lg:flex gap-4 px-2 py-2">
           {links.map((link, id) => (
             <div key={id}>
               {pathName === link.href ? (
-                <Link className=" text-primary font-semibold" href={link.href}>
+                <Link className=" text-primary font-semibold px-2 py-2" href={link.href}>
                   {link.name}
                 </Link>
               ) : (
                 <Link
-                  className=" font-semibold transition duration-100 hover:text-primary"
+                  className=" font-semibold transition duration-100 hover:text-primary px-2 py-2"
                   href={link.href}
                 >
                   {link.name}
