@@ -142,7 +142,7 @@ export async function generateMetadata({ params }) {
   // Try Device Article
   const device = await fetchDeviceBySlug(slug).catch(() => null);
   if (device) {
-    const title = `${device.title} Specs & Review | Tech Arena24`;
+    const title = `${device.title} | Tech Arena24`;
     const description =
       device.summary || `Explore specs and insights on the ${device.title}.`;
     const imageUrl = device.deviceImage || `${base}/opengraph-image.jpg`;
