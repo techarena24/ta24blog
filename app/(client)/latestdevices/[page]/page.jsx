@@ -3,6 +3,7 @@ import React from "react";
 import AdBanner from "@/app/components/AdBanner";
 import { fetchedLatestDevices } from "@/lib/fetchedDevices";
 import Head from "next/head";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
