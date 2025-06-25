@@ -8,7 +8,7 @@ import Link from "next/link";
 export const dynamic = "force-dynamic";
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
-const POSTS_PER_PAGE = 10;
+const POSTS_PER_PAGE = 20;
 
 //commented the metadata below to add a new metadata after this one
 // export async function generateMetadata(props) {
