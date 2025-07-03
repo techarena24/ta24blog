@@ -14,42 +14,6 @@ const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const LatestDeviceTable = async ({ device }) => {
   const { posts } = await fetchedLatestDevices();
-  //old schema
-  // const postSchema = {
-  //   "@context": "https://schema.org",
-  //   "@type": "BlogPosting",
-  //   headline: device.title,
-  //   description: device.summary,
-  //   author: {
-  //     "@type": "Person",
-  //     name: device.author,
-  //     url: baseURL, // Can be updated dynamically if author has profile pages
-  //   },
-  //   datePublished: device.publishedAt,
-  //   image: [device.deviceImage],
-  //   mainEntityOfPage: {
-  //     "@type": "WebPage",
-  //     "@id": `${baseURL}/${device.slug}`,
-  //   },
-  //   publisher: {
-  //     "@type": "Organization",
-  //     name: "Tech Arena24",
-  //     logo: {
-  //       "@type": "ImageObject",
-  //       url: `${baseURL}/images/logoTa24.jpeg`,
-  //     },
-  //   },
-  //   articleSection:
-  //     device.categories?.map((cat) => cat.title).join(", ") || "Uncategorized",
-  //   inLanguage: "en",
-  //   isAccessibleForFree: true,
-
-  //   // Speakable added schema
-  //   speakable: {
-  //     "@type": "SpeakableSpecification",
-  //     cssSelector: [`${device.title}, ${device.summary}`],
-  //   },
-  // };
 
   // new schema
   const postSchema = {
@@ -60,9 +24,11 @@ const LatestDeviceTable = async ({ device }) => {
         "@id": `${baseURL}/${device.slug}#techarticle`,
         headline: device.title,
         description: device.summary,
+        image: [device.deviceImage],
         author: {
           "@type": "Person",
           name: device.author,
+          url: `${baseURL}/author/${device.authorSlug || device.author.replace(/\s+/g, "-").toLowerCase()}`,
         },
         datePublished: device.publishedAt,
         publisher: {
