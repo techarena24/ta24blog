@@ -10,26 +10,6 @@ const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const POSTS_PER_PAGE = 20;
 
-//commented the metadata below to add a new metadata after this one
-// export async function generateMetadata(props) {
-//   const params = await props.params;
-//   const page = params.page;
-//   const pageNumber = parseInt(page, 10);
-
-//   if (isNaN(pageNumber) || pageNumber < 1) {
-//     // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
-//     return {
-//       title: `Latest Devices | Tech Arena24`,
-//       description: `Discover the latest tech devices at Tech Arena24! Get expert news, first looks, and potential future reviews on the newest smartphones, wearables, gadgets, and more hitting the market.`,
-//     };
-//   }
-
-//   return {
-//     title: `Latest Devices - Page ${pageNumber}`,
-//     description: `Browse page ${pageNumber} of the latest tech devices at Tech Arena24! Get expert news, first looks, and potential future reviews on the newest smartphones, wearables, gadgets, and more hitting the market`,
-//   };
-// }
-
 //metadata added below
 export async function generateMetadata({ params }) {
   const pageNumber = parseInt(params.page, 10);
@@ -49,7 +29,7 @@ export async function generateMetadata({ params }) {
   const url = isValid
     ? `${base}/latestdevices/${currentPage}`
     : `${base}/latestdevices`;
-  const ogImage = `${base}/images/latestdevices-og.jpg`;
+  const ogImage = `${base}/images/latest-devices-page.jpg`;
 
   return {
     title,
@@ -118,23 +98,6 @@ const LatestDevices = async (props) => {
   const totalPages = Math.ceil(totalCount / POSTS_PER_PAGE);
   const isFirstPage = pageNumber === 1;
   const isLastPage = pageNumber >= totalPages;
-
-  // Generate JSON-LD schema dynamically from posts
-  // const itemListSchema = {
-  //   "@context": "https://schema.org",
-  //   "@type": "ItemList",
-  //   name: "Latest Devices",
-  //   description: "List of the newest devices published on our site",
-  //   url: `${baseURL}/latestdevices/${pageNumber}`,
-  //   itemListOrder: "http://schema.org/ItemListOrderDescending",
-  //   numberOfItems: posts.length,
-  //   itemListElement: posts.map((post, index) => ({
-  //     "@type": "ListItem",
-  //     position: index + 1,
-  //     url: `${baseURL}/${post.slug}`,
-  //     name: post.phoneName,
-  //   })),
-  // };
 
   // Generate JSON-LD schema dynamically from posts
   const pageSchema = {
