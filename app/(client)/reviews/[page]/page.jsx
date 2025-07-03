@@ -15,26 +15,6 @@ const POSTS_PER_PAGE = 10;
 const truncate = (text, length) =>
   text.length > length ? text.slice(0, length) + "..." : text;
 
-//commented the first metadata
-// export async function generateMetadata(props) {
-//   const params = await props.params;
-//   const page = params.page;
-//   const pageNumber = parseInt(page, 10);
-
-//   if (isNaN(pageNumber) || pageNumber < 1) {
-//     // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
-//     return {
-//       title: `Reviews`,
-//       description: `Browse Reviews on Tech Arena24.`,
-//     };
-//   }
-
-//   return {
-//     title: `Reviews - Page ${pageNumber}`,
-//     description: `Browse page ${pageNumber} of the latest Reviews on Tech Arena24.`,
-//   };
-// }
-
 export async function generateMetadata({ params }) {
   const pageNumber = parseInt(params.page, 10);
   const isValid = !isNaN(pageNumber) && pageNumber > 0;
@@ -48,8 +28,8 @@ export async function generateMetadata({ params }) {
     ? `Explore page ${currentPage} of in-depth tech gadget reviews—from the latest smartphones and gaming consoles to laptops and desktops—at Tech Arena24.`
     : `Explore in-depth tech gadget reviews on Tech Arena24: smartphones, gaming consoles, laptops, desktops, and more.`;
 
-  const url = `${process.env.BASE_URL}/reviews/${currentPage}`;
-  const ogImage = `${process.env.BASE_URL}/images/reviews-og.jpg`;
+  const url = `${baseURL}/reviews/${currentPage}`;
+  const ogImage = `${baseURL}/images/reviews-page.jpg`;
 
   return {
     title,

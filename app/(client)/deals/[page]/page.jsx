@@ -18,6 +18,8 @@ export async function generateMetadata(props) {
   const params = await props.params;
   const page = params.page;
   const pageNumber = parseInt(page, 10);
+  const isValid = !isNaN(pageNumber) && pageNumber > 0;
+  const currentPage = isValid ? pageNumber : null;
 
   if (isNaN(pageNumber) || pageNumber < 1) {
     // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
@@ -27,9 +29,60 @@ export async function generateMetadata(props) {
     };
   }
 
+  // Dynamic title & description
+  const title = isValid
+    ? `Latest Deals – Page ${currentPage} | Tech Arena24`
+    : `Latest Deals | Tech Arena24`;
+  const description = isValid
+    ? `Discover page ${currentPage} of the latest and best tech device deals at Tech Arena24: Get the best daily deals, season deals, holiday deals, free coupon codes, at Tech Arena24.`
+    : `Discover the latest tech device deals at Tech Arena24: Get the best daily deals, season deals, holiday deals, free coupon codes, at Tech Arena24.`;
+
+  // Base URL and social image
+  const base = process.env.BASE_URL || "https://techarena24.com";
+  const url = isValid ? `${base}/deals/${currentPage}` : `${base}/deals`;
+  const ogImage = `${base}/images/deals-page.jpg`;
+
   return {
-    title: `Deals - Page ${pageNumber}`,
-    description: `Browse page ${pageNumber} of the latest deals on Tech Arena24.`,
+    title,
+    description,
+
+    // Canonical URL
+    alternates: {
+      canonical: url,
+    },
+
+    // Open Graph (Facebook, LinkedIn, etc.)
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Tech Arena24",
+      type: "website",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "Latest Tech Device Deals at Tech Arena24",
+        },
+      ],
+    },
+
+    // Twitter Card
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+      site: "@techarena24",
+      creator: "@techarena24",
+    },
+
+    // Encourage indexing of paginated pages
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
@@ -50,23 +103,6 @@ const DealsPage = async (props) => {
 
   const isFirstPage = pageNumber === 1;
   const isLastPage = pageNumber >= totalPages;
-
-  // Generate JSON-LD schema dynamically from posts
-  // const itemListSchema = {
-  //   "@context": "https://schema.org",
-  //   "@type": "ItemList",
-  //   name: "Latest Deals",
-  //   description: "List of the latest deals published on our site",
-  //   url: `${baseURL}/deals/${pageNumber}`,
-  //   itemListOrder: "http://schema.org/ItemListOrderDescending",
-  //   numberOfItems: posts.length,
-  //   itemListElement: posts.map((post, index) => ({
-  //     "@type": "ListItem",
-  //     position: index + 1,
-  //     url: `${baseURL}/${post.slug}`,
-  //     name: post.title,
-  //   })),
-  // };
 
   // Generate JSON-LD schema dynamically from posts
   const pageSchema = {

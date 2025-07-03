@@ -15,42 +15,12 @@ const SinglePostPage = async ({ post }) => {
 
   const metaDataImage = post.postImage?.asset?.url;
 
-  // old schema
-  // const postSchema = {
-  //   "@context": "https://schema.org",
-  //   "@type": "BlogPosting",
-  //   headline: post.title,
-  //   description,
-  //   author: {
-  //     "@type": "Person",
-  //     name: post.author,
-  //     url: baseURL, // Can be updated dynamically if author has profile pages
-  //   },
-  //   datePublished: post.publishedAt,
-  //   image: [metaDataImage],
-  //   mainEntityOfPage: {
-  //     "@type": "WebPage",
-  //     "@id": `${baseURL}/${post.slug}`,
-  //   },
-  //   publisher: {
-  //     "@type": "Organization",
-  //     name: "Tech Arena24",
-  //     logo: {
-  //       "@type": "ImageObject",
-  //       url: `${baseURL}/images/logoTa24.jpeg`,
-  //     },
-  //   },
-  //   articleSection:
-  //     post.categories?.map((cat) => cat.title).join(", ") || "Uncategorized",
-  //   inLanguage: "en",
-  //   isAccessibleForFree: true,
-
-  //   // Speakable added schema
-  //   speakable: {
-  //     "@type": "SpeakableSpecification",
-  //     cssSelector: [`${post.tlte}, ${post.summary}`],
-  //   },
-  // };
+  const authorProfileUrl =
+    post.author === "firstayo"
+      ? "https://www.linkedin.com/in/firstayo/"
+      : post.author === "maii_hd"
+        ? "https://www.linkedin.com/in/marvellous-ayomike-033a53283/"
+        : `${baseURL}/author/${post.authorSlug || post.author.replace(/\s+/g, "-").toLowerCase()}`;
 
   // new schema
   const postSchema = {
@@ -73,9 +43,7 @@ const SinglePostPage = async ({ post }) => {
     author: {
       "@type": "Person",
       name: post.author,
-      // If you have author profile pages, point here:
-      url: { baseURL },
-      // url: `${baseURL}/author/${post.authorSlug || post.author.replace(/\s+/g, "-").toLowerCase()}`,
+      url: authorProfileUrl,
     },
     publisher: {
       "@type": "Organization",

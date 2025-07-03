@@ -14,26 +14,6 @@ const POSTS_PER_PAGE = 10;
 const truncate = (text, length) =>
   text.length > length ? text.slice(0, length) + "..." : text;
 
-//former schema for news page
-// export async function generateMetadata(props) {
-//   const params = await props.params;
-//   const page = params.page;
-//   const pageNumber = parseInt(page, 10);
-
-//   if (isNaN(pageNumber) || pageNumber < 1) {
-//     // NOTE: Redirects don't work in generateMetadata. Handle invalid pages in the main component.
-//     return {
-//       title: `News`,
-//       description: `Browse News on Tech Arena24.`,
-//     };
-//   }
-
-//   return {
-//     title: `News - Page ${pageNumber}`,
-//     description: `Browse page ${pageNumber} of the latest News on Tech Arena24.`,
-//   };
-// }
-
 //schema for the news page
 export async function generateMetadata({ params }) {
   const pageNumber = parseInt(params.page, 10);
@@ -51,7 +31,7 @@ export async function generateMetadata({ params }) {
   // 2. Base URL & social image
   const base = process.env.BASE_URL || "https://techarena24.com";
   const url = isValid ? `${base}/news/${current}` : `${base}/news`;
-  const ogImage = `${base}/images/news-og.jpg`;
+  const ogImage = `${base}/images/news-page.jpg`;
 
   return {
     // Core meta
