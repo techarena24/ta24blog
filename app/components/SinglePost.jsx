@@ -26,8 +26,8 @@ const SinglePostPage = async ({ post }) => {
   const postSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "@id": `${baseURL}/${post.slug}#blogpost`,
-    url: `${baseURL}/${post.slug}`,
+    "@id": `${baseURL}/${post.slug.current}#blogpost`,
+    url: `${baseURL}/${post.slug.current}`,
     headline: post.title,
     alternativeHeadline: post.subtitle || "",
     description: description,
@@ -58,7 +58,7 @@ const SinglePostPage = async ({ post }) => {
     dateModified: post.updatedAt || post.publishedAt,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${baseURL}/${post.slug}`,
+      "@id": `${baseURL}/${post.slug.current}`,
     },
     keywords: (
       post.tags?.join(", ") ||
@@ -81,7 +81,7 @@ const SinglePostPage = async ({ post }) => {
         userInteractionCount: post.shareCount || 0,
       },
     ],
-    discussionUrl: `${baseURL}/${post.slug}#comments`,
+    discussionUrl: `${baseURL}/${post.slug.current}#comments`,
     speakable: {
       "@type": "SpeakableSpecification",
       xpath: ["/html/head/title", "//article//p[1]"],
