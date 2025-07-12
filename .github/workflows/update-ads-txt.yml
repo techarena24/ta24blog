@@ -1,0 +1,29 @@
+name: daily ads.txt update
+
+on:
+  schedule:
+    # every day at midnight UTC
+    - cron: '0 0 * * *'
+
+jobs:
+  update-ads:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: fetch latest ads.txt
+        run: |
+          curl -L https://srv.adstxtmanager.com/19390/techarena24.com \
+            > public/ads.txt
+
+      - name: commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add public/ads.txt
+            git commit -m "chore: update ads.txt"
+            git push
+          else
+            echo "No changes to ads.txt"
+          fi
