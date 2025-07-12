@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "curl -L https://srv.adstxtmanager.com/19390/techarena24.com > public/ads.txt",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
