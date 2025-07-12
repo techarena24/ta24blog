@@ -18,7 +18,7 @@ const SinglePostPage = async ({ post }) => {
   const authorProfileUrl =
     post.author === "firstayo"
       ? "https://www.linkedin.com/in/firstayo/"
-      : post.author === "maii_hd"
+      : post.author === "Maii_HD"
         ? "https://www.linkedin.com/in/marvellous-ayomike-033a53283/"
         : `${baseURL}/author/${post.authorSlug || post.author.replace(/\s+/g, "-").toLowerCase()}`;
 

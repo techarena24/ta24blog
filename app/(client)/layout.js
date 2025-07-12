@@ -155,12 +155,6 @@ export default function RootLayout({ children }) {
           </section>
           <Footer />
         </ThemeProvider>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557100683793492"
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        ></Script>
       </body>
     </html>
   );
