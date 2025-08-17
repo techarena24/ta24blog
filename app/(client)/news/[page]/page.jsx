@@ -95,23 +95,6 @@ const NewsPage = async (props) => {
   const isLastPage = pageNumber >= totalPages;
 
   // Generate JSON-LD schema dynamically from posts
-  // const itemListSchema = {
-  //   "@context": "https://schema.org",
-  //   "@type": "ItemList",
-  //   name: "Latest News",
-  //   description: "List of the latest news published on our site",
-  //   url: `${baseURL}/news/${pageNumber}`,
-  //   itemListOrder: "http://schema.org/ItemListOrderDescending",
-  //   numberOfItems: posts.length,
-  //   itemListElement: posts.map((post, index) => ({
-  //     "@type": "ListItem",
-  //     position: index + 1,
-  //     url: `${baseURL}/${post.slug}`,
-  //     name: post.title,
-  //   })),
-  // };
-
-  // Generate JSON-LD schema dynamically from posts
   const pageSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -276,11 +259,11 @@ const NewsPage = async (props) => {
           </div>
 
           {/* Sidebar Ads */}
-          <aside className="hidden md:block md:w-[300px] md:h-screen">
+          {/* <aside className="hidden md:block md:w-[300px] md:h-screen">
             <div className="md:sticky md:top-0 md:h-[100vh] md:overflow-y-auto border">
               <AdBanner slot="4220368538" />
             </div>
-          </aside>
+          </aside> */}
         </div>
       </div>
     </>

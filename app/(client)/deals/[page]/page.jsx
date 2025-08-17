@@ -265,11 +265,11 @@ const DealsPage = async (props) => {
           </div>
 
           {/* Sidebar Ads */}
-          <aside className="hidden md:block md:w-[300px] md:h-screen">
+          {/* <aside className="hidden md:block md:w-[300px] md:h-screen">
             <div className="md:sticky md:top-0 md:h-[100vh] md:overflow-y-auto border">
               <AdBanner slot="4220368538" />
             </div>
-          </aside>
+          </aside> */}
         </div>
       </div>
     </>
