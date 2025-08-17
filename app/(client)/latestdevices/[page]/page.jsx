@@ -172,9 +172,9 @@ const LatestDevices = async (props) => {
             width="w-full lg:75%"
             grid="grid-cols-2 md:grid-cols-4"
           />
-          <div className="w-[25%] hidden lg:block h-40">
+          {/* <div className="w-[25%] hidden lg:block h-40">
             <AdBanner slot="4220368538" />
-          </div>
+          </div> */}
         </div>
 
         {/* Pagination */}

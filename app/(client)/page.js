@@ -104,7 +104,7 @@ export default async function Home() {
         </div>
         <LatestDevicesHomepage posts={latestDevices} />
         <News posts={topStories} />
-        <AdBanner slot="4220368538" />
+        {/* <AdBanner slot="4220368538" /> */}
         <PhoneComparisons posts={phoneComparison} />
         <Deals posts={dealPosts} />
       </div>
